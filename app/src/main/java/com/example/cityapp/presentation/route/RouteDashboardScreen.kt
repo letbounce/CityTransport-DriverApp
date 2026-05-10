@@ -2,6 +2,8 @@
 
 package com.example.cityapp.presentation.route
 
+import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -34,6 +36,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -41,7 +46,27 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cityapp.domain.model.Route
 import com.example.cityapp.domain.model.Vehicle
 import com.example.cityapp.domain.model.Waybill
+import com.example.cityapp.presentation.common.ArchiveReasonDialog
+import com.example.cityapp.presentation.common.ArchiveReasonOption
 import kotlinx.coroutines.delay
+
+private fun formatWaybillForCopy(w: Waybill): String {
+    val reasonLabel = w.deletionReasonCode?.let { code ->
+        ArchiveReasonOption.entries.find { it.code == code }?.labelUa ?: code
+    }
+    return buildString {
+        appendLine("Дорожній лист №${w.routeNumber}")
+        appendLine("Статус: ${waybillStatusUa(w.status)}")
+        appendLine("ID: ${w.id}")
+        appendLine("Транспорт: ${w.vehicleId}")
+        w.startedAt?.let { appendLine("Початок: $it") }
+        w.completedAt?.let { appendLine("Завершено: $it") }
+        w.deletedAt?.let { appendLine("Архівовано: $it") }
+        reasonLabel?.let { appendLine("Причина архіву: $it") }
+        w.deletionReasonNote?.takeIf { it.isNotBlank() }?.let { appendLine("Примітка: $it") }
+        if (w.notes.isNotBlank()) appendLine("Примітки: ${w.notes}")
+    }.trim()
+}
 
 private fun waybillStatusUa(status: String): String = when (status) {
     "assigned" -> "Призначено"
@@ -58,7 +83,11 @@ fun RouteDashboardScreen(
     viewModel: RouteDashboardViewModel = viewModel()
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val clipboard = LocalClipboardManager.current
+    val context = LocalContext.current
     var editingWaybill by remember { mutableStateOf<Waybill?>(null) }
+    var pendingArchiveWaybillId by remember { mutableStateOf<String?>(null) }
+    var copyWaybillTarget by remember { mutableStateOf<Waybill?>(null) }
 
     LaunchedEffect(Unit) { viewModel.refresh() }
 
@@ -84,6 +113,46 @@ fun RouteDashboardScreen(
             onSave = { vehicle, notes ->
                 viewModel.updateWaybill(wb.id, vehicle, notes)
                 editingWaybill = null
+            },
+            onArchiveConfirmed = {
+                pendingArchiveWaybillId = wb.id
+                editingWaybill = null
+            }
+        )
+    }
+
+    pendingArchiveWaybillId?.let { id ->
+        ArchiveReasonDialog(
+            title = "Архівувати дорожній лист?",
+            confirmLabel = "Архівувати",
+            onDismiss = { pendingArchiveWaybillId = null },
+            onConfirm = { code, note ->
+                viewModel.archiveWaybill(id, code, note)
+                pendingArchiveWaybillId = null
+            }
+        )
+    }
+
+    copyWaybillTarget?.let { wb ->
+        AlertDialog(
+            onDismissRequest = { copyWaybillTarget = null },
+            title = { Text("Копіювати дані листа?") },
+            text = { Text("Текст буде скопійовано в буфер обміну.") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        clipboard.setText(AnnotatedString(formatWaybillForCopy(wb)))
+                        Toast.makeText(context, "Скопійовано", Toast.LENGTH_SHORT).show()
+                        copyWaybillTarget = null
+                    }
+                ) {
+                    Text("Копіювати")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { copyWaybillTarget = null }) {
+                    Text("Скасувати")
+                }
             }
         )
     }
@@ -182,6 +251,15 @@ fun RouteDashboardScreen(
                         ) {
                             Text("Новий дорожній лист", style = MaterialTheme.typography.titleMedium)
 
+                            state.activeWaybill?.let {
+                                Text(
+                                    text =
+                                        "Щоб створити новий активний дорожній лист, потрібно закрити поточний.",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                            }
+
                             RouteDropdown(
                                 routes = state.routes,
                                 selectedRouteId = state.selectedRouteId,
@@ -242,6 +320,30 @@ fun RouteDashboardScreen(
                     waybill = wb,
                     onEdit = { editingWaybill = wb }
                 )
+            }
+
+            item {
+                HorizontalDivider(Modifier.padding(vertical = 12.dp))
+                Text("Неактивні (архів)", style = MaterialTheme.typography.titleMedium)
+                Text(
+                    "Листи, які ви видалили; лише ваші записи.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            if (state.archivedWaybills.isEmpty()) {
+                item {
+                    Text(
+                        "Архів дорожніх листів порожній",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            } else {
+                items(state.archivedWaybills, key = { "arch_${it.id}" }) { wb ->
+                    ArchivedWaybillRowCard(waybill = wb, onClick = { copyWaybillTarget = wb })
+                }
             }
 
             item { Spacer(Modifier.height(32.dp)) }
@@ -383,83 +485,155 @@ private fun WaybillEditDialog(
     waybill: Waybill,
     vehicles: List<Vehicle>,
     onDismiss: () -> Unit,
-    onSave: (vehicleId: String, notes: String) -> Unit
+    onSave: (vehicleId: String, notes: String) -> Unit,
+    onArchiveConfirmed: () -> Unit
 ) {
+    var confirmDelete by remember(waybill.id) { mutableStateOf(false) }
     var vehicleManual by remember(waybill.id) { mutableStateOf(waybill.vehicleId) }
     var notes by remember(waybill.id) { mutableStateOf(waybill.notes) }
     var vehicleExpanded by remember { mutableStateOf(false) }
     val selectedVehicle = vehicles.find { it.vehicleId == vehicleManual }
 
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Редагування листа №${waybill.routeNumber}") },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+    when {
+        confirmDelete -> AlertDialog(
+            onDismissRequest = { confirmDelete = false },
+            title = { Text("Архівувати дорожній лист?") },
+            text = {
                 Text(
-                    "Статус: ${waybillStatusUa(waybill.status)}",
-                    style = MaterialTheme.typography.bodySmall
+                    "Активний лист буде переведений у «Завершено», потім у архів. Далі оберіть причину."
                 )
-                if (vehicles.isNotEmpty()) {
-                    ExposedDropdownMenuBox(
-                        expanded = vehicleExpanded,
-                        onExpandedChange = { vehicleExpanded = !vehicleExpanded }
-                    ) {
-                        OutlinedTextField(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .menuAnchor(),
-                            readOnly = true,
-                            value = selectedVehicle?.let { "${it.vehicleId} — ${it.label}" }
-                                ?: vehicleManual,
-                            onValueChange = {},
-                            label = { Text("Транспорт") },
-                            trailingIcon = {
-                                ExposedDropdownMenuDefaults.TrailingIcon(expanded = vehicleExpanded)
-                            },
-                            colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
-                        )
-                        ExposedDropdownMenu(
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        confirmDelete = false
+                        onArchiveConfirmed()
+                        onDismiss()
+                    }
+                ) {
+                        Text("Далі", color = MaterialTheme.colorScheme.error)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { confirmDelete = false }) {
+                    Text("Скасувати")
+                }
+            }
+        )
+
+        else -> AlertDialog(
+            onDismissRequest = onDismiss,
+            title = { Text("Редагування листа №${waybill.routeNumber}") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text(
+                        "Статус: ${waybillStatusUa(waybill.status)}",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    if (vehicles.isNotEmpty()) {
+                        ExposedDropdownMenuBox(
                             expanded = vehicleExpanded,
-                            onDismissRequest = { vehicleExpanded = false }
+                            onExpandedChange = { vehicleExpanded = !vehicleExpanded }
                         ) {
-                            vehicles.forEach { v ->
-                                DropdownMenuItem(
-                                    text = { Text("${v.vehicleId} — ${v.label}") },
-                                    onClick = {
-                                        vehicleManual = v.vehicleId
-                                        vehicleExpanded = false
-                                    }
-                                )
+                            OutlinedTextField(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .menuAnchor(),
+                                readOnly = true,
+                                value = selectedVehicle?.let { "${it.vehicleId} — ${it.label}" }
+                                    ?: vehicleManual,
+                                onValueChange = {},
+                                label = { Text("Транспорт") },
+                                trailingIcon = {
+                                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = vehicleExpanded)
+                                },
+                                colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
+                            )
+                            ExposedDropdownMenu(
+                                expanded = vehicleExpanded,
+                                onDismissRequest = { vehicleExpanded = false }
+                            ) {
+                                vehicles.forEach { v ->
+                                    DropdownMenuItem(
+                                        text = { Text("${v.vehicleId} — ${v.label}") },
+                                        onClick = {
+                                            vehicleManual = v.vehicleId
+                                            vehicleExpanded = false
+                                        }
+                                    )
+                                }
                             }
                         }
+                    } else {
+                        OutlinedTextField(
+                            value = vehicleManual,
+                            onValueChange = { vehicleManual = it },
+                            label = { Text("Борт № / транспорт") },
+                            modifier = Modifier.fillMaxWidth(),
+                            singleLine = true,
+                            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters)
+                        )
                     }
-                } else {
                     OutlinedTextField(
-                        value = vehicleManual,
-                        onValueChange = { vehicleManual = it },
-                        label = { Text("Борт № / транспорт") },
-                        modifier = Modifier.fillMaxWidth(),
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Characters)
+                        value = notes,
+                        onValueChange = { notes = it },
+                        label = { Text("Примітки") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(140.dp),
+                        minLines = 4,
+                        keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences)
                     )
+                    TextButton(
+                        onClick = { confirmDelete = true },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Видалити дорожній лист…", color = MaterialTheme.colorScheme.error)
+                    }
                 }
-                OutlinedTextField(
-                    value = notes,
-                    onValueChange = { notes = it },
-                    label = { Text("Примітки") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp),
-                    minLines = 4,
-                    keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences)
-                )
+            },
+            confirmButton = {
+                TextButton(onClick = { onSave(vehicleManual, notes) }) { Text("Зберегти") }
+            },
+            dismissButton = {
+                TextButton(onClick = onDismiss) { Text("Скасувати") }
             }
-        },
-        confirmButton = {
-            TextButton(onClick = { onSave(vehicleManual, notes) }) { Text("Зберегти") }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Скасувати") }
+        )
+    }
+}
+
+@Composable
+private fun ArchivedWaybillRowCard(waybill: Waybill, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.82f),
+            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    ) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(
+                "№${waybill.routeNumber} · ${waybillStatusUa(waybill.status)} · архів",
+                style = MaterialTheme.typography.titleSmall
+            )
+            Text("ID: ${waybill.id}")
+            Text("Транспорт: ${waybill.vehicleId}")
+            waybill.deletedAt?.let {
+                Text("Прибрано: $it", style = MaterialTheme.typography.bodySmall)
+            }
+            waybill.startedAt?.let { Text("Початок: $it", style = MaterialTheme.typography.bodySmall) }
+            waybill.completedAt?.let { Text("Завершено: $it", style = MaterialTheme.typography.bodySmall) }
+            waybill.deletionReasonCode?.let { code ->
+                val label = ArchiveReasonOption.entries.find { it.code == code }?.labelUa ?: code
+                Text("Причина архіву: $label", style = MaterialTheme.typography.bodySmall)
+            }
+            waybill.deletionReasonNote?.takeIf { it.isNotBlank() }?.let {
+                Text("Примітка: $it", style = MaterialTheme.typography.bodySmall)
+            }
+            Text("Натисніть, щоб скопіювати дані", style = MaterialTheme.typography.labelSmall)
         }
-    )
+    }
 }

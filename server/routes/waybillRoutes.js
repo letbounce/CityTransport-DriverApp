@@ -5,6 +5,8 @@ const {
   completeWaybill,
   getActiveWaybill,
   listWaybills,
+  listArchivedWaybills,
+  archiveWaybill,
   getWaybillById,
   updateWaybill
 } = require("../controllers/waybillController");
@@ -12,8 +14,17 @@ const {
 const router = express.Router();
 
 router.get("/active", getActiveWaybill);
+router.get("/archived", listArchivedWaybills);
 router.get("/", listWaybills);
 router.patch("/:id/complete", completeWaybill);
+router.post(
+  "/:id/archive",
+  [
+    body("reason_code").isString().notEmpty(),
+    body("reason_note").optional({ nullable: true }).isString().isLength({ max: 2000 })
+  ],
+  archiveWaybill
+);
 router.patch(
   "/:id",
   [

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -34,6 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun HomeMenuScreen(
     onOpenWaybills: () -> Unit,
     onOpenIncidents: () -> Unit,
+    onOpenTripMap: () -> Unit,
     onLoggedOut: () -> Unit,
     viewModel: HomeMenuViewModel = viewModel()
 ) {
@@ -102,6 +104,18 @@ fun HomeMenuScreen(
                 title = "Інциденти",
                 subtitle = "Журнал зареєстрованих подій",
                 onClick = onOpenIncidents
+            )
+
+            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+            Text(
+                "Додатково",
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            MenuTile(
+                title = "Мапа рейсів",
+                subtitle = "Активні рейси та позиції з телеметрії",
+                onClick = onOpenTripMap
             )
 
             Spacer(modifier = Modifier.weight(1f))

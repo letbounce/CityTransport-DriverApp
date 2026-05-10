@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const Route = require("../models/Route");
 const Waybill = require("../models/Waybill");
+const { isValidArchiveReason } = require("../constants/archiveReasons");
 
 async function createWaybill(req, res) {
   const errors = validationResult(req);
@@ -10,7 +11,8 @@ async function createWaybill(req, res) {
 
   const existing = await Waybill.findOne({
     driver_id: req.user.driver_id,
-    status: { $in: ["assigned", "in_progress"] }
+    status: { $in: ["assigned", "in_progress"] },
+    deleted_at: null
   });
   if (existing) {
     return res.status(409).json({ message: "Active waybill already exists", waybill: existing });
@@ -38,7 +40,8 @@ async function completeWaybill(req, res) {
   const waybill = await Waybill.findOne({
     _id: req.params.id,
     driver_id: req.user.driver_id,
-    status: { $in: ["assigned", "in_progress"] }
+    status: { $in: ["assigned", "in_progress"] },
+    deleted_at: null
   });
 
   if (!waybill) {
@@ -54,7 +57,8 @@ async function completeWaybill(req, res) {
 async function getActiveWaybill(req, res) {
   const active = await Waybill.findOne({
     driver_id: req.user.driver_id,
-    status: { $in: ["assigned", "in_progress"] }
+    status: { $in: ["assigned", "in_progress"] },
+    deleted_at: null
   }).sort({ created_at: -1 });
 
   if (!active) {
@@ -66,8 +70,20 @@ async function getActiveWaybill(req, res) {
 
 async function listWaybills(req, res) {
   const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
-  const waybills = await Waybill.find({ driver_id: req.user.driver_id })
+  const waybills = await Waybill.find({ driver_id: req.user.driver_id, deleted_at: null })
     .sort({ created_at: -1 })
+    .limit(limit)
+    .lean();
+  return res.json(waybills);
+}
+
+async function listArchivedWaybills(req, res) {
+  const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
+  const waybills = await Waybill.find({
+    driver_id: req.user.driver_id,
+    deleted_at: { $ne: null }
+  })
+    .sort({ deleted_at: -1 })
     .limit(limit)
     .lean();
   return res.json(waybills);
@@ -76,7 +92,8 @@ async function listWaybills(req, res) {
 async function getWaybillById(req, res) {
   const waybill = await Waybill.findOne({
     _id: req.params.id,
-    driver_id: req.user.driver_id
+    driver_id: req.user.driver_id,
+    deleted_at: null
   }).lean();
   if (!waybill) {
     return res.status(404).json({ message: "Waybill not found" });
@@ -92,7 +109,8 @@ async function updateWaybill(req, res) {
 
   const waybill = await Waybill.findOne({
     _id: req.params.id,
-    driver_id: req.user.driver_id
+    driver_id: req.user.driver_id,
+    deleted_at: null
   });
 
   if (!waybill) {
@@ -110,11 +128,43 @@ async function updateWaybill(req, res) {
   return res.json(waybill);
 }
 
+async function archiveWaybill(req, res) {
+  const code = req.body.reason_code;
+  if (!isValidArchiveReason(code)) {
+    return res.status(400).json({ message: "Invalid or missing reason_code" });
+  }
+
+  const waybill = await Waybill.findOne({
+    _id: req.params.id,
+    driver_id: req.user.driver_id,
+    deleted_at: null
+  });
+  if (!waybill) {
+    return res.status(404).json({ message: "Waybill not found" });
+  }
+
+  if (["assigned", "in_progress"].includes(waybill.status)) {
+    waybill.status = "completed";
+    if (!waybill.completed_at) {
+      waybill.completed_at = new Date();
+    }
+  }
+
+  waybill.deleted_at = new Date();
+  waybill.deletion_reason_code = code;
+  waybill.deletion_reason_note = (req.body.reason_note && String(req.body.reason_note).trim()) || "";
+
+  await waybill.save();
+  return res.json(waybill);
+}
+
 module.exports = {
   createWaybill,
   completeWaybill,
   getActiveWaybill,
   listWaybills,
+  listArchivedWaybills,
+  archiveWaybill,
   getWaybillById,
   updateWaybill
 };

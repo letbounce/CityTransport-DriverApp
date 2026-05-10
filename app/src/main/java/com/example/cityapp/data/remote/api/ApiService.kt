@@ -1,8 +1,10 @@
 package com.example.cityapp.data.remote.api
 
+import com.example.cityapp.data.remote.dto.ArchiveReasonDto
 import com.example.cityapp.data.remote.dto.IncidentRequestDto
 import com.example.cityapp.data.remote.dto.IncidentResponseDto
 import com.example.cityapp.data.remote.dto.LoginRequestDto
+import com.example.cityapp.data.remote.dto.LiveTripMarkersResponseDto
 import com.example.cityapp.data.remote.dto.LoginResponseDto
 import com.example.cityapp.data.remote.dto.RouteDto
 import com.example.cityapp.data.remote.dto.VehicleDto
@@ -27,6 +29,15 @@ interface ApiService {
     @GET("api/waybills")
     suspend fun listWaybills(): List<WaybillDto>
 
+    @GET("api/waybills/archived")
+    suspend fun listArchivedWaybills(): List<WaybillDto>
+
+    @GET("api/waybills/{id}")
+    suspend fun getWaybill(@Path("id") id: String): WaybillDto
+
+    @POST("api/waybills/{id}/archive")
+    suspend fun archiveWaybill(@Path("id") id: String, @Body body: ArchiveReasonDto): WaybillDto
+
     @POST("api/waybills")
     suspend fun startWaybill(@Body request: StartWaybillRequestDto): WaybillDto
 
@@ -45,6 +56,24 @@ interface ApiService {
     @GET("api/incidents")
     suspend fun listIncidents(): List<IncidentResponseDto>
 
+    @GET("api/incidents/archived")
+    suspend fun listArchivedIncidents(): List<IncidentResponseDto>
+
+    @GET("api/incidents/{id}")
+    suspend fun getIncident(@Path("id") id: String): IncidentResponseDto
+
+    @PATCH("api/incidents/{id}")
+    suspend fun updateIncident(
+        @Path("id") id: String,
+        @Body body: Map<String, @JvmSuppressWildcards Any?>
+    ): IncidentResponseDto
+
+    @POST("api/incidents/{id}/archive")
+    suspend fun archiveIncident(@Path("id") id: String, @Body body: ArchiveReasonDto): IncidentResponseDto
+
     @POST("api/incidents")
     suspend fun reportIncident(@Body request: IncidentRequestDto): IncidentResponseDto
+
+    @GET("api/map/live-trips")
+    suspend fun getLiveTripMarkers(): LiveTripMarkersResponseDto
 }

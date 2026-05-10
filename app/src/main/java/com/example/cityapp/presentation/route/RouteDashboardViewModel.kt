@@ -6,7 +6,9 @@ import com.example.cityapp.di.ServiceLocator
 import com.example.cityapp.domain.model.Route
 import com.example.cityapp.domain.model.Vehicle
 import com.example.cityapp.domain.model.Waybill
+import com.example.cityapp.domain.usecase.ArchiveWaybillUseCase
 import com.example.cityapp.domain.usecase.GetActiveRouteUseCase
+import com.example.cityapp.domain.usecase.ListArchivedWaybillsUseCase
 import com.example.cityapp.domain.usecase.ListVehiclesUseCase
 import com.example.cityapp.domain.usecase.ListWaybillsUseCase
 import com.example.cityapp.domain.usecase.StartTripUseCase
@@ -26,6 +28,7 @@ data class RouteDashboardUiState(
     val selectedRouteId: String = "",
     val selectedVehicleId: String = "",
     val waybills: List<Waybill> = emptyList(),
+    val archivedWaybills: List<Waybill> = emptyList(),
     val activeWaybill: Waybill? = null,
     val newTripNotes: String = "",
     val pendingNavigateWaybillId: String? = null,
@@ -39,6 +42,8 @@ class RouteDashboardViewModel : ViewModel() {
     private val listVehiclesUseCase = ListVehiclesUseCase(ServiceLocator.vehicleRepository)
     private val startTripUseCase = StartTripUseCase(ServiceLocator.waybillRepository)
     private val listWaybillsUseCase = ListWaybillsUseCase(ServiceLocator.waybillRepository)
+    private val listArchivedWaybillsUseCase = ListArchivedWaybillsUseCase(ServiceLocator.waybillRepository)
+    private val archiveWaybillUseCase = ArchiveWaybillUseCase(ServiceLocator.waybillRepository)
     private val updateWaybillUseCase = UpdateWaybillUseCase(ServiceLocator.waybillRepository)
     private val authRepository = ServiceLocator.authRepository
     private val waybillRepository = ServiceLocator.waybillRepository
@@ -49,11 +54,12 @@ class RouteDashboardViewModel : ViewModel() {
     fun refresh() {
         viewModelScope.launch {
             val pendingSnapshot = _uiState.value.pendingNavigateWaybillId
-            _uiState.update { it.copy(isLoading = true, error = null, saveSuccessMessage = null) }
+            _uiState.update { it.copy(isLoading = true) }
 
             val routesResult = getActiveRouteUseCase()
             val vehiclesResult = listVehiclesUseCase()
             val listResult = listWaybillsUseCase()
+            val archivedResult = listArchivedWaybillsUseCase()
             val activeResult = waybillRepository.getActiveWaybill()
 
             val routesList = routesResult.getOrDefault(emptyList())
@@ -63,6 +69,7 @@ class RouteDashboardViewModel : ViewModel() {
             val err = buildList {
                 if (routesResult.isFailure) add("Маршрути недоступні")
                 if (listResult.isFailure) add("Не вдалося завантажити список дорожніх листів")
+                if (archivedResult.isFailure) add("Не вдалося завантажити архів дорожніх листів")
                 if (!vehiclesOk) add("Не вдалося завантажити парк транспорту (перевірте сервер)")
             }.joinToString("\n").ifBlank { null }
 
@@ -83,6 +90,7 @@ class RouteDashboardViewModel : ViewModel() {
                     selectedRouteId = routeId,
                     selectedVehicleId = vehicleId,
                     waybills = listResult.getOrDefault(emptyList()),
+                    archivedWaybills = archivedResult.getOrDefault(emptyList()),
                     activeWaybill = activeResult.getOrNull(),
                     error = err,
                     pendingNavigateWaybillId = pendingSnapshot,
@@ -125,13 +133,14 @@ class RouteDashboardViewModel : ViewModel() {
                 } else {
                     it.copy(
                         error = when (code) {
-                            409 -> "Вже є активний дорожній лист. Завершіть рейс або відредагуйте поточний лист."
+                            409 ->
+                                "Щоб створити новий активний дорожній лист, потрібно закрити поточний."
                             else -> "Не вдалося створити дорожній лист"
                         }
                     )
                 }
             }
-            refresh()
+            if (result.isSuccess) refresh()
         }
     }
 
@@ -153,7 +162,7 @@ class RouteDashboardViewModel : ViewModel() {
                     it.copy(error = "Не вдалося оновити дорожній лист")
                 }
             }
-            refresh()
+            if (result.isSuccess) refresh()
         }
     }
 
@@ -163,5 +172,19 @@ class RouteDashboardViewModel : ViewModel() {
 
     fun continueTrip(waybillId: String) {
         _uiState.update { it.copy(pendingNavigateWaybillId = waybillId) }
+    }
+
+    fun archiveWaybill(waybillId: String, reasonCode: String, reasonNote: String?) {
+        viewModelScope.launch {
+            val result = archiveWaybillUseCase(waybillId, reasonCode, reasonNote)
+            _uiState.update {
+                if (result.isSuccess) {
+                    it.copy(saveSuccessMessage = "Лист архівовано зі статусом «Завершено», причину збережено")
+                } else {
+                    it.copy(error = "Не вдалося архівувати дорожній лист")
+                }
+            }
+            if (result.isSuccess) refresh()
+        }
     }
 }

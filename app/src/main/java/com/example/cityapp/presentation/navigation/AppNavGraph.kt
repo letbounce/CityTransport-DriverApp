@@ -7,9 +7,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.cityapp.presentation.home.HomeMenuScreen
+import com.example.cityapp.presentation.incident.IncidentEditScreen
 import com.example.cityapp.presentation.incident.IncidentReportScreen
 import com.example.cityapp.presentation.incidents.IncidentsListScreen
 import com.example.cityapp.presentation.login.LoginScreen
+import com.example.cityapp.presentation.map.TripMapScreen
 import com.example.cityapp.presentation.route.RouteDashboardScreen
 import com.example.cityapp.presentation.trip.ActiveTripScreen
 
@@ -20,9 +22,12 @@ object Destinations {
     const val ActiveTrip = "active_trip/{waybillId}"
     const val Incident = "incident/{waybillId}"
     const val IncidentsList = "incidents"
+    const val IncidentEdit = "incident_edit/{incidentId}"
+    const val TripMap = "trip_map"
 
     fun activeTrip(waybillId: String) = "active_trip/$waybillId"
     fun incident(waybillId: String) = "incident/$waybillId"
+    fun incidentEdit(incidentId: String) = "incident_edit/$incidentId"
 }
 
 @Composable
@@ -48,11 +53,18 @@ fun CityAppNavGraph() {
             HomeMenuScreen(
                 onOpenWaybills = { navController.navigate(Destinations.Dashboard) },
                 onOpenIncidents = { navController.navigate(Destinations.IncidentsList) },
+                onOpenTripMap = { navController.navigate(Destinations.TripMap) },
                 onLoggedOut = {
                     navController.navigate(Destinations.Login) {
                         popUpTo(Destinations.Home) { inclusive = true }
                     }
                 }
+            )
+        }
+        composable(Destinations.TripMap) {
+            TripMapScreen(
+                onBack = { navController.popBackStack() },
+                onNavigateHome = { navigateHome() }
             )
         }
         composable(Destinations.Dashboard) {
@@ -66,7 +78,22 @@ fun CityAppNavGraph() {
         composable(Destinations.IncidentsList) {
             IncidentsListScreen(
                 onBack = { navController.popBackStack() },
-                onNavigateHome = { navigateHome() }
+                onNavigateHome = { navigateHome() },
+                onEditIncident = { id ->
+                    navController.navigate(Destinations.incidentEdit(id))
+                }
+            )
+        }
+        composable(
+            route = Destinations.IncidentEdit,
+            arguments = listOf(navArgument("incidentId") { type = NavType.StringType })
+        ) { entry ->
+            val incidentId = entry.arguments?.getString("incidentId").orEmpty()
+            IncidentEditScreen(
+                incidentId = incidentId,
+                onBack = { navController.popBackStack() },
+                onNavigateHome = { navigateHome() },
+                onSaved = { navController.popBackStack() }
             )
         }
         composable(

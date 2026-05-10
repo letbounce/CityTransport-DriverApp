@@ -34,8 +34,13 @@ data class Waybill(
     val vehicleId: String = "BUS-007",
     val notes: String = "",
     val startedAt: String? = null,
-    val completedAt: String? = null
-)
+    val completedAt: String? = null,
+    val deletedAt: String? = null,
+    val deletionReasonCode: String? = null,
+    val deletionReasonNote: String? = null
+) {
+    val isInactive: Boolean get() = deletedAt != null
+}
 
 data class IncidentItem(
     val id: String,
@@ -45,10 +50,55 @@ data class IncidentItem(
     val status: String,
     val reportedAt: String?,
     val lat: Double,
-    val lng: Double
-)
+    val lng: Double,
+    val deletedAt: String? = null,
+    val stopLabel: String = "",
+    val canMoveIndependently: Boolean = false,
+    val photoUrl: String? = null,
+    val isModified: Boolean = false,
+    val lastEditedAt: String? = null,
+    val versionHistoryCount: Int = 0,
+    val deletionReasonCode: String? = null,
+    val deletionReasonNote: String? = null
+) {
+    val isInactive: Boolean get() = deletedAt != null
+}
 
 data class AuthSession(
     val token: String,
     val driver: Driver
+)
+
+data class NewIncidentPayload(
+    val waybillId: String,
+    val type: String,
+    val description: String,
+    val lat: Double,
+    val lng: Double,
+    val reportedAtIso: String? = null,
+    val stopLabel: String? = null,
+    val canMoveIndependently: Boolean? = null,
+    val photoBase64: String? = null
+)
+
+data class IncidentUpdatePayload(
+    val type: String,
+    val description: String,
+    val lat: Double,
+    val lng: Double,
+    val reportedAtIso: String,
+    val stopLabel: String,
+    val canMoveIndependently: Boolean,
+    val photoBase64: String? = null,
+    val clearPhoto: Boolean = false
+)
+
+data class LiveTripMarker(
+    val waybillId: String,
+    val driverId: String,
+    val routeNumber: String,
+    val lat: Double,
+    val lng: Double,
+    val updatedAtIso: String?,
+    val isSelf: Boolean
 )

@@ -38,6 +38,11 @@ data class VehicleDto(
     val is_active: Boolean = true
 )
 
+data class ArchiveReasonDto(
+    val reason_code: String,
+    val reason_note: String? = null
+)
+
 data class StartWaybillRequestDto(
     val route_id: String,
     val vehicle_id: String = "BUS-007",
@@ -52,19 +57,43 @@ data class WaybillDto(
     val vehicle_id: String? = null,
     val notes: String? = null,
     val started_at: String? = null,
-    val completed_at: String? = null
+    val completed_at: String? = null,
+    val deleted_at: String? = null,
+    val deletion_reason_code: String? = null,
+    val deletion_reason_note: String? = null
 )
 
 data class IncidentRequestDto(
     val waybill_id: String,
     val type: String,
     val description: String,
-    val location: IncidentLocationDto
+    val location: IncidentLocationDto,
+    val reported_at: String? = null,
+    val stop_label: String? = null,
+    val can_move_independently: Boolean? = null,
+    val photo_base64: String? = null,
+    val photo_url: String? = null
 )
 
 data class IncidentLocationDto(
     val lat: Double,
     val lng: Double
+)
+
+data class IncidentSnapshotDto(
+    val type: String? = null,
+    val description: String? = null,
+    val reported_at: String? = null,
+    val stop_label: String? = null,
+    val can_move_independently: Boolean? = null,
+    val photo_url: String? = null,
+    val location: IncidentLocationDto? = null
+)
+
+data class IncidentVersionEntryDto(
+    val saved_at: String? = null,
+    val driver_id: String? = null,
+    val snapshot: IncidentSnapshotDto? = null
 )
 
 data class IncidentResponseDto(
@@ -75,5 +104,28 @@ data class IncidentResponseDto(
     val description: String,
     val status: String,
     val reported_at: String? = null,
+    val deleted_at: String? = null,
+    val stop_label: String? = null,
+    val can_move_independently: Boolean? = null,
+    val photo_url: String? = null,
+    val is_modified: Boolean? = null,
+    val last_edited_at: String? = null,
+    val deletion_reason_code: String? = null,
+    val deletion_reason_note: String? = null,
+    val version_history: List<IncidentVersionEntryDto>? = null,
     val location: IncidentLocationDto
+)
+
+data class LiveTripMarkerDto(
+    val waybill_id: String,
+    val driver_id: String,
+    val route_number: String,
+    val lat: Double,
+    val lng: Double,
+    val updated_at: String? = null,
+    val is_self: Boolean = false
+)
+
+data class LiveTripMarkersResponseDto(
+    val markers: List<LiveTripMarkerDto>? = null
 )

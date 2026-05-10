@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.cityapp.data.remote.api.ApiService
 import com.example.cityapp.data.repository.AuthRepositoryImpl
 import com.example.cityapp.data.repository.IncidentRepositoryImpl
+import com.example.cityapp.data.repository.TripMapRepositoryImpl
 import com.example.cityapp.data.repository.RouteRepositoryImpl
 import com.example.cityapp.data.repository.VehicleRepositoryImpl
 import com.example.cityapp.data.repository.SessionStore
@@ -12,6 +13,7 @@ import com.example.cityapp.data.repository.WaybillRepositoryImpl
 import com.example.cityapp.domain.repository.AuthRepository
 import com.example.cityapp.domain.repository.IncidentRepository
 import com.example.cityapp.domain.repository.RouteRepository
+import com.example.cityapp.domain.repository.TripMapRepository
 import com.example.cityapp.domain.repository.VehicleRepository
 import com.example.cityapp.domain.repository.WaybillRepository
 import okhttp3.Interceptor
@@ -61,6 +63,8 @@ object ServiceLocator {
         private set
     lateinit var incidentRepository: IncidentRepository
         private set
+    lateinit var tripMapRepository: TripMapRepository
+        private set
 
     fun init(appContext: Context) {
         if (this::context.isInitialized) return
@@ -70,6 +74,7 @@ object ServiceLocator {
         vehicleRepository = VehicleRepositoryImpl(api)
         waybillRepository = WaybillRepositoryImpl(api)
         incidentRepository = IncidentRepositoryImpl(api)
+        tripMapRepository = TripMapRepositoryImpl(api)
         runBlocking {
             tokenProvider.setToken(sessionStore.token())
         }
