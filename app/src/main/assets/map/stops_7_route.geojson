@@ -1,0 +1,280 @@
+{
+  "type": "FeatureCollection",
+  "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+  "copyright": "Data © OpenStreetMap contributors, ODbL",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Залізничний вокзал \"Центральний\"",
+        "name:uk": "Залізничний вокзал \"Центральний\"",
+        "osm_id": 13241245756,
+        "order_hint": 1,
+        "planned_time": "06:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4904314,
+          50.4407783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Залізничний вокзал \"Центральний\"",
+        "name:uk": "Залізничний вокзал Центральний",
+        "osm_id": 12269729019,
+        "order_hint": 2,
+        "planned_time": "06:22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4903395,
+          50.4407146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Саксаганського",
+        "name:uk": "вул. Саксаганського",
+        "osm_id": 10650336598,
+        "order_hint": 3,
+        "planned_time": "06:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4951469,
+          50.4454757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Саксаганського",
+        "name:uk": "вул. Саксаганського",
+        "osm_id": 3471561293,
+        "order_hint": 4,
+        "planned_time": "06:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4952392,
+          50.4455084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Галицька площа",
+        "name:uk": "Галицька площа",
+        "osm_id": 2935306876,
+        "order_hint": 5,
+        "planned_time": "06:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4925998,
+          50.4471451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Галицька площа",
+        "name:uk": "Галицька площа",
+        "osm_id": 324629313,
+        "order_hint": 6,
+        "planned_time": "06:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4926282,
+          50.4471982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Цирк",
+        "name:uk": "Цирк",
+        "osm_id": 10650327932,
+        "order_hint": 7,
+        "planned_time": "06:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4921092,
+          50.4482831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Цирк",
+        "name:uk": "Цирк",
+        "osm_id": 4931245318,
+        "order_hint": 8,
+        "planned_time": "06:36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4922024,
+          50.4481716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ортопедичний інститут",
+        "name:uk": "Ортопедичний інститут",
+        "osm_id": 3522738433,
+        "order_hint": 9,
+        "planned_time": "06:40"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4992706,
+          50.4515788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ортопедичний інститут",
+        "name:uk": "Ортопедичний інститут",
+        "osm_id": 7666743913,
+        "order_hint": 10,
+        "planned_time": "06:42"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4993212,
+          50.4515334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Обсерваторна",
+        "name:uk": "вул. Обсерваторна",
+        "osm_id": 9985970477,
+        "order_hint": 11,
+        "planned_time": "06:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5024411,
+          50.4563619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Обсерваторна",
+        "name:uk": "вул. Обсерваторна",
+        "osm_id": 665746073,
+        "order_hint": 12,
+        "planned_time": "06:47"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.502393,
+          50.456272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Львівська площа",
+        "name:uk": "Львівська площа",
+        "osm_id": 9985970475,
+        "order_hint": 13,
+        "planned_time": "06:49"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5055469,
+          50.4555193
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Львівська площа",
+        "name:uk": "Львівська площа",
+        "osm_id": 4566820589,
+        "order_hint": 14,
+        "planned_time": "06:51"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5055047,
+          50.4554568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Бульварно-Кудрявська",
+        "name:uk": "вул. Бульварно-Кудрявська",
+        "osm_id": 13241285587,
+        "order_hint": 15,
+        "planned_time": "06:53"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5052384,
+          50.4540809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Бульварно-Кудрявська",
+        "name:uk": "вул. Бульварно-Кудрявська",
+        "osm_id": 4278059804,
+        "order_hint": 16,
+        "planned_time": "06:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5051669,
+          50.4541856
+        ]
+      }
+    }
+  ],
+  "schedule_note": "planned_time: illustrative cumulative schedule from distances · not official Kyivpastrans timetable"
+}

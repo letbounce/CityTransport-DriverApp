@@ -1,0 +1,790 @@
+{
+  "type": "FeatureCollection",
+  "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+  "copyright": "Data © OpenStreetMap contributors, ODbL",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Контрактова площа",
+        "name:uk": "Контрактова площа",
+        "osm_id": 7401026219,
+        "order_hint": 1,
+        "planned_time": "06:12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.518901,
+          50.4651758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Контрактова площа",
+        "name:uk": "Контрактова площа",
+        "osm_id": 1182815437,
+        "order_hint": 2,
+        "planned_time": "06:14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5188889,
+          50.4652004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Почайнинська",
+        "name:uk": "вул. Почайнинська",
+        "osm_id": 12230133420,
+        "order_hint": 3,
+        "planned_time": "06:16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5199189,
+          50.4674269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Почайнинська",
+        "name:uk": "вул. Почайнинська",
+        "osm_id": 4889225049,
+        "order_hint": 4,
+        "planned_time": "06:18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5199699,
+          50.4673869
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Борисоглібська",
+        "name:uk": "Вул. Борисоглібська",
+        "osm_id": 12090915166,
+        "order_hint": 5,
+        "planned_time": "06:21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5250378,
+          50.4652937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Борисоглібська",
+        "name:uk": "Вул. Борисоглібська",
+        "osm_id": 10271006202,
+        "order_hint": 6,
+        "planned_time": "06:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5249075,
+          50.4652672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Пішохідний міст",
+        "name:uk": "Пішохідний міст",
+        "osm_id": 12230133419,
+        "order_hint": 7,
+        "planned_time": "06:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5353486,
+          50.4542464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Пішохідний міст",
+        "name:uk": "Пішохідний міст",
+        "osm_id": 6566099610,
+        "order_hint": 8,
+        "planned_time": "06:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.535283,
+          50.4541992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "4-і східці",
+        "name:uk": "4-і східці",
+        "osm_id": 12230133418,
+        "order_hint": 9,
+        "planned_time": "06:36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5430025,
+          50.4511669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "4-і східці",
+        "name:uk": "4-і східці",
+        "osm_id": 7666743892,
+        "order_hint": 10,
+        "planned_time": "06:38"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5429947,
+          50.4510804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. Дніпро",
+        "name:uk": "ст. м. Дніпро",
+        "osm_id": 12230133417,
+        "order_hint": 11,
+        "planned_time": "06:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5575597,
+          50.4425249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. Дніпро",
+        "name:uk": "ст. м. Дніпро",
+        "osm_id": 7666743895,
+        "order_hint": 12,
+        "planned_time": "06:47"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5574971,
+          50.442452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": null,
+        "name:uk": null,
+        "osm_id": 12230133416,
+        "order_hint": 13,
+        "planned_time": "06:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5664513,
+          50.430356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Парк \"Наводницький\"",
+        "name:uk": "Парк \"Наводницький\"",
+        "osm_id": 1985575683,
+        "order_hint": 14,
+        "planned_time": "06:57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5663532,
+          50.4303151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Русанівка",
+        "name:uk": "м/н Русанівка",
+        "osm_id": 5782255129,
+        "order_hint": 15,
+        "planned_time": "07:07"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5951749,
+          50.4313572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Русанівка",
+        "name:uk": "м/н Русанівка",
+        "osm_id": 538262235,
+        "order_hint": 16,
+        "planned_time": "07:09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5952562,
+          50.4312538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Ігоря Шамо",
+        "name:uk": "бул. Ігоря Шамо",
+        "osm_id": 1154214170,
+        "order_hint": 17,
+        "planned_time": "07:12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6001157,
+          50.4334677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Ігоря Шамо",
+        "name:uk": "бульвар Ігоря Шамо",
+        "osm_id": 2237480963,
+        "order_hint": 18,
+        "planned_time": "07:14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6001928,
+          50.4333692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Березняки",
+        "name:uk": "м/н Березняки",
+        "osm_id": 3578394314,
+        "order_hint": 19,
+        "planned_time": "07:17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.604908,
+          50.4354655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Березняки",
+        "name:uk": "м/н Березняки",
+        "osm_id": 538205742,
+        "order_hint": 20,
+        "planned_time": "07:19"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.604992,
+          50.4353802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вулиця Тампере",
+        "name:uk": "вулиця Тампере",
+        "osm_id": 7016661771,
+        "order_hint": 21,
+        "planned_time": "07:24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.615902,
+          50.4393328
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вулиця Тампере",
+        "name:uk": "вулиця Тампере",
+        "osm_id": 576684010,
+        "order_hint": 22,
+        "planned_time": "07:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6160112,
+          50.4392664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житловий комплекс «Комфорт Таун»",
+        "name:uk": "Житловий комплекс «Комфорт Таун»",
+        "osm_id": 1154678707,
+        "order_hint": 23,
+        "planned_time": "07:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6195669,
+          50.4404636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житловий комплекс «Комфорт Таун»",
+        "name:uk": "Житловий комплекс «Комфорт Таун»",
+        "osm_id": 2237480946,
+        "order_hint": 24,
+        "planned_time": "07:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6196338,
+          50.4403777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницька площа",
+        "name:uk": "Дарницька площа",
+        "osm_id": 3209744627,
+        "order_hint": 25,
+        "planned_time": "07:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6235267,
+          50.4416642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницька площа",
+        "name:uk": "Дарницька площа",
+        "osm_id": 4066346326,
+        "order_hint": 26,
+        "planned_time": "07:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6235585,
+          50.4415936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Податкова інспекція",
+        "name:uk": "Податкова інспекція",
+        "osm_id": 12228124673,
+        "order_hint": 27,
+        "planned_time": "07:36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6281689,
+          50.4404725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Податкова інспекція",
+        "name:uk": "Податкова інспекція",
+        "osm_id": 3187743475,
+        "order_hint": 28,
+        "planned_time": "07:38"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6280985,
+          50.4404315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бульвар Ярослава Гашека",
+        "name:uk": "бульвар Ярослава Гашека",
+        "osm_id": 1143893817,
+        "order_hint": 29,
+        "planned_time": "07:41"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6302238,
+          50.437154
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бульвар Ярослава Гашека",
+        "name:uk": "бульвар Ярослава Гашека",
+        "osm_id": 11091482029,
+        "order_hint": 30,
+        "planned_time": "07:43"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6301533,
+          50.437119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житловий комплекс «Мега-сіті»",
+        "name:uk": "Житловий комплекс «Мега-сіті»",
+        "osm_id": 12228124671,
+        "order_hint": 31,
+        "planned_time": "07:46"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6326401,
+          50.4330948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житловий комплекс «Мега-сіті»",
+        "name:uk": "Житловий комплекс «Мега-сіті»",
+        "osm_id": 1143773453,
+        "order_hint": 32,
+        "planned_time": "07:48"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6325672,
+          50.4330578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Тепловозна",
+        "name:uk": "Вул. Тепловозна",
+        "osm_id": 12228124670,
+        "order_hint": 33,
+        "planned_time": "07:52"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6324363,
+          50.4263859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Тепловозна",
+        "name:uk": "Вул. Тепловозна",
+        "osm_id": 1262244667,
+        "order_hint": 34,
+        "planned_time": "07:54"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.632395,
+          50.4264844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Привокзальна",
+        "name:uk": "вул. Привокзальна",
+        "osm_id": 12228124669,
+        "order_hint": 35,
+        "planned_time": "07:57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6385906,
+          50.4280562
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Привокзальна",
+        "name:uk": "вул. Привокзальна",
+        "osm_id": 976777973,
+        "order_hint": 36,
+        "planned_time": "07:59"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6386332,
+          50.4279964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Сімферопольська",
+        "name:uk": "вул. Сімферопольська",
+        "osm_id": 10271160117,
+        "order_hint": 37,
+        "planned_time": "08:02"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6454251,
+          50.4300762
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Сімферопольська",
+        "name:uk": "вул. Сімферопольська",
+        "osm_id": 4069875769,
+        "order_hint": 38,
+        "planned_time": "08:04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6454555,
+          50.4300271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Залізничний вокзал «Дарниця»",
+        "name:uk": "Залізничний вокзал «Дарниця»",
+        "osm_id": 12228124668,
+        "order_hint": 39,
+        "planned_time": "08:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6487803,
+          50.4309352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Залізничний вокзал «Дарниця»",
+        "name:uk": "Залізничний вокзал «Дарниця»",
+        "osm_id": 1333712896,
+        "order_hint": 40,
+        "planned_time": "08:08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6488335,
+          50.4308624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницький ринок",
+        "name:uk": "Дарницький ринок",
+        "osm_id": 12228124667,
+        "order_hint": 41,
+        "planned_time": "08:10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6526885,
+          50.4312817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницький ринок",
+        "name:uk": "Дарницький ринок",
+        "osm_id": 3771633332,
+        "order_hint": 42,
+        "planned_time": "08:12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6526848,
+          50.4312369
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Київський коледж комп'ютерних технологій та економіки",
+        "name:uk": "Київський коледж комп'ютерних технологій та економіки",
+        "osm_id": 12228124666,
+        "order_hint": 43,
+        "planned_time": "08:14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.657189,
+          50.4304884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Київський коледж комп'ютерних технологій та економіки",
+        "name:uk": "Київський коледж комп'ютерних технологій та економіки",
+        "osm_id": 7663677235,
+        "order_hint": 44,
+        "planned_time": "08:16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6571669,
+          50.4304057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Будинок культури",
+        "name:uk": "Будинок культури",
+        "osm_id": 12230133415,
+        "order_hint": 45,
+        "planned_time": "08:18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6582901,
+          50.4285551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Будинок культури",
+        "name:uk": "Будинок культури",
+        "osm_id": 7663677234,
+        "order_hint": 46,
+        "planned_time": "08:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6582599,
+          50.4286256
+        ]
+      }
+    }
+  ],
+  "schedule_note": "planned_time: illustrative cumulative schedule from distances · not official Kyivpastrans timetable"
+}

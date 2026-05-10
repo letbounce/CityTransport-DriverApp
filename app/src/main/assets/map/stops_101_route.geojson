@@ -1,0 +1,920 @@
+{
+  "type": "FeatureCollection",
+  "generator": "CityApp tools/build_stops_101_geojson.py + Overpass API",
+  "copyright": "Data © OpenStreetMap contributors, ODbL",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "масив Райдужний",
+        "name:uk": "масив Райдужний",
+        "osm_id": 419826895,
+        "planned_time": "06:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5805877,
+          50.4956589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Парк Муромець",
+        "name:uk": "Парк Муромець",
+        "osm_id": 431331643,
+        "planned_time": "06:12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5439934,
+          50.4933796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Парк Муромець",
+        "name:uk": "Парк Муромець",
+        "osm_id": 431331644,
+        "planned_time": "06:14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5442135,
+          50.4930022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вулиця Йорданська",
+        "name:uk": "Вулиця Йорданська",
+        "osm_id": 431333747,
+        "planned_time": "06:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5080161,
+          50.4885924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вулиця Йорданська",
+        "name:uk": "Вулиця Йорданська",
+        "osm_id": 431333748,
+        "planned_time": "06:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5088154,
+          50.4889062
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Миколи Закревського",
+        "name:uk": "вул. Миколи Закревського",
+        "osm_id": 442483786,
+        "planned_time": "06:42"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.590602,
+          50.4973709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Станція метро «Почайна»",
+        "name:uk": "Станція метро «Почайна»",
+        "osm_id": 749139303,
+        "planned_time": "06:56"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4998269,
+          50.4887382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "проспект Володимира Івасюка",
+        "name:uk": "проспект Володимира Івасюка",
+        "osm_id": 750591487,
+        "planned_time": "07:04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5237989,
+          50.4883403
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "просп. Володимира Івасюка",
+        "name:uk": "просп. Володимира Івасюка",
+        "osm_id": 750592068,
+        "planned_time": "07:07"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5289048,
+          50.4885017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Олександри Екстер",
+        "name:uk": "вул. Олександри Екстер",
+        "osm_id": 824428742,
+        "planned_time": "07:21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6280267,
+          50.5237205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "СоцЗабез",
+        "name:uk": "СоцЗабез",
+        "osm_id": 1151031850,
+        "planned_time": "07:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6281684,
+          50.5256712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Миколи Закревського",
+        "name:uk": "вул. Миколи Закревського",
+        "osm_id": 1151031852,
+        "planned_time": "07:25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6285475,
+          50.5282254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Торговий комплекс",
+        "name:uk": "Торговий комплекс",
+        "osm_id": 1502808738,
+        "planned_time": "07:39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6103648,
+          50.5007373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Рональда Рейгана",
+        "name:uk": "вул. Рональда Рейгана",
+        "osm_id": 1804121120,
+        "planned_time": "07:42"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.605384,
+          50.4984478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Торгово-розважальний комплекс",
+        "name:uk": "Торгово-розважальний комплекс",
+        "osm_id": 1866166172,
+        "planned_time": "07:56"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5631843,
+          50.4956375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Мікрорайон №20",
+        "name:uk": "Мікрорайон №20",
+        "osm_id": 2454354748,
+        "planned_time": "08:10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6281069,
+          50.5290421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Леоніда Бикова",
+        "name:uk": "бул. Леоніда Бикова",
+        "osm_id": 2475064313,
+        "planned_time": "08:17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6264098,
+          50.5171587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Леоніда Бикова",
+        "name:uk": "бул. Леоніда Бикова",
+        "osm_id": 2475064316,
+        "planned_time": "08:19"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6268389,
+          50.5177363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Поліклініка",
+        "name:uk": "Поліклініка",
+        "osm_id": 2475064318,
+        "planned_time": "08:22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6279005,
+          50.5213764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Універсам Виґурівщина",
+        "name:uk": "Універсам Виґурівщина",
+        "osm_id": 2475064324,
+        "planned_time": "08:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6249561,
+          50.5144843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Володимира Висоцького",
+        "name:uk": "бул. Володимира Висоцького",
+        "osm_id": 2475064329,
+        "planned_time": "08:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6233253,
+          50.5123251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Поліклініка",
+        "name:uk": "Поліклініка",
+        "osm_id": 2475064333,
+        "planned_time": "08:33"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.627689,
+          50.5210431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Костянтина Данькевича",
+        "name:uk": "вул. Костянтина Данькевича",
+        "osm_id": 2475064336,
+        "planned_time": "08:35"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6271984,
+          50.5193722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Сержа Лифаря",
+        "name:uk": "вул. Сержа Лифаря",
+        "osm_id": 2475106369,
+        "planned_time": "08:41"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6215267,
+          50.5101037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "станція швидкісного трамваю «Романа Шухевича»",
+        "name:uk": "станція швидкісного трамваю «Романа Шухевича»",
+        "osm_id": 2475106370,
+        "planned_time": "08:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5745863,
+          50.4953435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Школа мистецтв ім. Леонтовича",
+        "name:uk": "Школа мистецтв ім. Леонтовича",
+        "osm_id": 2475106371,
+        "planned_time": "09:09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.619074,
+          50.507627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Школа мистецтв ім. Леонтовича",
+        "name:uk": "Школа мистецтв ім. Леонтовича",
+        "osm_id": 2475106372,
+        "planned_time": "09:11"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.618449,
+          50.5072591
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Школа",
+        "name:uk": "Школа",
+        "osm_id": 2475106373,
+        "planned_time": "09:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5960681,
+          50.4973811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Торгово-розважальний комплекс",
+        "name:uk": "Торгово-розважальний комплекс",
+        "osm_id": 2475106374,
+        "planned_time": "09:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5619049,
+          50.4952924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житлове управління",
+        "name:uk": "Житлове управління",
+        "osm_id": 2475106375,
+        "planned_time": "09:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6001078,
+          50.4973744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житлове управління",
+        "name:uk": "Житлове управління",
+        "osm_id": 2475106378,
+        "planned_time": "09:47"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5995067,
+          50.4975212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кіностудія \"Фільм Ю ЕЙ\"",
+        "name:uk": "Кіностудія \"Фільм Ю ЕЙ\"",
+        "osm_id": 2475106379,
+        "planned_time": "09:54"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6153961,
+          50.5039599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кіностудія \"Фільм Ю ЕЙ\"",
+        "name:uk": "Кіностудія \"Фільм Ю ЕЙ\"",
+        "osm_id": 2475106380,
+        "planned_time": "09:56"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.614916,
+          50.5037751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вулиця Сержа Лифаря",
+        "name:uk": "Вулиця Сержа Лифаря",
+        "osm_id": 2475106382,
+        "planned_time": "10:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6205257,
+          50.5093809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Торговий комплекс",
+        "name:uk": "Торговий комплекс",
+        "osm_id": 2475106384,
+        "planned_time": "10:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6108605,
+          50.5007998
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Супермаркет",
+        "name:uk": "Торгово-розважальний центр",
+        "osm_id": 2475106387,
+        "planned_time": "10:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5201647,
+          50.488118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Рональда Рейгана",
+        "name:uk": "вул. Рональда Рейгана",
+        "osm_id": 2475106390,
+        "planned_time": "10:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6072477,
+          50.4991042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Школа",
+        "name:uk": "Школа",
+        "osm_id": 2475106395,
+        "planned_time": "10:39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5954834,
+          50.4975415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Володимира Висоцького",
+        "name:uk": "бул. Володимира Висоцького",
+        "osm_id": 2475106399,
+        "planned_time": "10:52"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6239138,
+          50.5126798
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "пр. Червоної Калини",
+        "name:uk": "пр. Червоної Калини",
+        "osm_id": 2475106405,
+        "planned_time": "11:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5910846,
+          50.4975519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "СоцЗабез",
+        "name:uk": "СоцЗабез",
+        "osm_id": 2477214515,
+        "planned_time": "11:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6284091,
+          50.525848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "масив Райдужний",
+        "name:uk": "масив Райдужний",
+        "osm_id": 3901062719,
+        "planned_time": "11:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5822781,
+          50.4952493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ліцей №293",
+        "name:uk": "Ліцей №293",
+        "osm_id": 3954179666,
+        "planned_time": "11:48"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6239196,
+          50.5289994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Мікрорайон №25",
+        "name:uk": "Мікрорайон №25",
+        "osm_id": 4372082915,
+        "planned_time": "11:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6045439,
+          50.5332888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Мікрорайон №23",
+        "name:uk": "Мікрорайон №23",
+        "osm_id": 4372082916,
+        "planned_time": "11:57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6051283,
+          50.5330254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Оноре де Бальзака",
+        "name:uk": "вул. Оноре де Бальзака",
+        "osm_id": 4372082917,
+        "planned_time": "12:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6110256,
+          50.5329677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Оноре де Бальзака",
+        "name:uk": "вул. Оноре де Бальзака",
+        "osm_id": 4372082918,
+        "planned_time": "12:02"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6112635,
+          50.5327159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Мікрорайон №13",
+        "name:uk": "Мікрорайон №13",
+        "osm_id": 4372091321,
+        "planned_time": "12:04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6157004,
+          50.5319032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Мікрорайон №13",
+        "name:uk": "Мікрорайон №13",
+        "osm_id": 4372091322,
+        "planned_time": "12:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6155337,
+          50.5316241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "станція швидкісного трамваю «Романа Шухевича»",
+        "name:uk": "станція швидкісного трамваю «Романа Шухевича»",
+        "osm_id": 4437803215,
+        "planned_time": "12:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5742688,
+          50.4956799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вулиця Ореста Субтельного",
+        "name:uk": "Вулиця Ореста Субтельного",
+        "osm_id": 4871394821,
+        "planned_time": "12:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5122242,
+          50.4884469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Храм на честь Ікони Божої Матері «Всецариця»",
+        "name:uk": "Храм на честь Ікони Божої Матері «Всецариця»",
+        "osm_id": 4928418121,
+        "planned_time": "12:48"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6198017,
+          50.5287984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ліцей №293",
+        "name:uk": "Ліцей №293",
+        "osm_id": 4993578724,
+        "planned_time": "12:50"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6236311,
+          50.5291866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Милославська",
+        "name:uk": "вул. Милославська",
+        "osm_id": 9040085419,
+        "planned_time": "12:52"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6209431,
+          50.5284683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Бювет",
+        "name:uk": "Бювет",
+        "osm_id": 10032365686,
+        "planned_time": "13:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6048656,
+          50.4979862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Олександри Екстер",
+        "name:uk": "вул. Олександри Екстер",
+        "osm_id": 10032408426,
+        "planned_time": "13:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6281251,
+          50.5235262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Костянтина Данькевича",
+        "name:uk": "вул. Костянтина Данькевича",
+        "osm_id": 10032408431,
+        "planned_time": "13:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6275759,
+          50.5200216
+        ]
+      }
+    }
+  ],
+  "schedule_note": "planned_time: illustrative cumulative schedule from distances · not official Kyivpastrans timetable"
+}
