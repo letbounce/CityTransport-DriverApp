@@ -11,7 +11,8 @@ import com.example.cityapp.presentation.incident.IncidentEditScreen
 import com.example.cityapp.presentation.incident.IncidentReportScreen
 import com.example.cityapp.presentation.incidents.IncidentsListScreen
 import com.example.cityapp.presentation.login.LoginScreen
-import com.example.cityapp.presentation.map.TripMapScreen
+import com.example.cityapp.presentation.map.TripMapHubScreen
+import com.example.cityapp.presentation.map.TripMapRouteScreen
 import com.example.cityapp.presentation.route.RouteDashboardScreen
 import com.example.cityapp.presentation.trip.ActiveTripScreen
 
@@ -24,8 +25,10 @@ object Destinations {
     const val IncidentsList = "incidents"
     const val IncidentEdit = "incident_edit/{incidentId}"
     const val TripMap = "trip_map"
+    const val TripMapRoute = "trip_map_route/{routeId}"
 
     fun activeTrip(waybillId: String) = "active_trip/$waybillId"
+    fun tripMapRoute(routeId: String) = "trip_map_route/$routeId"
     fun incident(waybillId: String) = "incident/$waybillId"
     fun incidentEdit(incidentId: String) = "incident_edit/$incidentId"
 }
@@ -62,7 +65,19 @@ fun CityAppNavGraph() {
             )
         }
         composable(Destinations.TripMap) {
-            TripMapScreen(
+            TripMapHubScreen(
+                onBack = { navController.popBackStack() },
+                onNavigateHome = { navigateHome() },
+                onOpenRouteMap = { id -> navController.navigate(Destinations.tripMapRoute(id)) }
+            )
+        }
+        composable(
+            route = Destinations.TripMapRoute,
+            arguments = listOf(navArgument("routeId") { type = NavType.StringType })
+        ) { entry ->
+            val routeId = entry.arguments?.getString("routeId").orEmpty()
+            TripMapRouteScreen(
+                routeId = routeId,
                 onBack = { navController.popBackStack() },
                 onNavigateHome = { navigateHome() }
             )

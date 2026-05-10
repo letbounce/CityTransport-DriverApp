@@ -17,6 +17,9 @@ data class TripMapUiState(
     val markers: List<LiveTripMarker> = emptyList(),
     val myLat: Double? = null,
     val myLng: Double? = null,
+    /** Показувати маркер і центрувати мапу лише після явного запиту й перевірки зони Києва. */
+    val showDeviceGpsOnMap: Boolean = false,
+    val gpsHint: String? = null,
     val loading: Boolean = false,
     val error: String? = null
 )
@@ -28,7 +31,6 @@ class TripMapViewModel(application: Application) : AndroidViewModel(application)
 
     init {
         refreshMarkers()
-        refreshMyLocation()
     }
 
     fun refreshMarkers() {
@@ -45,13 +47,45 @@ class TripMapViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun dismissGpsHint() {
+        _uiState.update { it.copy(gpsHint = null) }
+    }
+
+    /** Запитує поточне місце; поза зоною Києва координати емулятора не використовуємо для мапи. */
+    fun requestDeviceGpsForRouteArea() {
+        refreshMyLocationKyivOnly()
+    }
+
     @SuppressLint("MissingPermission")
-    fun refreshMyLocation() {
+    private fun refreshMyLocationKyivOnly() {
         val client = LocationServices.getFusedLocationProviderClient(getApplication())
         client.lastLocation.addOnSuccessListener { loc ->
-            if (loc != null) {
-                _uiState.update { it.copy(myLat = loc.latitude, myLng = loc.longitude) }
+            if (loc == null) {
+                _uiState.update {
+                    it.copy(showDeviceGpsOnMap = false, gpsHint = "Не вдалося отримати координати GPS.")
+                }
+                return@addOnSuccessListener
+            }
+            if (!isRoughKyivMetropolitan(loc.latitude, loc.longitude)) {
+                _uiState.update {
+                    it.copy(
+                        showDeviceGpsOnMap = false,
+                        gpsHint = "Отримані координати не схожі на Київ (типово для емулятора). На пристрої з увімкненою геолокацією має відобразитись коректно."
+                    )
+                }
+                return@addOnSuccessListener
+            }
+            _uiState.update {
+                it.copy(
+                    myLat = loc.latitude,
+                    myLng = loc.longitude,
+                    showDeviceGpsOnMap = true,
+                    gpsHint = null
+                )
             }
         }
     }
+
+    private fun isRoughKyivMetropolitan(lat: Double, lng: Double): Boolean =
+        lat in 50.22..50.72 && lng in 30.28..30.95
 }
