@@ -265,6 +265,12 @@ fun RouteDashboardScreen(
                                 selectedRouteId = state.selectedRouteId,
                                 onRouteSelected = viewModel::onRouteSelected
                             )
+                            Text(
+                                "Ті самі київські автобусні лінії, що на екрані «Мапа рейсів». " +
+                                    "Зупинки підтягуються з GeoJSON при виконанні seed на сервері (npm run seed).",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
 
                             VehicleDropdown(
                                 vehicles = state.vehicles,

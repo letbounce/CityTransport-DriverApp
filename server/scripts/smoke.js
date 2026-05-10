@@ -23,7 +23,7 @@ async function run() {
   const waybillRes = await fetch(`${baseUrl}/waybills`, {
     method: "POST",
     headers: authHeaders,
-    body: JSON.stringify({ route_id: routeId, vehicle_id: "BUS-007" })
+    body: JSON.stringify({ route_id: routeId, vehicle_id: "KP-3204" })
   });
   const waybill = await waybillRes.json();
   const waybillId = waybill._id;

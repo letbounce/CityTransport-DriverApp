@@ -10,8 +10,6 @@ import java.util.Locale
  * Координати в GeoJSON: [довгота, широта].
  */
 object BusRouteGeoJsonParser {
-    const val ASSET_BUS_101 = "map/101_route.geojson"
-    const val ASSET_STOPS_BUS_101 = "map/stops_101_route.geojson"
 
     fun parseRouteFromAsset(context: Context, assetPath: String, routeRef: String): TripRouteMapModel? {
         return try {
@@ -28,6 +26,7 @@ object BusRouteGeoJsonParser {
         val features = root.optJSONArray("features") ?: return null
 
         val segments = mutableListOf<List<Pair<Double, Double>>>()
+        var routeLabelFromOsm: String? = null
 
         for (i in 0 until features.length()) {
             val feature = features.optJSONObject(i) ?: continue
@@ -37,12 +36,24 @@ object BusRouteGeoJsonParser {
             when (geom.optString("type")) {
                 "LineString" -> {
                     if (!isRouteFeature(props, routeRef)) continue
+                    if (routeLabelFromOsm == null) {
+                        routeLabelFromOsm = listOf(
+                            props.optString("name:uk"),
+                            props.optString("name")
+                        ).firstOrNull { it.isNotBlank() }
+                    }
                     val arr = geom.optJSONArray("coordinates") ?: continue
                     val pts = lineStringToLatLngPairs(arr)
                     if (pts.size >= 2) segments.add(dedupeConsecutivePairs(pts))
                 }
                 "MultiLineString" -> {
                     if (!isRouteFeature(props, routeRef)) continue
+                    if (routeLabelFromOsm == null) {
+                        routeLabelFromOsm = listOf(
+                            props.optString("name:uk"),
+                            props.optString("name")
+                        ).firstOrNull { it.isNotBlank() }
+                    }
                     val lines = geom.optJSONArray("coordinates") ?: continue
                     for (j in 0 until lines.length()) {
                         val segment = lines.optJSONArray(j) ?: continue
@@ -55,9 +66,12 @@ object BusRouteGeoJsonParser {
 
         if (segments.isEmpty()) return null
 
+        val title = routeLabelFromOsm?.takeIf { it.isNotBlank() }?.let { "$it · OSM" }
+            ?: "Автобус $routeRef (OpenStreetMap, ODbL)"
+
         return TripRouteMapModel(
             routeNumber = routeRef,
-            routeTitle = "Автобус $routeRef (OpenStreetMap, ODbL)",
+            routeTitle = title,
             polylineSegments = segments,
             stops = emptyList(),
             isApproximate = false

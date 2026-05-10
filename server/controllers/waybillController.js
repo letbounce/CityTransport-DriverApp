@@ -29,7 +29,7 @@ async function createWaybill(req, res) {
     route_number: route.route_number,
     status: "in_progress",
     started_at: new Date(),
-    vehicle_id: req.body.vehicle_id || "BUS-007",
+    vehicle_id: req.body.vehicle_id || "KP-3204",
     notes: req.body.notes || ""
   });
 

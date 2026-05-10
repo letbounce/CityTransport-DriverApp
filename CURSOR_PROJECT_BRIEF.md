@@ -119,7 +119,7 @@ MongoDB повинна бути запущена локально на порт�
   "status": "in_progress",   // enum: "assigned" | "in_progress" | "completed" | "cancelled"
   "started_at": ISODate,
   "completed_at": null,
-  "vehicle_id": "BUS-007",
+  "vehicle_id": "KP-3204",
   "created_at": ISODate
 }
 ```

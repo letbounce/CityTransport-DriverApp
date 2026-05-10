@@ -12,7 +12,7 @@ const waybillSchema = new mongoose.Schema(
     },
     started_at: { type: Date, default: Date.now },
     completed_at: { type: Date, default: null },
-    vehicle_id: { type: String, default: "BUS-007" },
+    vehicle_id: { type: String, default: "KP-3204" },
     notes: { type: String, default: "" },
     deleted_at: { type: Date, default: null },
     deletion_reason_code: { type: String, default: null },

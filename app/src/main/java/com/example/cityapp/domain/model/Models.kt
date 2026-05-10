@@ -31,7 +31,7 @@ data class Waybill(
     val routeId: String,
     val routeNumber: String,
     val status: String,
-    val vehicleId: String = "BUS-007",
+    val vehicleId: String = "KP-3204",
     val notes: String = "",
     val startedAt: String? = null,
     val completedAt: String? = null,

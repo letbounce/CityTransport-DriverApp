@@ -20,6 +20,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
+private fun routeNumericSortKey(routeNumber: String): Int =
+    routeNumber.trim().toIntOrNull()
+        ?: routeNumber.filter { it.isDigit() }.toIntOrNull()
+        ?: Int.MAX_VALUE
+
 data class RouteDashboardUiState(
     val driverDisplayName: String? = null,
     val isLoading: Boolean = false,
@@ -62,8 +67,10 @@ class RouteDashboardViewModel : ViewModel() {
             val archivedResult = listArchivedWaybillsUseCase()
             val activeResult = waybillRepository.getActiveWaybill()
 
-            val routesList = routesResult.getOrDefault(emptyList())
-            val vehiclesList = vehiclesResult.getOrDefault(emptyList())
+            val routesList = routesResult.getOrDefault(emptyList()).sortedWith(
+                compareBy({ routeNumericSortKey(it.routeNumber) }, { it.routeNumber })
+            )
+            val vehiclesList = vehiclesResult.getOrDefault(emptyList()).sortedBy { it.vehicleId }
             val vehiclesOk = vehiclesResult.isSuccess
 
             val err = buildList {
@@ -80,7 +87,7 @@ class RouteDashboardViewModel : ViewModel() {
                     ?: routesList.firstOrNull()?.id.orEmpty()
                 val defaultVehicle = vehiclesList.firstOrNull()?.vehicleId.orEmpty()
                 val vehicleId = prev.selectedVehicleId.takeIf { v -> vehiclesList.any { it.vehicleId == v } }
-                    ?: defaultVehicle.ifBlank { "BUS-007" }
+                    ?: defaultVehicle.ifBlank { "KP-3204" }
 
                 prev.copy(
                     isLoading = false,
@@ -120,7 +127,7 @@ class RouteDashboardViewModel : ViewModel() {
                 _uiState.update { it.copy(error = "Оберіть маршрут") }
                 return@launch
             }
-            val vehicleId = _uiState.value.selectedVehicleId.ifBlank { "BUS-007" }
+            val vehicleId = _uiState.value.selectedVehicleId.ifBlank { "KP-3204" }
             val notes = _uiState.value.newTripNotes.trim().ifBlank { null }
             val result = startTripUseCase(routeId, vehicleId, notes)
             val code = (result.exceptionOrNull() as? HttpException)?.code()

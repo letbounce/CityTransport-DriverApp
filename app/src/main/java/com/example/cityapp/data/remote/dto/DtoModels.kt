@@ -45,7 +45,7 @@ data class ArchiveReasonDto(
 
 data class StartWaybillRequestDto(
     val route_id: String,
-    val vehicle_id: String = "BUS-007",
+    val vehicle_id: String = "KP-3204",
     val notes: String? = null
 )
 

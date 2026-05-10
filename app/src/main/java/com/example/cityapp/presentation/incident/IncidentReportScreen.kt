@@ -173,9 +173,19 @@ fun IncidentReportScreen(
                 }
             }
 
-            TextButton(onClick = viewModel::applyTemplateForCurrentType, modifier = Modifier.fillMaxWidth()) {
-                Text("Вставити шаблон опису для обраного типу")
-            }
+            Text("Зупинка поруч із місцем події", style = MaterialTheme.typography.titleSmall)
+            Text(
+                when {
+                    state.routeStops.isNotEmpty() ->
+                        "Оберіть зупинку з маршруту дорожнього листа — координати підставляться автоматично " +
+                            "(за потреби їх можна змінити через GPS нижче)."
+                    else ->
+                        "Для цього листа немає списку зупинок у базі або в застосунку — вкажіть місце через GPS " +
+                            "або координати залишаться типовими для Києва; подія все одно буде збережена."
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
 
             if (state.routeStops.isNotEmpty()) {
                 ExposedDropdownMenuBox(
@@ -187,13 +197,19 @@ fun IncidentReportScreen(
                             .fillMaxWidth()
                             .menuAnchor(),
                         readOnly = true,
-                        value = state.selectedStop?.let { stopLabel(it) } ?: "Оберіть зупинку маршруту",
+                        value = state.selectedStop?.let { stopLabel(it) } ?: "Оберіть зупинку…",
                         onValueChange = {},
-                        label = { Text("Зупинка маршруту") },
+                        label = { Text("Зупинка") },
                         trailingIcon = {
                             ExposedDropdownMenuDefaults.TrailingIcon(expanded = stopMenuExpanded)
                         },
-                        colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
+                        colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
+                        isError = state.selectedStop == null,
+                        supportingText = {
+                            if (state.selectedStop == null) {
+                                Text("Обов’язково для відправки звіту")
+                            }
+                        }
                     )
                     ExposedDropdownMenu(
                         expanded = stopMenuExpanded,
@@ -211,8 +227,12 @@ fun IncidentReportScreen(
                     }
                 }
                 OutlinedButton(onClick = viewModel::applyCurrentStopFromRoute, modifier = Modifier.fillMaxWidth()) {
-                    Text("Координати поточної обраної зупинки")
+                    Text("Підставити координати обраної зупинки")
                 }
+            }
+
+            TextButton(onClick = viewModel::applyTemplateForCurrentType, modifier = Modifier.fillMaxWidth()) {
+                Text("Вставити шаблон опису для обраного типу")
             }
 
             OutlinedTextField(
@@ -339,7 +359,8 @@ fun IncidentReportScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(72.dp),
-                enabled = !state.isSubmitting
+                enabled = !state.isSubmitting &&
+                    (state.routeStops.isEmpty() || state.selectedStop != null)
             ) {
                 Text(if (state.isSubmitting) "Відправка…" else "ВІДПРАВИТИ ЗВІТ")
             }
@@ -351,8 +372,11 @@ fun IncidentReportScreen(
     }
 }
 
-private fun stopLabel(stop: Stop): String =
-    "${stop.stopNumber}. ${stop.plannedTime} — ${stop.name}"
+private fun stopLabel(stop: Stop): String {
+    val pt = stop.plannedTime.trim()
+    val base = "${stop.stopNumber}. ${stop.name.trim()}"
+    return if (pt.isNotEmpty() && pt != "--:--") "$base · $pt" else base
+}
 
 @Composable
 private fun rememberIncidentReportViewModelFactory(): ViewModelProvider.Factory {

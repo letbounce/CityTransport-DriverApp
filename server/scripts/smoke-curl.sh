@@ -23,7 +23,7 @@ fi
 WAYBILL_JSON=$(curl -s -X POST "${BASE_URL}/waybills" \
   -H "Authorization: Bearer ${TOKEN}" \
   -H "Content-Type: application/json" \
-  -d "{\"route_id\":\"${ROUTE_ID}\",\"vehicle_id\":\"BUS-007\"}")
+  -d "{\"route_id\":\"${ROUTE_ID}\",\"vehicle_id\":\"KP-3204\"}")
 
 WAYBILL_ID=$(echo "$WAYBILL_JSON" | node -e "const fs=require('fs');const j=JSON.parse(fs.readFileSync(0,'utf8'));console.log(j._id||'')")
 if [ -z "$WAYBILL_ID" ]; then

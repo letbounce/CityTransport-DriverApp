@@ -55,7 +55,7 @@ private fun WaybillDto.toDomain(): Waybill = Waybill(
     routeId = route_id,
     routeNumber = route_number,
     status = status,
-    vehicleId = vehicle_id ?: "BUS-007",
+    vehicleId = vehicle_id ?: "KP-3204",
     notes = notes.orEmpty(),
     startedAt = started_at,
     completedAt = completed_at,
@@ -153,7 +153,7 @@ class WaybillRepositoryImpl(
         api.startWaybill(
             StartWaybillRequestDto(
                 route_id = routeId,
-                vehicle_id = vehicleId ?: "BUS-007",
+                vehicle_id = vehicleId ?: "KP-3204",
                 notes = notes?.takeIf { it.isNotBlank() }
             )
         ).toDomain()

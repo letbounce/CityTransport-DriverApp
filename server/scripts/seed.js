@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const fs = require("fs");
+const path = require("path");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const { connectDatabase } = require("../config/db");
@@ -9,6 +11,171 @@ const Vehicle = require("../models/Vehicle");
 const Waybill = require("../models/Waybill");
 const Telemetry = require("../models/Telemetry");
 const Incident = require("../models/Incident");
+
+/** Узгоджено з TripMapCatalog / assets/map/stops_{ref}_route.geojson */
+const KYIV_ROUTE_ORDER = ["7", "11", "18", "24", "50", "55", "62", "101", "114", "115"];
+
+const KYIV_ROUTE_NAMES = {
+  "7": "Львівська площа — Залізничний вокзал «Центральний»",
+  "11": "Станція метро «Лісова» — Радіоцентр",
+  "18": "Станція метро «Харківська» — Харківське шосе",
+  "24": "Музей історії України у Другій світовій війні — Залізничний вокзал",
+  "50": "Залізничний вокзал «Центральний» — Вулиця Північна",
+  "55": "Дарницька площа — Станція метро «Палац спорту»",
+  "62": "Контрактова площа — Ботанічний сад",
+  "101": "вул. Милославська — ст. м. Почайна",
+  "114": "вул. Радунська — Залізничний вокзал «Центральний»",
+  "115": "Контрактова площа — Будинок культури"
+};
+
+function loadKyivStopsFromAssets(routeNumber) {
+  const assetsRoot = path.join(__dirname, "..", "..", "app", "src", "main", "assets", "map");
+  const fp = path.join(assetsRoot, `stops_${routeNumber}_route.geojson`);
+  if (!fs.existsSync(fp)) {
+    console.warn(`seed: немає файлу зупинок ${fp}`);
+    return [];
+  }
+  let fc;
+  try {
+    fc = JSON.parse(fs.readFileSync(fp, "utf8"));
+  } catch (e) {
+    console.warn(`seed: не вдалося прочитати ${fp}`, e.message);
+    return [];
+  }
+  const features = fc.features || [];
+  const stops = [];
+  let n = 1;
+  for (const f of features) {
+    if (!f || f.geometry?.type !== "Point" || !Array.isArray(f.geometry.coordinates)) continue;
+    const [lng, lat] = f.geometry.coordinates;
+    const p = f.properties || {};
+    const name = String(p["name:uk"] || p.name || "").trim() || `Зупинка ${n}`;
+    stops.push({
+      stop_number: n,
+      name,
+      planned_time: "--:--",
+      lat,
+      lng
+    });
+    n += 1;
+  }
+  return stops;
+}
+
+function buildKyivRoutesForSeed() {
+  return KYIV_ROUTE_ORDER.map((route_number) => ({
+    route_number,
+    route_name: KYIV_ROUTE_NAMES[route_number] || `Київський автобус ${route_number}`,
+    vehicle_type: "bus",
+    is_active: true,
+    stops: loadKyivStopsFromAssets(route_number)
+  }));
+}
+
+/**
+ * Типові моделі автобусів на київських маршрутах (КП «Київпастранс», закупівлі міста),
+ * узагальнено за відкритими джерелами ~2025–2026: масовий парк МАЗ-203 та зчленовані МАЗ-107;
+ * імпортні Citaro / MAN Lion's City / Irisbus Citelis (зокрема гуманітарні партії);
+ * електробуси «Електрон» Т191; нові низькопідлогові Anadolu Isuzu (Citibus) на окремих лініях
+ * (див. напр. lb.ua, Wikipedia «Київський автобус», огляди pas-transport).
+ * Поля vehicle_id — умовні «борти» для демо-БД; номери держреєстрації вигадані.
+ */
+const DEFAULT_KYIV_VEHICLE_ID = "KP-3204";
+
+function kyivFleetVehiclesForSeed() {
+  return [
+    {
+      vehicle_id: DEFAULT_KYIV_VEHICLE_ID,
+      label: "МАЗ-203.069 · основний клас Києва (~110 місць)",
+      plate_number: "КА 4821 ВХ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-3188",
+      label: "МАЗ-203.069 · серія 2018–2020 рр.",
+      plate_number: "КА 9156 ВІ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-2901",
+      label: "МАЗ-107 · зчленований (~175 місць)",
+      plate_number: "КА 3012 АМ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-2907",
+      label: "МАЗ-107 · зчленований",
+      plate_number: "КА 7744 ВТ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-4120",
+      label: "Mercedes-Benz Citaro O530",
+      plate_number: "КА 2288 СЕ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-4155",
+      label: "Mercedes-Benz Citaro O530 · низькопідлоговий",
+      plate_number: "КА 6391 НН",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-4203",
+      label: "MAN Lion's City A23",
+      plate_number: "КА 5044 ММ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-4217",
+      label: "MAN Lion's City · клас А",
+      plate_number: "КА 8177 РР",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-4308",
+      label: "Irisbus Citelis 12M",
+      plate_number: "КА 9920 ТТ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-4401",
+      label: "Electron Т191 · електробус (ПрАТ «Електрон»)",
+      plate_number: "КА 101 ЕЕ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-4412",
+      label: "Electron Т191 · електробус",
+      plate_number: "КА 202 ЕЕ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-5102",
+      label: "Anadolu Isuzu Citibus · низькопідлоговий (поставки 2025 р.)",
+      plate_number: "КА 7788 ІІ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-5110",
+      label: "Anadolu Isuzu · новий парк на лініях міста",
+      plate_number: "КА 8899 ІІ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-5055",
+      label: "Богдан А601 · залишковий парк (рідше)",
+      plate_number: "КА 3344 ВВ",
+      is_active: true
+    },
+    {
+      vehicle_id: "KP-6001",
+      label: "Резерв / технічний огляд (узагальнений клас МАЗ-203)",
+      plate_number: "",
+      is_active: true
+    }
+  ];
+}
 
 async function seed() {
   await connectDatabase(process.env.MONGO_URI);
@@ -43,77 +210,10 @@ async function seed() {
     }
   ]);
 
-  await Vehicle.insertMany([
-    { vehicle_id: "BUS-007", label: "Mercedes Conecto (57 місць)", plate_number: "AA 1234 BC", is_active: true },
-    { vehicle_id: "BUS-101", label: "MAN Lion’s City (45 місць)", plate_number: "AA 5678 BC", is_active: true },
-    { vehicle_id: "BUS-205", label: "Electron Т191 (електробус)", plate_number: "KA 9012 TT", is_active: true },
-    { vehicle_id: "TRAM-03", label: "Трамвай Tatra KT4", plate_number: "ТМ-03", is_active: true },
-    { vehicle_id: "MINI-12", label: "Маршрутне таксі Ford Transit", plate_number: "BI 3456 MM", is_active: true }
-  ]);
+  await Vehicle.insertMany(kyivFleetVehiclesForSeed());
 
-  await Route.insertMany([
-    {
-      route_number: "12",
-      route_name: "Центр - Вокзал",
-      vehicle_type: "bus",
-      is_active: true,
-      stops: [
-        { stop_number: 1, name: "Центральна площа", planned_time: "08:10", lat: 50.45, lng: 30.52 },
-        { stop_number: 2, name: "Проспект Миру", planned_time: "08:18", lat: 50.46, lng: 30.53 },
-        { stop_number: 3, name: "Ринок", planned_time: "08:25", lat: 50.47, lng: 30.54 },
-        { stop_number: 4, name: "Вокзал", planned_time: "08:33", lat: 50.48, lng: 30.55 }
-      ]
-    },
-    {
-      route_number: "7",
-      route_name: "Аеропорт - Університет",
-      vehicle_type: "bus",
-      is_active: true,
-      stops: [
-        { stop_number: 1, name: "Аеропорт", planned_time: "09:00", lat: 50.4, lng: 30.4 },
-        { stop_number: 2, name: "Термінал Південний", planned_time: "09:08", lat: 50.41, lng: 30.41 },
-        { stop_number: 3, name: "Парк", planned_time: "09:16", lat: 50.42, lng: 30.42 },
-        { stop_number: 4, name: "Площа Науки", planned_time: "09:24", lat: 50.43, lng: 30.43 },
-        { stop_number: 5, name: "Університет", planned_time: "09:33", lat: 50.44, lng: 30.44 }
-      ]
-    },
-    {
-      route_number: "3",
-      route_name: "Оболонь - Печерськ",
-      vehicle_type: "bus",
-      is_active: true,
-      stops: [
-        { stop_number: 1, name: "Оболонь (метро)", planned_time: "07:05", lat: 50.51, lng: 30.5 },
-        { stop_number: 2, name: "Набережна", planned_time: "07:18", lat: 50.49, lng: 30.53 },
-        { stop_number: 3, name: "Хрещатик", planned_time: "07:35", lat: 50.45, lng: 30.52 },
-        { stop_number: 4, name: "Печерськ", planned_time: "07:48", lat: 50.425, lng: 30.535 }
-      ]
-    },
-    {
-      route_number: "14",
-      route_name: "Троєщина - Теремки",
-      vehicle_type: "bus",
-      is_active: true,
-      stops: [
-        { stop_number: 1, name: "Троєщина", planned_time: "06:40", lat: 50.53, lng: 30.59 },
-        { stop_number: 2, name: "Дарницький міст", planned_time: "07:05", lat: 50.47, lng: 30.58 },
-        { stop_number: 3, name: "Либідська", planned_time: "07:28", lat: 50.407, lng: 30.522 },
-        { stop_number: 4, name: "Теремки", planned_time: "07:45", lat: 50.367, lng: 30.467 }
-      ]
-    },
-    {
-      route_number: "22",
-      route_name: "Сихівка - Шевченківський район",
-      vehicle_type: "tram",
-      is_active: true,
-      stops: [
-        { stop_number: 1, name: "Сихівський масив", planned_time: "08:00", lat: 49.83, lng: 24.02 },
-        { stop_number: 2, name: "Вокзал Львів", planned_time: "08:22", lat: 49.84, lng: 24.03 },
-        { stop_number: 3, name: "Площа Ринок", planned_time: "08:35", lat: 49.841, lng: 24.032 },
-        { stop_number: 4, name: "Університетська", planned_time: "08:45", lat: 49.839, lng: 24.025 }
-      ]
-    }
-  ]);
+  const kyivRoutes = buildKyivRoutesForSeed();
+  await Route.insertMany(kyivRoutes);
 
   console.log("Seed completed");
   await mongoose.disconnect();
