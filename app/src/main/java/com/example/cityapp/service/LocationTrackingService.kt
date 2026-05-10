@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import com.example.cityapp.R
 
 class LocationTrackingService : Service() {
     override fun onCreate() {
@@ -15,8 +16,8 @@ class LocationTrackingService : Service() {
         ensureNotificationChannel()
         val notification: Notification =
             NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("CityTransport DriverApp")
-                .setContentText("Рейс активний, GPS відстеження увімкнено")
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.tracking_notification_text))
                 .setSmallIcon(android.R.drawable.ic_menu_mylocation)
                 .build()
         startForeground(NOTIFICATION_ID, notification)
@@ -32,7 +33,7 @@ class LocationTrackingService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Tracking",
+                getString(R.string.tracking_channel_name),
                 NotificationManager.IMPORTANCE_LOW
             )
             val manager = getSystemService(NotificationManager::class.java)

@@ -1,6 +1,6 @@
-# CityTransport-DriverApp
+# RoutePulse
 
-Client-server prototype for driver dispatching workflows:
+Android-додаток **RoutePulse** (раніше прототип CityTransport-DriverApp). Клієнт-серверний прототип робочих процесів для водіїв:
 
 - Android app (`/app`) on Kotlin + Jetpack Compose
 - Local backend (`/server`) on Node.js + MongoDB

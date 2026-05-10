@@ -38,7 +38,7 @@ OVERPASS_ENDPOINTS = (
 HEADERS = {
     "Content-Type": "application/x-www-form-urlencoded",
     "Accept": "*/*",
-    "User-Agent": "CityApp-KyivBusFetch/1.0 (+local dev)",
+    "User-Agent": "RoutePulse-KyivBusFetch/1.0 (+local dev)",
 }
 
 NETWORK_EXPECTED = "Київський автобус"
@@ -239,7 +239,7 @@ def stops_geojson_from_ordered_nodes(
         )
     return {
         "type": "FeatureCollection",
-        "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+        "generator": "RoutePulse tools/fetch_kyiv_bus_routes.py + Overpass API",
         "copyright": "Data © OpenStreetMap contributors, ODbL",
         "features": features,
     }
@@ -249,7 +249,7 @@ def write_route_asset(ref: str, feature: Dict[str, Any]) -> None:
     path = ASSETS_MAP / f"{ref}_route.geojson"
     fc = {
         "type": "FeatureCollection",
-        "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+        "generator": "RoutePulse tools/fetch_kyiv_bus_routes.py + Overpass API",
         "copyright": "The data included in this document is from www.openstreetmap.org. "
         "The data is made available under ODbL.",
         "features": [feature],

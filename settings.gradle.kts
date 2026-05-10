@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CityApp"
+rootProject.name = "RoutePulse"
 include(":app")

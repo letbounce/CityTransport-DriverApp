@@ -176,7 +176,7 @@ object PdfExportWriter {
 
         session.y += 8f
         session.drawParagraph(
-            "Застосунок CityApp. Дані рейсу та зупинок можуть бути узагальненими; " +
+            "Застосунок RoutePulse. Дані рейсу та зупинок можуть бути узагальненими; " +
                 "офіційний розклад уточнюйте у перевізника.",
             body,
             contentW
@@ -304,7 +304,7 @@ object PdfExportWriter {
 
         session.y += 8f
         session.drawParagraph(
-            "CityApp · експорт PDF для внутрішнього обліку; перевіряйте дані за офіційними системами перевізника.",
+            "RoutePulse · експорт PDF для внутрішнього обліку; перевіряйте дані за офіційними системами перевізника.",
             body,
             contentW
         )

@@ -366,7 +366,11 @@ fun TripMapRouteScreen(
                     CircularProgressIndicator(Modifier.align(Alignment.Center))
                 } else {
                     AndroidView(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.86f)
+                            .align(Alignment.TopCenter)
+                            .padding(horizontal = 12.dp),
                         factory = { mapView },
                         update = { map ->
                             syncRouteOverlays(

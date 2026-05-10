@@ -80,7 +80,7 @@ OVERPASS_ENDPOINTS = [
 HEADERS = {
     "Content-Type": "application/x-www-form-urlencoded",
     "Accept": "*/*",
-    "User-Agent": "CityApp/1.0 (stops geojson build; contact=local)",
+            "User-Agent": "RoutePulse/1.0 (stops geojson build; contact=local)",
 }
 
 CHUNK_SIZE = 12
@@ -174,7 +174,7 @@ def main() -> None:
 
     fc = {
         "type": "FeatureCollection",
-        "generator": "CityApp tools/build_stops_101_geojson.py + Overpass API",
+        "generator": "RoutePulse tools/build_stops_101_geojson.py + Overpass API",
         "copyright": "Data © OpenStreetMap contributors, ODbL",
         "features": features,
     }

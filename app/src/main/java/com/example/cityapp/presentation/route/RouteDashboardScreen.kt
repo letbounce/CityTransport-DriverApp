@@ -3,8 +3,10 @@
 package com.example.cityapp.presentation.route
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,11 +14,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenuItem
@@ -30,6 +35,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -37,18 +43,26 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cityapp.domain.model.Route
+import com.example.cityapp.domain.model.Stop
 import com.example.cityapp.domain.model.Vehicle
 import com.example.cityapp.domain.model.Waybill
+import com.example.cityapp.presentation.common.AppCardShape
+import com.example.cityapp.presentation.common.AppFieldShape
 import com.example.cityapp.presentation.common.ArchiveReasonDialog
+import com.example.cityapp.presentation.common.GradientPrimaryButton
 import com.example.cityapp.presentation.common.ArchiveReasonOption
 import com.example.cityapp.presentation.export.sharePdfFile
 import com.example.cityapp.presentation.export.writePdfBytesToCache
@@ -181,11 +195,12 @@ fun RouteDashboardScreen(
     val selectedRoute = state.routes.find { it.id == state.selectedRouteId }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
                 title = {
                     Column {
-                        Text("Дорожні листи")
+                        Text("Дорожні листи", fontWeight = FontWeight.Bold)
                         state.driverDisplayName?.let {
                             Text(it, style = MaterialTheme.typography.bodySmall)
                         }
@@ -198,7 +213,10 @@ fun RouteDashboardScreen(
                     ) {
                         Text("Меню")
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                )
             )
         }
     ) { innerPadding ->
@@ -214,6 +232,7 @@ fun RouteDashboardScreen(
             state.saveSuccessMessage?.let { msg ->
                 item {
                     Card(
+                        shape = AppCardShape,
                         colors = CardDefaults.cardColors(
                             containerColor = MaterialTheme.colorScheme.secondaryContainer
                         ),
@@ -232,9 +251,13 @@ fun RouteDashboardScreen(
 
             item {
                 state.activeWaybill?.let { active ->
-                    Card(modifier = Modifier.fillMaxWidth()) {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = AppCardShape,
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                    ) {
                         Column(
-                            Modifier.padding(12.dp),
+                            Modifier.padding(16.dp),
                             verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             Text("Активний дорожній лист", style = MaterialTheme.typography.titleMedium)
@@ -244,14 +267,11 @@ fun RouteDashboardScreen(
                             if (active.notes.isNotBlank()) {
                                 Text("Примітки: ${active.notes}")
                             }
-                            Button(
+                            GradientPrimaryButton(
+                                text = "Продовжити рейс",
                                 onClick = { viewModel.continueTrip(active.id) },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(56.dp)
-                            ) {
-                                Text("Продовжити рейс")
-                            }
+                                height = 56.dp
+                            )
                             TextButton(
                                 onClick = { editingWaybill = active },
                                 modifier = Modifier.fillMaxWidth()
@@ -265,12 +285,20 @@ fun RouteDashboardScreen(
 
             item {
                 if (state.routes.isNotEmpty()) {
-                    Card(modifier = Modifier.fillMaxWidth()) {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = AppCardShape,
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                    ) {
                         Column(
-                            Modifier.padding(12.dp),
-                            verticalArrangement = Arrangement.spacedBy(10.dp)
+                            Modifier.padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            Text("Новий дорожній лист", style = MaterialTheme.typography.titleMedium)
+                            Text(
+                                "Новий дорожній лист",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
+                            )
 
                             state.activeWaybill?.let {
                                 Text(
@@ -287,9 +315,7 @@ fun RouteDashboardScreen(
                                 onRouteSelected = viewModel::onRouteSelected
                             )
                             Text(
-                                "Ті самі київські автобусні лінії, що на екрані «Мапа рейсів». " +
-                                    "Зупинки та орієнтовний час прибуття з GeoJSON (python tools/annotate_stop_schedule_geojson.py); " +
-                                    "у базу потрапляють після npm run seed.",
+                                "Маршрути та розклад зупинок збігаються з екраном «Мапа рейсів».",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -301,13 +327,7 @@ fun RouteDashboardScreen(
                                 vehiclesLoaded = state.vehiclesLoaded
                             )
 
-                            Text(
-                                "Зупинки обраного маршруту:",
-                                style = MaterialTheme.typography.labelLarge
-                            )
-                            selectedRoute?.stops?.take(8)?.forEach { stop ->
-                                Text("${stop.stopNumber}. ${stop.plannedTime} — ${stop.name}")
-                            }
+                            RouteStopTimeline(stops = selectedRoute?.stops.orEmpty())
 
                             OutlinedTextField(
                                 value = state.newTripNotes,
@@ -315,20 +335,18 @@ fun RouteDashboardScreen(
                                 label = { Text("Примітки до рейсу (необов’язково)") },
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(100.dp),
+                                    .height(108.dp),
                                 minLines = 3,
+                                shape = AppFieldShape,
                                 keyboardOptions = KeyboardOptions(
                                     capitalization = KeyboardCapitalization.Sentences
                                 )
                             )
-                            Button(
+                            GradientPrimaryButton(
+                                text = "Створити дорожній лист",
                                 onClick = viewModel::createWaybill,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(72.dp)
-                            ) {
-                                Text("Створити дорожній лист")
-                            }
+                                height = 58.dp
+                            )
                         }
                     }
                 }
@@ -385,6 +403,79 @@ fun RouteDashboardScreen(
 }
 
 @Composable
+private fun RouteStopTimeline(stops: List<Stop>) {
+    Text(
+        text = "Зупинки обраного маршруту",
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(top = 4.dp, bottom = 6.dp)
+    )
+    if (stops.isEmpty()) {
+        Text(
+            "Оберіть маршрут — тут з’явиться список зупинок.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        return
+    }
+    Column(Modifier.fillMaxWidth()) {
+        stops.forEachIndexed { index, stop ->
+            Row(
+                Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top
+            ) {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = 10.dp, top = 2.dp)
+                ) {
+                    Text(
+                        text = "${stop.stopNumber}. ${stop.name}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = if (index == 0) FontWeight.SemiBold else FontWeight.Normal
+                    )
+                }
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(top = 4.dp)
+                ) {
+                    Box(
+                        Modifier
+                            .size(12.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.primary)
+                    )
+                    if (index < stops.lastIndex) {
+                        Box(
+                            Modifier
+                                .width(3.dp)
+                                .height(36.dp)
+                                .background(
+                                    Brush.verticalGradient(
+                                        colors = listOf(
+                                            MaterialTheme.colorScheme.primary,
+                                            MaterialTheme.colorScheme.primary.copy(alpha = 0.25f)
+                                        )
+                                    )
+                                )
+                        )
+                    }
+                }
+                Text(
+                    text = stop.plannedTime.ifBlank { "—" },
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier
+                        .widthIn(min = 48.dp)
+                        .padding(start = 10.dp, top = 2.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
 private fun RouteDropdown(
     routes: List<Route>,
     selectedRouteId: String,
@@ -405,6 +496,7 @@ private fun RouteDropdown(
             value = selected?.let { "№${it.routeNumber} — ${it.routeName}" } ?: "Оберіть маршрут",
             onValueChange = {},
             label = { Text("Маршрут") },
+            shape = AppFieldShape,
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
             colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
         )
@@ -456,6 +548,7 @@ private fun VehicleDropdown(
                     ?: selectedVehicleId.ifBlank { "Оберіть транспорт" },
                 onValueChange = {},
                 label = { Text("Борт / транспорт") },
+                shape = AppFieldShape,
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 enabled = vehicles.isNotEmpty(),
                 colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
@@ -494,8 +587,12 @@ private fun WaybillRowCard(
     onEdit: () -> Unit,
     onExportPdf: () -> Unit
 ) {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = AppCardShape,
+        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+    ) {
+        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Text(
                 "№${waybill.routeNumber} · ${waybillStatusUa(waybill.status)}",
                 style = MaterialTheme.typography.titleSmall
@@ -661,6 +758,7 @@ private fun ArchivedWaybillRowCard(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
+        shape = AppCardShape,
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.82f),

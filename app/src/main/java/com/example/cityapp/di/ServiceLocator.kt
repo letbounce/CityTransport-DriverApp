@@ -1,6 +1,7 @@
 package com.example.cityapp.di
 
 import android.content.Context
+import com.example.cityapp.BuildConfig
 import com.example.cityapp.data.remote.api.ApiService
 import com.example.cityapp.data.repository.AuthRepositoryImpl
 import com.example.cityapp.data.repository.IncidentRepositoryImpl
@@ -44,7 +45,7 @@ object ServiceLocator {
 
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("${BuildConfig.API_ORIGIN}/")
             .client(okHttp)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

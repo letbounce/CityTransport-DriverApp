@@ -3,6 +3,7 @@
 package com.example.cityapp.presentation.incidents
 
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,6 +26,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -33,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
@@ -43,6 +46,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cityapp.domain.model.IncidentItem
+import com.example.cityapp.presentation.common.AppButtonShape
+import com.example.cityapp.presentation.common.AppCardShape
 import com.example.cityapp.presentation.common.ArchiveReasonDialog
 import com.example.cityapp.presentation.common.ArchiveReasonOption
 import com.example.cityapp.presentation.export.sharePdfFile
@@ -82,6 +87,9 @@ private fun formatIncidentForCopy(i: IncidentItem): String {
         i.deletionReasonNote?.takeIf { it.isNotBlank() }?.let { appendLine("Примітка: $it") }
     }.trim()
 }
+
+private fun osmStaticMapUrl(lat: Double, lng: Double): String =
+    "https://staticmap.openstreetmap.de/staticmap.php?center=$lat,$lng&zoom=16&size=440x180&markers=$lat,$lng,red-pushpin"
 
 @Composable
 fun IncidentsListScreen(
@@ -174,12 +182,16 @@ fun IncidentsListScreen(
     }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
                 title = { Text("Журнал інцидентів") },
                 navigationIcon = {
                     TextButton(onClick = onBack) { Text("Назад") }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                )
             )
         },
         bottomBar = {
@@ -188,7 +200,12 @@ fun IncidentsListScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 12.dp)
-                    .height(52.dp)
+                    .height(54.dp),
+                shape = AppButtonShape,
+                border = BorderStroke(
+                    1.dp,
+                    MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
+                )
             ) {
                 Text("На головне меню")
             }
@@ -212,6 +229,7 @@ fun IncidentsListScreen(
             state.feedbackMessage?.let { msg ->
                 item {
                     Card(
+                        shape = AppCardShape,
                         colors = CardDefaults.cardColors(
                             containerColor = MaterialTheme.colorScheme.secondaryContainer
                         ),
@@ -305,7 +323,8 @@ private fun IncidentCard(
                     Modifier
                 }
             ),
-        elevation = CardDefaults.cardElevation(defaultElevation = if (isArchived) 0.dp else 2.dp),
+        shape = AppCardShape,
+        elevation = CardDefaults.cardElevation(defaultElevation = if (isArchived) 2.dp else 5.dp),
         colors = if (isArchived) mutedColors else normalColors
     ) {
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -346,6 +365,28 @@ private fun IncidentCard(
                 "Координати: ${"%.5f".format(incident.lat)}, ${"%.5f".format(incident.lng)}",
                 style = MaterialTheme.typography.bodySmall
             )
+            val coordsOk = incident.lat != 0.0 || incident.lng != 0.0
+            if (coordsOk) {
+                val mapUrl = remember(incident.lat, incident.lng) {
+                    osmStaticMapUrl(incident.lat, incident.lng)
+                }
+                AsyncImage(
+                    model = mapUrl,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(140.dp)
+                        .padding(top = 6.dp)
+                        .clip(RoundedCornerShape(18.dp)),
+                    contentScale = ContentScale.Crop
+                )
+                Text(
+                    "© OpenStreetMap contributors",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+            }
             incident.photoUrl?.let { url ->
                 AsyncImage(
                     model = url,
@@ -364,7 +405,11 @@ private fun IncidentCard(
                 )
                 if (onPhotoClick != null) {
                     Text(
-                        "Торкніться фото для збільшення",
+                        text = if (isArchived) {
+                            "Торкніться фото для збільшення. Натисніть картку для копіювання."
+                        } else {
+                            "Торкніться фото для збільшення"
+                        },
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -385,8 +430,9 @@ private fun IncidentCard(
             }
             if (isArchived) {
                 Text(
-                    "Натисніть картку для копіювання",
-                    style = MaterialTheme.typography.labelSmall
+                    "Торкніться фото для збільшення. Натисніть картку для копіювання.",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
