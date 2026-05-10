@@ -1,6 +1,7 @@
 package com.example.cityapp.presentation.map
 
 import android.content.Context
+import com.example.cityapp.domain.model.Stop
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Locale
@@ -78,6 +79,53 @@ object BusRouteGeoJsonParser {
         )
     }
 
+    /**
+     * Зупинки в порядку файлу з полем `planned_time` (узгоджено з Mongo seed).
+     * Дублікати за координатами не зливаються — щоб графік збігався з екраном дорожнього листа.
+     */
+    fun loadStopsOrderedWithSchedule(context: Context, assetPath: String): List<Stop> {
+        return try {
+            val jsonText = context.assets.open(assetPath).bufferedReader().use { it.readText() }
+            parseStopsOrderedWithSchedule(jsonText)
+        } catch (_: Exception) {
+            emptyList()
+        }
+    }
+
+    fun parseStopsOrderedWithSchedule(jsonText: String): List<Stop> {
+        val root = JSONObject(jsonText)
+        if (root.optString("type") != "FeatureCollection") return emptyList()
+        val features = root.optJSONArray("features") ?: return emptyList()
+        val out = mutableListOf<Stop>()
+        var n = 1
+        for (i in 0 until features.length()) {
+            val feature = features.optJSONObject(i) ?: continue
+            val geom = feature.optJSONObject("geometry") ?: continue
+            if (geom.optString("type") != "Point") continue
+            val coords = geom.optJSONArray("coordinates") ?: continue
+            val lon = coords.optDouble(0, Double.NaN)
+            val lat = coords.optDouble(1, Double.NaN)
+            if (lon.isNaN() || lat.isNaN()) continue
+
+            val props = feature.optJSONObject("properties") ?: JSONObject()
+            val tags = props.optJSONObject("tags")
+            fun prop(key: String): String {
+                val direct = props.optString(key).trim()
+                if (direct.isNotEmpty()) return direct
+                return tags?.optString(key)?.trim().orEmpty()
+            }
+            val name = listOf(
+                prop("name:uk"),
+                prop("name"),
+                prop("official_name")
+            ).firstOrNull { it.isNotBlank() } ?: "Зупинка $n"
+            val plannedTime = normalizePlannedTimeHHmm(prop("planned_time")) ?: "--:--"
+            out.add(Stop(stopNumber = n, name = name, plannedTime = plannedTime, lat = lat, lng = lon))
+            n++
+        }
+        return out
+    }
+
     /** Зупинки з окремого GeoJSON (тільки Point + назви в properties). */
     fun loadStopsFromAsset(context: Context, assetPath: String): List<TripRouteStop> {
         return try {
@@ -153,6 +201,15 @@ object BusRouteGeoJsonParser {
             )
         }
         return out
+    }
+
+    private fun normalizePlannedTimeHHmm(raw: String): String? {
+        val parts = raw.trim().split(':')
+        if (parts.size != 2) return null
+        val h = parts[0].toIntOrNull() ?: return null
+        val m = parts[1].toIntOrNull() ?: return null
+        if (h !in 0..23 || m !in 0..59) return null
+        return String.format(Locale.US, "%02d:%02d", h, m)
     }
 
     private fun isRouteFeature(props: JSONObject, routeRef: String): Boolean =

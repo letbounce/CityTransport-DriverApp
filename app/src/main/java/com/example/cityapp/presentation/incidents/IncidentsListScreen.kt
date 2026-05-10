@@ -30,6 +30,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -44,9 +45,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cityapp.domain.model.IncidentItem
 import com.example.cityapp.presentation.common.ArchiveReasonDialog
 import com.example.cityapp.presentation.common.ArchiveReasonOption
+import com.example.cityapp.presentation.export.sharePdfFile
+import com.example.cityapp.presentation.export.writePdfBytesToCache
 import com.example.cityapp.presentation.incident.IncidentApiType
 import coil.compose.AsyncImage
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 private fun incidentTypeUa(api: String) = IncidentApiType.fromApi(api).labelUa
 
@@ -89,6 +93,22 @@ fun IncidentsListScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val clipboard = LocalClipboardManager.current
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    fun exportIncidentPdf(incident: IncidentItem) {
+        scope.launch {
+            viewModel.buildIncidentPdf(incident).fold(
+                onSuccess = { bytes ->
+                    val safeName = incident.id.replace(Regex("[^a-zA-Z0-9_-]+"), "_")
+                    val file = writePdfBytesToCache(context, "incident_$safeName.pdf", bytes)
+                    sharePdfFile(context, file, "Поділитися звітом (PDF)")
+                    Toast.makeText(context, "PDF сформовано", Toast.LENGTH_SHORT).show()
+                },
+                onFailure = {
+                    Toast.makeText(context, "Не вдалося сформувати PDF", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
+    }
     var archiveIncidentTarget by remember { mutableStateOf<IncidentItem?>(null) }
     var copyIncidentTarget by remember { mutableStateOf<IncidentItem?>(null) }
     var photoViewerUrl by remember { mutableStateOf<String?>(null) }
@@ -217,7 +237,8 @@ fun IncidentsListScreen(
                     onArchivedClick = null,
                     onRequestArchive = { archiveIncidentTarget = incident },
                     onEdit = { onEditIncident(incident.id) },
-                    onPhotoClick = { photoViewerUrl = it }
+                    onPhotoClick = { photoViewerUrl = it },
+                    onExportPdf = { exportIncidentPdf(incident) }
                 )
             }
 
@@ -247,7 +268,8 @@ fun IncidentsListScreen(
                         onArchivedClick = { copyIncidentTarget = incident },
                         onRequestArchive = null,
                         onEdit = null,
-                        onPhotoClick = { photoViewerUrl = it }
+                        onPhotoClick = { photoViewerUrl = it },
+                        onExportPdf = { exportIncidentPdf(incident) }
                     )
                 }
             }
@@ -264,7 +286,8 @@ private fun IncidentCard(
     onArchivedClick: (() -> Unit)?,
     onRequestArchive: (() -> Unit)?,
     onEdit: (() -> Unit)?,
-    onPhotoClick: ((String) -> Unit)? = null
+    onPhotoClick: ((String) -> Unit)? = null,
+    onExportPdf: () -> Unit
 ) {
     val mutedColors = CardDefaults.cardColors(
         containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.82f),
@@ -346,6 +369,9 @@ private fun IncidentCard(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
+            }
+            TextButton(onClick = onExportPdf, modifier = Modifier.fillMaxWidth()) {
+                Text("Експорт PDF")
             }
             if (!isArchived && onEdit != null) {
                 TextButton(onClick = onEdit, modifier = Modifier.fillMaxWidth()) {

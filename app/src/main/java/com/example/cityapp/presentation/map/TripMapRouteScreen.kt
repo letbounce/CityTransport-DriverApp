@@ -268,7 +268,7 @@ fun TripMapRouteScreen(
 
     ModalNavigationDrawer(
         drawerState = drawerState,
-        gesturesEnabled = true,
+        gesturesEnabled = false,
         drawerContent = {
             ModalDrawerSheet(modifier = Modifier.fillMaxHeight(0.92f)) {
                 Text(

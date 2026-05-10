@@ -65,17 +65,7 @@ class IncidentReportViewModel(application: Application) : AndroidViewModel(appli
                 val entry = TripMapCatalog.findById(wb.routeNumber.trim())
                 val path = entry?.stopsAssetPath
                 if (!path.isNullOrBlank()) {
-                    stops = BusRouteGeoJsonParser.loadStopsFromAsset(getApplication(), path)
-                        .sortedBy { it.orderIndex }
-                        .map { ts ->
-                            Stop(
-                                stopNumber = ts.orderIndex,
-                                name = ts.title,
-                                plannedTime = "--:--",
-                                lat = ts.lat,
-                                lng = ts.lon
-                            )
-                        }
+                    stops = BusRouteGeoJsonParser.loadStopsOrderedWithSchedule(getApplication(), path)
                 }
             }
 

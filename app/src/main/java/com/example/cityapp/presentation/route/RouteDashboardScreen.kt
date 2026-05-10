@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,6 +35,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
@@ -48,7 +50,10 @@ import com.example.cityapp.domain.model.Vehicle
 import com.example.cityapp.domain.model.Waybill
 import com.example.cityapp.presentation.common.ArchiveReasonDialog
 import com.example.cityapp.presentation.common.ArchiveReasonOption
+import com.example.cityapp.presentation.export.sharePdfFile
+import com.example.cityapp.presentation.export.writePdfBytesToCache
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 private fun formatWaybillForCopy(w: Waybill): String {
     val reasonLabel = w.deletionReasonCode?.let { code ->
@@ -85,6 +90,21 @@ fun RouteDashboardScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val clipboard = LocalClipboardManager.current
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    fun exportWaybillPdf(wb: Waybill) {
+        scope.launch {
+            viewModel.buildWaybillPdf(wb).fold(
+                onSuccess = { bytes ->
+                    val file = writePdfBytesToCache(context, "waybill_${wb.id}.pdf", bytes)
+                    sharePdfFile(context, file, "Поділитися дорожнім листом (PDF)")
+                    Toast.makeText(context, "PDF сформовано", Toast.LENGTH_SHORT).show()
+                },
+                onFailure = {
+                    Toast.makeText(context, "Не вдалося сформувати PDF", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
+    }
     var editingWaybill by remember { mutableStateOf<Waybill?>(null) }
     var pendingArchiveWaybillId by remember { mutableStateOf<String?>(null) }
     var copyWaybillTarget by remember { mutableStateOf<Waybill?>(null) }
@@ -117,7 +137,8 @@ fun RouteDashboardScreen(
             onArchiveConfirmed = {
                 pendingArchiveWaybillId = wb.id
                 editingWaybill = null
-            }
+            },
+            onExportPdf = { exportWaybillPdf(wb) }
         )
     }
 
@@ -267,7 +288,8 @@ fun RouteDashboardScreen(
                             )
                             Text(
                                 "Ті самі київські автобусні лінії, що на екрані «Мапа рейсів». " +
-                                    "Зупинки підтягуються з GeoJSON при виконанні seed на сервері (npm run seed).",
+                                    "Зупинки та орієнтовний час прибуття з GeoJSON (python tools/annotate_stop_schedule_geojson.py); " +
+                                    "у базу потрапляють після npm run seed.",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -324,7 +346,8 @@ fun RouteDashboardScreen(
             items(state.waybills, key = { it.id }) { wb ->
                 WaybillRowCard(
                     waybill = wb,
-                    onEdit = { editingWaybill = wb }
+                    onEdit = { editingWaybill = wb },
+                    onExportPdf = { exportWaybillPdf(wb) }
                 )
             }
 
@@ -348,7 +371,11 @@ fun RouteDashboardScreen(
                 }
             } else {
                 items(state.archivedWaybills, key = { "arch_${it.id}" }) { wb ->
-                    ArchivedWaybillRowCard(waybill = wb, onClick = { copyWaybillTarget = wb })
+                    ArchivedWaybillRowCard(
+                        waybill = wb,
+                        onClick = { copyWaybillTarget = wb },
+                        onExportPdf = { exportWaybillPdf(wb) }
+                    )
                 }
             }
 
@@ -464,7 +491,8 @@ private fun VehicleDropdown(
 @Composable
 private fun WaybillRowCard(
     waybill: Waybill,
-    onEdit: () -> Unit
+    onEdit: () -> Unit,
+    onExportPdf: () -> Unit
 ) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -479,8 +507,16 @@ private fun WaybillRowCard(
             }
             waybill.startedAt?.let { Text("Початок: $it", style = MaterialTheme.typography.bodySmall) }
             waybill.completedAt?.let { Text("Завершено: $it", style = MaterialTheme.typography.bodySmall) }
-            TextButton(onClick = onEdit, modifier = Modifier.fillMaxWidth()) {
-                Text("Редагувати")
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                TextButton(onClick = onExportPdf, modifier = Modifier.weight(1f)) {
+                    Text("Експорт PDF")
+                }
+                TextButton(onClick = onEdit, modifier = Modifier.weight(1f)) {
+                    Text("Редагувати")
+                }
             }
         }
     }
@@ -492,7 +528,8 @@ private fun WaybillEditDialog(
     vehicles: List<Vehicle>,
     onDismiss: () -> Unit,
     onSave: (vehicleId: String, notes: String) -> Unit,
-    onArchiveConfirmed: () -> Unit
+    onArchiveConfirmed: () -> Unit,
+    onExportPdf: () -> Unit
 ) {
     var confirmDelete by remember(waybill.id) { mutableStateOf(false) }
     var vehicleManual by remember(waybill.id) { mutableStateOf(waybill.vehicleId) }
@@ -591,6 +628,12 @@ private fun WaybillEditDialog(
                         keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences)
                     )
                     TextButton(
+                        onClick = onExportPdf,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Експорт PDF")
+                    }
+                    TextButton(
                         onClick = { confirmDelete = true },
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -609,7 +652,11 @@ private fun WaybillEditDialog(
 }
 
 @Composable
-private fun ArchivedWaybillRowCard(waybill: Waybill, onClick: () -> Unit) {
+private fun ArchivedWaybillRowCard(
+    waybill: Waybill,
+    onClick: () -> Unit,
+    onExportPdf: () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -639,7 +686,10 @@ private fun ArchivedWaybillRowCard(waybill: Waybill, onClick: () -> Unit) {
             waybill.deletionReasonNote?.takeIf { it.isNotBlank() }?.let {
                 Text("Примітка: $it", style = MaterialTheme.typography.bodySmall)
             }
-            Text("Натисніть, щоб скопіювати дані", style = MaterialTheme.typography.labelSmall)
+            TextButton(onClick = onExportPdf, modifier = Modifier.fillMaxWidth()) {
+                Text("Експорт PDF")
+            }
+            Text("Натисніть картку, щоб скопіювати дані", style = MaterialTheme.typography.labelSmall)
         }
     }
 }

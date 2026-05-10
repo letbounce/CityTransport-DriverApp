@@ -15,6 +15,17 @@ const Incident = require("../models/Incident");
 /** Узгоджено з TripMapCatalog / assets/map/stops_{ref}_route.geojson */
 const KYIV_ROUTE_ORDER = ["7", "11", "18", "24", "50", "55", "62", "101", "114", "115"];
 
+function normalizePlannedTime(raw) {
+  const s = String(raw ?? "").trim();
+  const m = s.match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return null;
+  const h = Number(m[1]);
+  const min = Number(m[2]);
+  if (!Number.isFinite(h) || !Number.isFinite(min)) return null;
+  if (h < 0 || h > 23 || min < 0 || min > 59) return null;
+  return `${String(h).padStart(2, "0")}:${String(min).padStart(2, "0")}`;
+}
+
 const KYIV_ROUTE_NAMES = {
   "7": "Львівська площа — Залізничний вокзал «Центральний»",
   "11": "Станція метро «Лісова» — Радіоцентр",
@@ -53,7 +64,7 @@ function loadKyivStopsFromAssets(routeNumber) {
     stops.push({
       stop_number: n,
       name,
-      planned_time: "--:--",
+      planned_time: normalizePlannedTime(p.planned_time) || "--:--",
       lat,
       lng
     });

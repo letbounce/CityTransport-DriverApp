@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
@@ -13,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -32,30 +35,39 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+            .statusBarsPadding()
+            .navigationBarsPadding()
+            .padding(horizontal = 24.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        OutlinedTextField(
-            value = state.driverId,
-            onValueChange = viewModel::onDriverIdChange,
-            label = { Text("Driver ID") },
-            modifier = Modifier.fillMaxWidth()
-        )
-        OutlinedTextField(
-            value = state.password,
-            onValueChange = viewModel::onPasswordChange,
-            label = { Text("Password") },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Button(
-            onClick = viewModel::login,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(64.dp)
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("УВІЙТИ")
+            OutlinedTextField(
+                value = state.driverId,
+                onValueChange = viewModel::onDriverIdChange,
+                label = { Text("Driver ID") },
+                modifier = Modifier.fillMaxWidth()
+            )
+            OutlinedTextField(
+                value = state.password,
+                onValueChange = viewModel::onPasswordChange,
+                label = { Text("Password") },
+                modifier = Modifier.fillMaxWidth()
+            )
+            Button(
+                onClick = viewModel::login,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(64.dp)
+            ) {
+                Text("УВІЙТИ")
+            }
+            if (state.isLoading) CircularProgressIndicator()
+            state.error?.let { Text(it) }
         }
-        if (state.isLoading) CircularProgressIndicator()
-        state.error?.let { Text(it) }
     }
 }

@@ -16,9 +16,13 @@ import com.example.cityapp.domain.usecase.UpdateWaybillUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import com.example.cityapp.presentation.export.PdfExportWriter
 import retrofit2.HttpException
+import java.io.ByteArrayOutputStream
 
 private fun routeNumericSortKey(routeNumber: String): Int =
     routeNumber.trim().toIntOrNull()
@@ -192,6 +196,29 @@ class RouteDashboardViewModel : ViewModel() {
                 }
             }
             if (result.isSuccess) refresh()
+        }
+    }
+
+    suspend fun buildWaybillPdf(waybill: Waybill): Result<ByteArray> = withContext(Dispatchers.IO) {
+        runCatching {
+            val st = _uiState.value
+            val route = st.routes.find { it.id == waybill.routeId }
+            val vehicle = st.vehicles.find { it.vehicleId == waybill.vehicleId }
+            val vDetails = vehicle?.let { v ->
+                buildString {
+                    append(v.label)
+                    if (v.plateNumber.isNotBlank()) append(" · ").append(v.plateNumber)
+                }
+            }
+            val bos = ByteArrayOutputStream()
+            PdfExportWriter.writeWaybillPdf(
+                bos,
+                waybill,
+                route,
+                st.driverDisplayName,
+                vDetails
+            ).getOrThrow()
+            bos.toByteArray()
         }
     }
 }

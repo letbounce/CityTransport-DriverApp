@@ -5,6 +5,7 @@
 Той самий движок, що й https://overpass-turbo.eu/ (не браузер, а POST до /api/interpreter).
 
 Формат виходу сумісний із BusRouteGeoJsonParser та TripRouteAssetLoader.
+Після оновлення зупинок запустіть tools/annotate_stop_schedule_geojson.py, щоб записати planned_time у GeoJSON.
 Дані: © OpenStreetMap contributors, ODbL.
 """
 from __future__ import annotations
