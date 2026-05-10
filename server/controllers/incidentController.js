@@ -21,4 +21,13 @@ async function createIncident(req, res) {
   return res.status(201).json(incident);
 }
 
-module.exports = { createIncident };
+async function listIncidents(req, res) {
+  const limit = Math.min(parseInt(req.query.limit, 10) || 100, 300);
+  const incidents = await Incident.find({ driver_id: req.user.driver_id })
+    .sort({ reported_at: -1 })
+    .limit(limit)
+    .lean();
+  return res.json(incidents);
+}
+
+module.exports = { createIncident, listIncidents };

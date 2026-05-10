@@ -27,7 +27,8 @@ async function createWaybill(req, res) {
     route_number: route.route_number,
     status: "in_progress",
     started_at: new Date(),
-    vehicle_id: req.body.vehicle_id || "BUS-007"
+    vehicle_id: req.body.vehicle_id || "BUS-007",
+    notes: req.body.notes || ""
   });
 
   return res.status(201).json(waybill);
@@ -63,4 +64,57 @@ async function getActiveWaybill(req, res) {
   return res.json(active);
 }
 
-module.exports = { createWaybill, completeWaybill, getActiveWaybill };
+async function listWaybills(req, res) {
+  const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
+  const waybills = await Waybill.find({ driver_id: req.user.driver_id })
+    .sort({ created_at: -1 })
+    .limit(limit)
+    .lean();
+  return res.json(waybills);
+}
+
+async function getWaybillById(req, res) {
+  const waybill = await Waybill.findOne({
+    _id: req.params.id,
+    driver_id: req.user.driver_id
+  }).lean();
+  if (!waybill) {
+    return res.status(404).json({ message: "Waybill not found" });
+  }
+  return res.json(waybill);
+}
+
+async function updateWaybill(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ message: "Validation failed", errors: errors.array() });
+  }
+
+  const waybill = await Waybill.findOne({
+    _id: req.params.id,
+    driver_id: req.user.driver_id
+  });
+
+  if (!waybill) {
+    return res.status(404).json({ message: "Waybill not found" });
+  }
+
+  if (req.body.vehicle_id !== undefined) {
+    waybill.vehicle_id = req.body.vehicle_id;
+  }
+  if (req.body.notes !== undefined) {
+    waybill.notes = req.body.notes;
+  }
+
+  await waybill.save();
+  return res.json(waybill);
+}
+
+module.exports = {
+  createWaybill,
+  completeWaybill,
+  getActiveWaybill,
+  listWaybills,
+  getWaybillById,
+  updateWaybill
+};

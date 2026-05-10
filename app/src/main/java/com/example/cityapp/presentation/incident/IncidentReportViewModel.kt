@@ -7,11 +7,12 @@ import com.example.cityapp.domain.usecase.ReportIncidentUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class IncidentReportUiState(
-    val type: String = "breakdown",
-    val description: String = "",
+    val incidentType: IncidentApiType = IncidentApiType.BREAKDOWN,
+    val description: String = IncidentApiType.BREAKDOWN.templateUa(),
     val isSubmitting: Boolean = false,
     val submitted: Boolean = false,
     val error: String? = null
@@ -22,28 +23,43 @@ class IncidentReportViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(IncidentReportUiState())
     val uiState: StateFlow<IncidentReportUiState> = _uiState.asStateFlow()
 
-    fun onTypeChange(value: String) {
-        _uiState.value = _uiState.value.copy(type = value)
+    fun onIncidentTypeSelected(type: IncidentApiType) {
+        _uiState.update {
+            it.copy(
+                incidentType = type,
+                description = type.templateUa()
+            )
+        }
     }
 
     fun onDescriptionChange(value: String) {
-        _uiState.value = _uiState.value.copy(description = value)
+        _uiState.update { it.copy(description = value) }
+    }
+
+    fun applyTemplateForCurrentType() {
+        _uiState.update { it.copy(description = it.incidentType.templateUa()) }
     }
 
     fun submit(waybillId: String) {
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isSubmitting = true, error = null)
+            _uiState.update { it.copy(isSubmitting = true, error = null) }
+            val s = _uiState.value
             val result = reportIncidentUseCase(
                 waybillId = waybillId,
-                type = _uiState.value.type,
-                description = _uiState.value.description,
+                type = s.incidentType.apiKey,
+                description = s.description.trim(),
                 lat = 50.4501,
                 lng = 30.5234
             )
-            _uiState.value = if (result.isSuccess) {
-                _uiState.value.copy(isSubmitting = false, submitted = true)
-            } else {
-                _uiState.value.copy(isSubmitting = false, error = "Не вдалося відправити звіт")
+            _uiState.update {
+                if (result.isSuccess) {
+                    it.copy(isSubmitting = false, submitted = true)
+                } else {
+                    it.copy(
+                        isSubmitting = false,
+                        error = "Не вдалося відправити звіт. Перевірте тип і зв’язок із сервером."
+                    )
+                }
             }
         }
     }

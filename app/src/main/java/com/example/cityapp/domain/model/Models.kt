@@ -20,11 +20,32 @@ data class Route(
     val stops: List<Stop>
 )
 
+data class Vehicle(
+    val vehicleId: String,
+    val label: String,
+    val plateNumber: String = ""
+)
+
 data class Waybill(
     val id: String,
     val routeId: String,
     val routeNumber: String,
-    val status: String
+    val status: String,
+    val vehicleId: String = "BUS-007",
+    val notes: String = "",
+    val startedAt: String? = null,
+    val completedAt: String? = null
+)
+
+data class IncidentItem(
+    val id: String,
+    val waybillId: String,
+    val type: String,
+    val description: String,
+    val status: String,
+    val reportedAt: String?,
+    val lat: Double,
+    val lng: Double
 )
 
 data class AuthSession(

@@ -10,6 +10,7 @@ const routeRoutes = require("./routes/routeRoutes");
 const waybillRoutes = require("./routes/waybillRoutes");
 const telemetryRoutes = require("./routes/telemetryRoutes");
 const incidentRoutes = require("./routes/incidentRoutes");
+const vehicleRoutes = require("./routes/vehicleRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -26,6 +27,7 @@ app.use("/api/routes", requireAuth, routeRoutes);
 app.use("/api/waybills", requireAuth, waybillRoutes);
 app.use("/api/telemetry", requireAuth, telemetryRoutes);
 app.use("/api/incidents", requireAuth, incidentRoutes);
+app.use("/api/vehicles", requireAuth, vehicleRoutes);
 
 app.use((error, _req, res, _next) => {
   console.error(error);
