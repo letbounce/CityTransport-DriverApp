@@ -52,7 +52,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.AsyncImage
 import com.example.cityapp.presentation.common.WheelIntPickerRow
 import java.util.Calendar
 
@@ -306,11 +305,10 @@ fun IncidentEditScreen(
                     modifier = Modifier.fillMaxWidth().height(160.dp)
                 )
             } ?: state.serverPhotoUrl?.let { url ->
-                AsyncImage(
-                    model = url,
-                    contentDescription = null,
+                IncidentRemoteImage(
+                    url = url,
                     modifier = Modifier.fillMaxWidth().height(160.dp),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Fit
                 )
             }
 

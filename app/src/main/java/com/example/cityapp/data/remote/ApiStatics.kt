@@ -9,6 +9,7 @@ import com.example.cityapp.BuildConfig
 object ApiStatics {
     fun resolveMediaUrl(path: String?): String? {
         if (path.isNullOrBlank()) return null
+        if (path.startsWith("data:")) return path
         if (path.startsWith("http://") || path.startsWith("https://")) return path
         val base = BuildConfig.API_ORIGIN.trimEnd('/')
         val p = if (path.startsWith("/")) path else "/$path"

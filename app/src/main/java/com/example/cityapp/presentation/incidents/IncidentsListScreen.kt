@@ -53,8 +53,12 @@ import com.example.cityapp.presentation.common.ArchiveReasonOption
 import com.example.cityapp.presentation.export.sharePdfFile
 import com.example.cityapp.presentation.export.writePdfBytesToCache
 import com.example.cityapp.presentation.incident.IncidentApiType
-import coil.compose.AsyncImage
+import com.example.cityapp.presentation.incident.IncidentRemoteImage
 import kotlinx.coroutines.delay
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.ln
+import kotlin.math.tan
 import kotlinx.coroutines.launch
 
 private fun incidentTypeUa(api: String) = IncidentApiType.fromApi(api).labelUa
@@ -88,8 +92,14 @@ private fun formatIncidentForCopy(i: IncidentItem): String {
     }.trim()
 }
 
-private fun osmStaticMapUrl(lat: Double, lng: Double): String =
-    "https://staticmap.openstreetmap.de/staticmap.php?center=$lat,$lng&zoom=16&size=440x180&markers=$lat,$lng,red-pushpin"
+/** Один тайл OSM (staticmap.openstreetmap.de часто недоступний з пристрою). */
+private fun osmTilePreviewUrl(lat: Double, lng: Double, zoom: Int = 16): String {
+    val n = 1 shl zoom
+    val x = ((lng + 180.0) / 360.0 * n).toInt().coerceIn(0, n - 1)
+    val latRad = Math.toRadians(lat)
+    val y = ((1.0 - ln(tan(latRad) + 1.0 / cos(latRad)) / PI) / 2.0 * n).toInt().coerceIn(0, n - 1)
+    return "https://tile.openstreetmap.org/$zoom/$x/$y.png"
+}
 
 @Composable
 fun IncidentsListScreen(
@@ -145,9 +155,8 @@ fun IncidentsListScreen(
     photoViewerUrl?.let { url ->
         Dialog(onDismissRequest = { photoViewerUrl = null }) {
             Surface(shape = RoundedCornerShape(12.dp)) {
-                AsyncImage(
-                    model = url,
-                    contentDescription = null,
+                IncidentRemoteImage(
+                    url = url,
                     modifier = Modifier
                         .fillMaxWidth()
                         .heightIn(min = 120.dp, max = 480.dp),
@@ -368,11 +377,10 @@ private fun IncidentCard(
             val coordsOk = incident.lat != 0.0 || incident.lng != 0.0
             if (coordsOk) {
                 val mapUrl = remember(incident.lat, incident.lng) {
-                    osmStaticMapUrl(incident.lat, incident.lng)
+                    osmTilePreviewUrl(incident.lat, incident.lng)
                 }
-                AsyncImage(
-                    model = mapUrl,
-                    contentDescription = null,
+                IncidentRemoteImage(
+                    url = mapUrl,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(140.dp)
@@ -388,9 +396,8 @@ private fun IncidentCard(
                 )
             }
             incident.photoUrl?.let { url ->
-                AsyncImage(
-                    model = url,
-                    contentDescription = null,
+                IncidentRemoteImage(
+                    url = url,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(140.dp)
@@ -401,7 +408,7 @@ private fun IncidentCard(
                                 Modifier
                             }
                         ),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Fit
                 )
                 if (onPhotoClick != null) {
                     Text(
