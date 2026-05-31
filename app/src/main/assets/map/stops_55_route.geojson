@@ -1,0 +1,790 @@
+{
+  "type": "FeatureCollection",
+  "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+  "copyright": "Data © OpenStreetMap contributors, ODbL",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницька площа",
+        "name:uk": "Дарницька площа",
+        "osm_id": 1133673486,
+        "order_hint": 1,
+        "planned_time": "06:08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6276859,
+          50.4437408
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницька площа",
+        "name:uk": "Дарницька площа",
+        "osm_id": 1425217117,
+        "order_hint": 2,
+        "planned_time": "06:10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6275806,
+          50.4436343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницький універмаг",
+        "name:uk": "Дарницький універмаг",
+        "osm_id": 4910301571,
+        "order_hint": 3,
+        "planned_time": "06:13"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6232307,
+          50.4416934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дарницький універмаг",
+        "name:uk": "Дарницький універмаг",
+        "osm_id": 2237480941,
+        "order_hint": 4,
+        "planned_time": "06:15"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6231097,
+          50.4417432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житловий комплекс «Комфорт Таун»",
+        "name:uk": "Житловий комплекс «Комфорт Таун»",
+        "osm_id": 11020835345,
+        "order_hint": 5,
+        "planned_time": "06:17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6196815,
+          50.440613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Житловий комплекс «Комфорт Таун»",
+        "name:uk": "Житловий комплекс «Комфорт Таун»",
+        "osm_id": 2237480950,
+        "order_hint": 6,
+        "planned_time": "06:19"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.619628,
+          50.4407122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вулиця Тампере",
+        "name:uk": "вулиця Тампере",
+        "osm_id": 11020835344,
+        "order_hint": 7,
+        "planned_time": "06:21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.615749,
+          50.4394015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вулиця Тампере",
+        "name:uk": "вулиця Тампере",
+        "osm_id": 576684005,
+        "order_hint": 8,
+        "planned_time": "06:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6156908,
+          50.4394832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Березняки",
+        "name:uk": "м/н Березняки",
+        "osm_id": 2298600757,
+        "order_hint": 9,
+        "planned_time": "06:27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6058199,
+          50.4359958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Березняки",
+        "name:uk": "м/н Березняки",
+        "osm_id": 538205744,
+        "order_hint": 10,
+        "planned_time": "06:29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6057292,
+          50.4360643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Ігоря Шамо",
+        "name:uk": "бул. Ігоря Шамо",
+        "osm_id": 355203564,
+        "order_hint": 11,
+        "planned_time": "06:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6009263,
+          50.4339119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "бул. Ігоря Шамо",
+        "name:uk": "бульвар Ігоря Шамо",
+        "osm_id": 2237480967,
+        "order_hint": 12,
+        "planned_time": "06:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6008669,
+          50.4339828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Русанівка",
+        "name:uk": "м/н Русанівка",
+        "osm_id": 5782255132,
+        "order_hint": 13,
+        "planned_time": "06:37"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5960857,
+          50.4318554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "м/н Русанівка",
+        "name:uk": "м/н Русанівка",
+        "osm_id": 538262238,
+        "order_hint": 14,
+        "planned_time": "06:39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5960233,
+          50.4319271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "пл. Наводницька",
+        "name:uk": "пл. Наводницька",
+        "osm_id": 12180911726,
+        "order_hint": 15,
+        "planned_time": "06:51"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5615622,
+          50.4250568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "пл. Наводницька",
+        "name:uk": "пл. Наводницька",
+        "osm_id": 7147079889,
+        "order_hint": 16,
+        "planned_time": "06:53"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5616169,
+          50.425118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Старонаводницька",
+        "name:uk": "вул. Старонаводницька",
+        "osm_id": 2088367582,
+        "order_hint": 17,
+        "planned_time": "06:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.55919,
+          50.4259692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Старонаводницька",
+        "name:uk": "вул. Старонаводницька",
+        "osm_id": 538249443,
+        "order_hint": 18,
+        "planned_time": "06:57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5591418,
+          50.4260109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Редутний провулок",
+        "name:uk": "Редутний провулок",
+        "osm_id": 12180911725,
+        "order_hint": 19,
+        "planned_time": "06:59"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.554603,
+          50.4266425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Редутний провулок",
+        "name:uk": "Редутний провулок",
+        "osm_id": 7147082725,
+        "order_hint": 20,
+        "planned_time": "07:01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.554637,
+          50.4267379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Водоканал",
+        "name:uk": "Водоканал",
+        "osm_id": 12180911724,
+        "order_hint": 21,
+        "planned_time": "07:03"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.550425,
+          50.4280314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Водоканал",
+        "name:uk": "Водоканал",
+        "osm_id": 538249436,
+        "order_hint": 22,
+        "planned_time": "07:05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.550512,
+          50.4280874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вулиця Генерала Алмазова",
+        "name:uk": "Вулиця Генерала Алмазова",
+        "osm_id": 382926755,
+        "order_hint": 23,
+        "planned_time": "07:09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5424581,
+          50.4302028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вулиця Генерала Алмазова",
+        "name:uk": "Вулиця Генерала Алмазова",
+        "osm_id": 444344238,
+        "order_hint": 24,
+        "planned_time": "07:11"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5425822,
+          50.4301672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Панаса Мирного",
+        "name:uk": "вул. Панаса Мирного",
+        "osm_id": 8956679490,
+        "order_hint": 25,
+        "planned_time": "07:13"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5450287,
+          50.4327327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Панаса Мирного",
+        "name:uk": "вул. Панаса Мирного",
+        "osm_id": 332528200,
+        "order_hint": 26,
+        "planned_time": "07:15"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5452205,
+          50.432719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Центр надання адміністративних послуг Печерського району",
+        "name:uk": "Центр надання адміністративних послуг Печерського району",
+        "osm_id": 256884857,
+        "order_hint": 27,
+        "planned_time": "07:18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5459948,
+          50.436673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Центр надання адміністративних послуг Печерського району",
+        "name:uk": "Центр надання адміністративних послуг Печерського району",
+        "osm_id": 7141724963,
+        "order_hint": 28,
+        "planned_time": "07:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5461002,
+          50.436626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Площа Слави",
+        "name:uk": "Площа Слави",
+        "osm_id": 12092320853,
+        "order_hint": 29,
+        "planned_time": "07:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5495775,
+          50.4410342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Площа Слави",
+        "name:uk": "Площа Слави",
+        "osm_id": 3759083646,
+        "order_hint": 30,
+        "planned_time": "07:25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5496857,
+          50.441104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Арсенальна площа",
+        "name:uk": "Арсенальна площа",
+        "osm_id": 12092320854,
+        "order_hint": 31,
+        "planned_time": "07:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5461131,
+          50.4434133
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Арсенальна площа",
+        "name:uk": "Арсенальна площа",
+        "osm_id": 3759083647,
+        "order_hint": 32,
+        "planned_time": "07:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.546205,
+          50.443471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Станція метро «Арсенальна»",
+        "name:uk": "Станція метро «Арсенальна»",
+        "osm_id": 3346880470,
+        "order_hint": 33,
+        "planned_time": "07:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5428067,
+          50.4440032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Станція метро «Арсенальна»",
+        "name:uk": "Станція метро «Арсенальна»",
+        "osm_id": 3346880469,
+        "order_hint": 34,
+        "planned_time": "07:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.542823,
+          50.4440514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кріпосний провулок",
+        "name:uk": "Кріпосний провулок",
+        "osm_id": 3534376707,
+        "order_hint": 35,
+        "planned_time": "07:36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5390837,
+          50.4447553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кріпосний провулок",
+        "name:uk": "Кріпосний провулок",
+        "osm_id": 4191917278,
+        "order_hint": 36,
+        "planned_time": "07:38"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5390114,
+          50.4447796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Юний технік",
+        "name:uk": "Юний технік",
+        "osm_id": 12090408507,
+        "order_hint": 37,
+        "planned_time": "07:41"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5383325,
+          50.4406334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Юний технік",
+        "name:uk": "Юний технік",
+        "osm_id": 384741945,
+        "order_hint": 38,
+        "planned_time": "07:43"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5382016,
+          50.4406248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кловський узвіз",
+        "name:uk": "Кловський узвіз",
+        "osm_id": 12090377078,
+        "order_hint": 39,
+        "planned_time": "07:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.537205,
+          50.4384387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кловський узвіз",
+        "name:uk": "Кловський узвіз",
+        "osm_id": 6464395960,
+        "order_hint": 40,
+        "planned_time": "07:47"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.537157,
+          50.4384706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. Кловська",
+        "name:uk": "ст. м. Кловська",
+        "osm_id": 12090408509,
+        "order_hint": 41,
+        "planned_time": "07:50"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5310411,
+          50.4371198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. Кловська",
+        "name:uk": "ст. м. Кловська",
+        "osm_id": 6464395959,
+        "order_hint": 42,
+        "planned_time": "07:52"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5310606,
+          50.4372016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Мечникова",
+        "name:uk": "Вул. Мечникова",
+        "osm_id": 12090377075,
+        "order_hint": 43,
+        "planned_time": "07:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5262083,
+          50.4384661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Мечникова",
+        "name:uk": "Вул. Мечникова",
+        "osm_id": 6464230411,
+        "order_hint": 44,
+        "planned_time": "07:57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.526286,
+          50.4385082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. «Палац Спорту»",
+        "name:uk": "ст. м. «Палац Спорту»",
+        "osm_id": 12180866497,
+        "order_hint": 45,
+        "planned_time": "07:59"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5214868,
+          50.4385773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. «Палац Спорту»",
+        "name:uk": "ст. м. «Палац Спорту»",
+        "osm_id": 3278435192,
+        "order_hint": 46,
+        "planned_time": "08:01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5213708,
+          50.4386582
+        ]
+      }
+    }
+  ],
+  "schedule_note": "planned_time: illustrative cumulative schedule from distances · not official Kyivpastrans timetable"
+}

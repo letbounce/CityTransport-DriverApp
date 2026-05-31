@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">CityApp</string>
+    <string name="app_name">RoutePulse</string>
+    <string name="tracking_notification_text">Рейс активний, GPS відстеження увімкнено</string>
+    <string name="tracking_channel_name">RoutePulse · GPS</string>
 </resources>

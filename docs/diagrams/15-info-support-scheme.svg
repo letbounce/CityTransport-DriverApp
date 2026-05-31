@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="880" viewBox="0 0 1280 880"
+     font-family="Segoe UI, Calibri, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="#2c3958"/>
+    </marker>
+  </defs>
+
+  <text x="640" y="22" text-anchor="middle" font-size="14" font-style="italic" fill="#5a6b8a">Рис. 3.3. Загальна схема інформаційного забезпечення інформаційної підсистеми «Мобільний термінал водія» (за РД 50-34.698-90)</text>
+
+  <!-- =================== ROW 1: Джерела інформації =================== -->
+  <text x="510" y="62" text-anchor="middle" font-size="12" font-weight="bold" font-style="italic" fill="#5a6b8a">— Джерела інформації —</text>
+
+  <rect x="30" y="70" width="300" height="80" fill="white" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="180" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">Водії АТП (~150 осіб)</text>
+  <text x="180" y="112" text-anchor="middle" font-size="11" fill="#2c3958">мобільні Android-пристрої з</text>
+  <text x="180" y="128" text-anchor="middle" font-size="11" fill="#2c3958">встановленим RoutePulse</text>
+  <text x="180" y="143" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">логіни, рейси, інциденти, фото, GPS</text>
+
+  <rect x="360" y="70" width="300" height="80" fill="white" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="510" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">Адміністратор / Диспетчер</text>
+  <text x="510" y="112" text-anchor="middle" font-size="11" fill="#2c3958">робоча станція (Windows / Linux)</text>
+  <text x="510" y="128" text-anchor="middle" font-size="11" fill="#2c3958">+ MongoDB Compass / REST tools</text>
+  <text x="510" y="143" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">маршрути, водії, ТЗ, seed-дані</text>
+
+  <rect x="690" y="70" width="320" height="80" fill="white" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="850" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">Зовнішні дані</text>
+  <text x="850" y="112" text-anchor="middle" font-size="11" fill="#2c3958">Супутникова GPS-навігація</text>
+  <text x="850" y="128" text-anchor="middle" font-size="11" fill="#2c3958">+ OpenStreetMap tile-server</text>
+  <text x="850" y="143" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">геопозиціонування, картографія</text>
+
+  <!-- Arrows row1 → row2 -->
+  <line x1="180" y1="150" x2="180" y2="178" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="510" y1="150" x2="510" y2="178" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="850" y1="150" x2="850" y2="178" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- =================== ROW 2: Засоби збору / введення інформації =================== -->
+  <rect x="30" y="180" width="300" height="80" fill="#fdf6e3" stroke="#b89a5c" stroke-width="1.4"/>
+  <text x="180" y="200" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Мобільні екрани введення</text>
+  <text x="180" y="218" text-anchor="middle" font-size="11" fill="#2c3958">LoginScreen, RouteDashboardScreen,</text>
+  <text x="180" y="233" text-anchor="middle" font-size="11" fill="#2c3958">IncidentReportScreen + Camera</text>
+  <text x="180" y="251" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">Jetpack Compose · ACTION_IMAGE_CAPTURE</text>
+
+  <rect x="360" y="180" width="300" height="80" fill="#fdf6e3" stroke="#b89a5c" stroke-width="1.4"/>
+  <text x="510" y="200" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Адмін-інструменти</text>
+  <text x="510" y="218" text-anchor="middle" font-size="11" fill="#2c3958">npm run seed (підготовка даних),</text>
+  <text x="510" y="233" text-anchor="middle" font-size="11" fill="#2c3958">smoke-curl.sh, MongoDB Compass</text>
+  <text x="510" y="251" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">Node.js · CLI · REST-клієнти</text>
+
+  <rect x="690" y="180" width="320" height="80" fill="#fdf6e3" stroke="#b89a5c" stroke-width="1.4"/>
+  <text x="850" y="200" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">FusedLocationProvider · GeoJSON</text>
+  <text x="850" y="218" text-anchor="middle" font-size="11" fill="#2c3958">LocationTrackingService (FGS),</text>
+  <text x="850" y="233" text-anchor="middle" font-size="11" fill="#2c3958">OSMdroid, TripRouteAssetLoader</text>
+  <text x="850" y="251" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">Google Play Services · Room (LocalQueue)</text>
+
+  <!-- Arrows row2 → row3 -->
+  <line x1="180" y1="260" x2="180" y2="290" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="510" y1="260" x2="510" y2="290" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="850" y1="260" x2="850" y2="290" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- =================== ROW 3: Перетворення / валідація =================== -->
+  <text x="510" y="306" text-anchor="middle" font-size="12" font-weight="bold" font-style="italic" fill="#5a6b8a">— Засоби перетворення та контролю інформації —</text>
+
+  <rect x="30" y="316" width="300" height="62" fill="#dfeaf7" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="180" y="336" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">Клієнтська валідація + кодування</text>
+  <text x="180" y="352" text-anchor="middle" font-size="11" fill="#2c3958">trim, обов'язкові поля, Bitmap → JPEG → Base64</text>
+  <text x="180" y="368" text-anchor="middle" font-size="11" fill="#2c3958">DTO → JSON serialization (Gson)</text>
+
+  <rect x="360" y="316" width="300" height="62" fill="#dfeaf7" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="510" y="336" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">Серверна валідація + автентифікація</text>
+  <text x="510" y="352" text-anchor="middle" font-size="11" fill="#2c3958">express-validator, requireAuth middleware</text>
+  <text x="510" y="368" text-anchor="middle" font-size="11" fill="#2c3958">JWT verify (HS256, 8h), bcrypt.compare</text>
+
+  <rect x="690" y="316" width="320" height="62" fill="#dfeaf7" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="850" y="336" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">Класифікація та кодування</text>
+  <text x="850" y="352" text-anchor="middle" font-size="11" fill="#2c3958">формати ID (DRV-NNNN, KP-NNNN, ObjectId)</text>
+  <text x="850" y="368" text-anchor="middle" font-size="11" fill="#2c3958">enum-значення (status, type, reason_code)</text>
+
+  <!-- Arrows row3 → row4 -->
+  <line x1="180" y1="378" x2="180" y2="410" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="510" y1="378" x2="510" y2="410" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="850" y1="378" x2="850" y2="410" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- =================== ROW 4: Сховище даних (центральне) =================== -->
+  <rect x="30" y="412" width="980" height="180" fill="#f0f6ec" stroke="#7a9a7a" stroke-width="1.8"/>
+  <text x="520" y="434" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">Центральне інформаційне сховище — MongoDB Server (database: routepulse_db)</text>
+
+  <line x1="50" y1="445" x2="990" y2="445" stroke="#7a9a7a" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Collections boxes -->
+  <g transform="translate(50,455)">
+    <rect width="140" height="62" fill="white" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="70" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">drivers</text>
+    <text x="70" y="36" text-anchor="middle" font-size="10" fill="#5a6b8a">облік водіїв,</text>
+    <text x="70" y="50" text-anchor="middle" font-size="10" fill="#5a6b8a">password_hash, role</text>
+  </g>
+
+  <g transform="translate(200,455)">
+    <rect width="140" height="62" fill="white" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="70" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">vehicles</text>
+    <text x="70" y="36" text-anchor="middle" font-size="10" fill="#5a6b8a">рухомий склад,</text>
+    <text x="70" y="50" text-anchor="middle" font-size="10" fill="#5a6b8a">plate_number</text>
+  </g>
+
+  <g transform="translate(350,455)">
+    <rect width="140" height="62" fill="white" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="70" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">routes</text>
+    <text x="70" y="36" text-anchor="middle" font-size="10" fill="#5a6b8a">маршрути +</text>
+    <text x="70" y="50" text-anchor="middle" font-size="10" fill="#5a6b8a">embedded stops[ ]</text>
+  </g>
+
+  <g transform="translate(500,455)">
+    <rect width="140" height="62" fill="white" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="70" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">waybills</text>
+    <text x="70" y="36" text-anchor="middle" font-size="10" fill="#5a6b8a">електронні</text>
+    <text x="70" y="50" text-anchor="middle" font-size="10" fill="#5a6b8a">дорожні листи</text>
+  </g>
+
+  <g transform="translate(650,455)">
+    <rect width="140" height="62" fill="white" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="70" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">incidents</text>
+    <text x="70" y="36" text-anchor="middle" font-size="10" fill="#5a6b8a">журнал інцидентів,</text>
+    <text x="70" y="50" text-anchor="middle" font-size="10" fill="#5a6b8a">version_history</text>
+  </g>
+
+  <g transform="translate(800,455)">
+    <rect width="180" height="62" fill="white" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="90" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">telemetry</text>
+    <text x="90" y="36" text-anchor="middle" font-size="10" fill="#5a6b8a">бакетні масиви</text>
+    <text x="90" y="50" text-anchor="middle" font-size="10" fill="#5a6b8a">локацій (locations[ ])</text>
+  </g>
+
+  <!-- Sub-storage -->
+  <line x1="50" y1="528" x2="990" y2="528" stroke="#7a9a7a" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="520" y="544" text-anchor="middle" font-size="11" font-style="italic" fill="#3a6a3a">Додаткові носії: FileSystem (/server/uploads/*.jpg — фото інцидентів)  ·  Client-side: Room LocalQueue (offline-черга), EncryptedSharedPreferences (JWT-токен)</text>
+  <text x="520" y="578" text-anchor="middle" font-size="10" font-style="italic" fill="#7a4a3a">Методи контролю: схеми Mongoose (required, enum), TTL для токенів, мережеві ретраї WorkManager, soft-delete (deleted_at + deletion_reason_code), version_history для інцидентів</text>
+
+  <!-- Arrows row4 → row5 -->
+  <line x1="180" y1="592" x2="180" y2="620" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="510" y1="592" x2="510" y2="620" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="850" y1="592" x2="850" y2="620" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- =================== ROW 5: Видача даних =================== -->
+  <text x="510" y="636" text-anchor="middle" font-size="12" font-weight="bold" font-style="italic" fill="#5a6b8a">— Засоби видачі інформації —</text>
+
+  <rect x="30" y="646" width="300" height="62" fill="#fdf6e3" stroke="#b89a5c" stroke-width="1.4"/>
+  <text x="180" y="666" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">REST API endpoints</text>
+  <text x="180" y="682" text-anchor="middle" font-size="11" fill="#2c3958">GET /api/waybills, /api/incidents,</text>
+  <text x="180" y="698" text-anchor="middle" font-size="11" fill="#2c3958">/api/map/live-trips, ...</text>
+
+  <rect x="360" y="646" width="300" height="62" fill="#fdf6e3" stroke="#b89a5c" stroke-width="1.4"/>
+  <text x="510" y="666" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">PDF-експортер</text>
+  <text x="510" y="682" text-anchor="middle" font-size="11" fill="#2c3958">PdfExportWriter (Android),</text>
+  <text x="510" y="698" text-anchor="middle" font-size="11" fill="#2c3958">SharePdf (Intent → ACTION_SEND)</text>
+
+  <rect x="690" y="646" width="320" height="62" fill="#fdf6e3" stroke="#b89a5c" stroke-width="1.4"/>
+  <text x="850" y="666" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3958">Live-карта + журнал інцидентів</text>
+  <text x="850" y="682" text-anchor="middle" font-size="11" fill="#2c3958">TripMapHubScreen, IncidentsListScreen</text>
+  <text x="850" y="698" text-anchor="middle" font-size="11" fill="#2c3958">(OSMdroid + Compose UI)</text>
+
+  <!-- Arrows row5 → row6 -->
+  <line x1="180" y1="708" x2="180" y2="738" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="510" y1="708" x2="510" y2="738" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="850" y1="708" x2="850" y2="738" stroke="#2c3958" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- =================== ROW 6: Споживачі інформації =================== -->
+  <rect x="30" y="740" width="300" height="70" fill="white" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="180" y="760" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Диспетчер-маршрутник /</text>
+  <text x="180" y="776" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Старший диспетчер зміни</text>
+  <text x="180" y="797" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">моніторинг рейсів, координація</text>
+
+  <rect x="360" y="740" width="300" height="70" fill="white" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="510" y="760" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Аналітик /</text>
+  <text x="510" y="776" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Бухгалтерія</text>
+  <text x="510" y="797" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">KPI, телеметрія, PDF-звіт за зміну</text>
+
+  <rect x="690" y="740" width="320" height="70" fill="white" stroke="#5a6b8a" stroke-width="1.4"/>
+  <text x="850" y="760" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Диспетчер з безпеки руху /</text>
+  <text x="850" y="776" text-anchor="middle" font-size="12" font-weight="bold" fill="#2c3958">Сектор обслуговування ТЗ</text>
+  <text x="850" y="797" text-anchor="middle" font-size="10" font-style="italic" fill="#5a6b8a">опрацювання інцидентів, ДТП, поломки</text>
+
+  <!-- =================== SIDE PANEL: Класифікатори =================== -->
+  <rect x="1030" y="70" width="240" height="522" fill="#fdfaef" stroke="#b89a5c" stroke-width="1.4" stroke-dasharray="2,2"/>
+  <text x="1150" y="92" text-anchor="middle" font-size="12" font-weight="bold" font-style="italic" fill="#5a4a2a">Класифікатори та коди</text>
+
+  <line x1="1040" y1="100" x2="1260" y2="100" stroke="#b89a5c" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+  <text x="1040" y="120" font-size="11" font-weight="bold" fill="#2c3958">Ідентифікатори:</text>
+  <text x="1044" y="138" font-size="10" fill="#2c3958">— driver_id: «DRV-NNNN»</text>
+  <text x="1044" y="154" font-size="10" fill="#2c3958">— vehicle_id: «KP-NNNN»</text>
+  <text x="1044" y="170" font-size="10" fill="#2c3958">— ObjectId: 24-hex (BSON)</text>
+
+  <line x1="1040" y1="184" x2="1260" y2="184" stroke="#b89a5c" stroke-width="0.6" stroke-dasharray="2,2"/>
+
+  <text x="1040" y="202" font-size="11" font-weight="bold" fill="#2c3958">waybill.status:</text>
+  <text x="1044" y="218" font-size="10" fill="#2c3958">— assigned</text>
+  <text x="1044" y="232" font-size="10" fill="#2c3958">— in_progress</text>
+  <text x="1044" y="246" font-size="10" fill="#2c3958">— completed</text>
+  <text x="1044" y="260" font-size="10" fill="#2c3958">— cancelled</text>
+
+  <line x1="1040" y1="272" x2="1260" y2="272" stroke="#b89a5c" stroke-width="0.6" stroke-dasharray="2,2"/>
+
+  <text x="1040" y="290" font-size="11" font-weight="bold" fill="#2c3958">incident.type:</text>
+  <text x="1044" y="306" font-size="10" fill="#2c3958">— accident (ДТП)</text>
+  <text x="1044" y="320" font-size="10" fill="#2c3958">— breakdown (поломка)</text>
+  <text x="1044" y="334" font-size="10" fill="#2c3958">— traffic_jam (затор)</text>
+  <text x="1044" y="348" font-size="10" fill="#2c3958">— other (інше)</text>
+
+  <line x1="1040" y1="360" x2="1260" y2="360" stroke="#b89a5c" stroke-width="0.6" stroke-dasharray="2,2"/>
+
+  <text x="1040" y="378" font-size="11" font-weight="bold" fill="#2c3958">incident.status:</text>
+  <text x="1044" y="394" font-size="10" fill="#2c3958">— open / resolved / completed</text>
+
+  <line x1="1040" y1="406" x2="1260" y2="406" stroke="#b89a5c" stroke-width="0.6" stroke-dasharray="2,2"/>
+
+  <text x="1040" y="424" font-size="11" font-weight="bold" fill="#2c3958">archive_reason_code:</text>
+  <text x="1044" y="440" font-size="10" fill="#2c3958">— error (помилка вводу)</text>
+  <text x="1044" y="454" font-size="10" fill="#2c3958">— duplicate (дублікат)</text>
+  <text x="1044" y="468" font-size="10" fill="#2c3958">— wrong_data (хибні дані)</text>
+  <text x="1044" y="482" font-size="10" fill="#2c3958">— equipment_issue (тех. збій)</text>
+  <text x="1044" y="496" font-size="10" fill="#2c3958">— other</text>
+
+  <line x1="1040" y1="508" x2="1260" y2="508" stroke="#b89a5c" stroke-width="0.6" stroke-dasharray="2,2"/>
+
+  <text x="1040" y="526" font-size="11" font-weight="bold" fill="#2c3958">driver.role:</text>
+  <text x="1044" y="542" font-size="10" fill="#2c3958">— driver (за замовч.)</text>
+  <text x="1044" y="556" font-size="10" fill="#2c3958">— admin, dispatcher</text>
+
+  <text x="1040" y="582" font-size="10" font-style="italic" fill="#5a4a2a">Усі enum-значення задані</text>
+  <text x="1040" y="596" font-size="10" font-style="italic" fill="#5a4a2a">валідаторами Mongoose-схем.</text>
+
+  <!-- =================== Bottom: Methods of control =================== -->
+  <rect x="30" y="830" width="1240" height="40" fill="#fffce8" stroke="#b89a5c" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="40" y="850" font-size="11" font-weight="bold" font-style="italic" fill="#5a4a2a">Методи контролю інформації:</text>
+  <text x="40" y="864" font-size="10" font-style="italic" fill="#5a4a2a">HTTPS (TLS) на транспортному рівні · JWT (HS256, TTL 8 год) · bcrypt cost 10 для паролів · Mongoose validators (required, enum, type) · soft-delete з фіксацією reason_code · version_history для редагування інцидентів · мережеві retry-механізми (WorkManager exponential backoff)</text>
+</svg>

@@ -1,0 +1,24 @@
+const mongoose = require("mongoose");
+
+const waybillSchema = new mongoose.Schema(
+  {
+    driver_id: { type: String, required: true, index: true },
+    route_id: { type: mongoose.Schema.Types.ObjectId, ref: "Route", required: true },
+    route_number: { type: String, required: true },
+    status: {
+      type: String,
+      enum: ["assigned", "in_progress", "completed", "cancelled"],
+      default: "in_progress"
+    },
+    started_at: { type: Date, default: Date.now },
+    completed_at: { type: Date, default: null },
+    vehicle_id: { type: String, default: "KP-3204" },
+    notes: { type: String, default: "" },
+    deleted_at: { type: Date, default: null },
+    deletion_reason_code: { type: String, default: null },
+    deletion_reason_note: { type: String, default: null }
+  },
+  { timestamps: { createdAt: "created_at", updatedAt: false } }
+);
+
+module.exports = mongoose.model("Waybill", waybillSchema);

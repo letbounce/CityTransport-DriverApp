@@ -1,0 +1,24 @@
+﻿python : Traceback (most recent call last):
+At C:\Users\letbounce\AppData\Local\Temp\ps-script-9798c346-9a55-4f77-9c11-53aa63ec7f99.ps1:84 char:1
++ python -c "
++ ~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<string>", line 24, in <module>
+    print(line[:120])
+    ~~~~~^^^^^^^^^^^^
+  File "C:\Users\letbounce\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1251.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2033' in position 91: character maps to <undefined>
+paras 409
+images in rels 0
+╨шёєэюъ 3.3 Ч ─рЄрыюу│ўэр ьюфхы№ срчш фрэшї (Ї│чшўэр ёїхьр ъюыхъЎ│щ MongoDB)
+╩юэЄЁюы№эшщ яЁшъырф эряютэхээ  ┴─ тшъюэє║Є№ё  ёъЁшяЄюь server/scripts/seed.js: ёЄтюЁ■■Є№ё  ЄхёЄют│ тюф│┐ (чюъЁхьр DRV-10
+3.2. ╥хїэ│ўэх чрсхчяхўхээ 
+╟руры№э│ яюыюцхээ  Єр ёїхьр ртЄюьрЄшчрЎ│┐. ╧│фёшёЄхьр RoutePulse ЇєэъЎ│юэє║ чр рЁї│ЄхъЄєЁю■ ъы│║эЄЦёхЁтхЁ: ьюс│ы№э│ ЄхЁь
+╨шёєэюъ 3.4 Ч ╟руры№эр ёїхьр ртЄюьрЄшчрЎ│┐ (тчр║ьюф│  Android ╖ API-ёхЁтхЁ ╖ MongoDB)
+═р Ёшёєэъє 3.4 яюърчрэю ЄЁш Ё│тэ│: mobile tier (Compose UI, ViewModels, Retrofit, Room, FGS, WorkManager), application s
+╤ЄЁєъЄєЁр ъюьяыхъёє Єхїэ│ўэшї чрёюс│т. ╩юьяыхъё Єхїэ│ўэшї чрёюс│т (╩╥╟) тъы■ўр║ ёхЁтхЁэє │эЇЁрёЄЁєъЄєЁє, └╨╠ фшёяхЄўхЁё№
+╨шёєэюъ 3.5 Ч ╤ЄЁєъЄєЁр ъюьяыхъёє Єхїэ│ўэшї чрёюс│т (╩╥╟) │эЇюЁьрЎ│щэю┐ я│фёшёЄхьш

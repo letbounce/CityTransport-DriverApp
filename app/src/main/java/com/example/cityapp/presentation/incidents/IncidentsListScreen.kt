@@ -1,0 +1,447 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
+package com.example.cityapp.presentation.incidents
+
+import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.cityapp.domain.model.IncidentItem
+import com.example.cityapp.presentation.common.AppButtonShape
+import com.example.cityapp.presentation.common.AppCardShape
+import com.example.cityapp.presentation.common.ArchiveReasonDialog
+import com.example.cityapp.presentation.common.ArchiveReasonOption
+import com.example.cityapp.presentation.export.sharePdfFile
+import com.example.cityapp.presentation.export.writePdfBytesToCache
+import com.example.cityapp.presentation.incident.IncidentApiType
+import com.example.cityapp.presentation.incident.IncidentRemoteImage
+import kotlinx.coroutines.delay
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.ln
+import kotlin.math.tan
+import kotlinx.coroutines.launch
+
+private fun incidentTypeUa(api: String) = IncidentApiType.fromApi(api).labelUa
+
+private fun incidentStatusUa(status: String): String = when (status) {
+    "open" -> "Відкрито"
+    "resolved" -> "Закрито"
+    "completed" -> "Завершено"
+    else -> status
+}
+
+private fun formatIncidentForCopy(i: IncidentItem): String {
+    val reason = i.deletionReasonCode?.let { code ->
+        ArchiveReasonOption.entries.find { it.code == code }?.labelUa ?: code
+    }
+    return buildString {
+        appendLine("Інцидент ${incidentTypeUa(i.type)}")
+        appendLine("Статус: ${incidentStatusUa(i.status)}")
+        if (i.isModified) appendLine("Змінений (є версії в БД)")
+        appendLine("ID: ${i.id}")
+        appendLine("Дорожній лист: ${i.waybillId}")
+        i.reportedAt?.let { appendLine("Час події: $it") }
+        if (i.stopLabel.isNotBlank()) appendLine("Зупинка: ${i.stopLabel}")
+        appendLine("Можна рухатися самостійно: ${if (i.canMoveIndependently) "так" else "ні"}")
+        appendLine("Опис: ${i.description}")
+        appendLine("Координати: ${"%.5f".format(i.lat)}, ${"%.5f".format(i.lng)}")
+        i.photoUrl?.let { appendLine("Фото: $it") }
+        i.deletedAt?.let { appendLine("Архівовано: $it") }
+        reason?.let { appendLine("Причина архіву: $it") }
+        i.deletionReasonNote?.takeIf { it.isNotBlank() }?.let { appendLine("Примітка: $it") }
+    }.trim()
+}
+
+/** Один тайл OSM (staticmap.openstreetmap.de часто недоступний з пристрою). */
+private fun osmTilePreviewUrl(lat: Double, lng: Double, zoom: Int = 16): String {
+    val n = 1 shl zoom
+    val x = ((lng + 180.0) / 360.0 * n).toInt().coerceIn(0, n - 1)
+    val latRad = Math.toRadians(lat)
+    val y = ((1.0 - ln(tan(latRad) + 1.0 / cos(latRad)) / PI) / 2.0 * n).toInt().coerceIn(0, n - 1)
+    return "https://tile.openstreetmap.org/$zoom/$x/$y.png"
+}
+
+@Composable
+fun IncidentsListScreen(
+    onBack: () -> Unit,
+    onNavigateHome: () -> Unit,
+    onEditIncident: (String) -> Unit,
+    viewModel: IncidentsListViewModel = viewModel()
+) {
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val clipboard = LocalClipboardManager.current
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    fun exportIncidentPdf(incident: IncidentItem) {
+        scope.launch {
+            viewModel.buildIncidentPdf(incident).fold(
+                onSuccess = { bytes ->
+                    val safeName = incident.id.replace(Regex("[^a-zA-Z0-9_-]+"), "_")
+                    val file = writePdfBytesToCache(context, "incident_$safeName.pdf", bytes)
+                    sharePdfFile(context, file, "Поділитися звітом (PDF)")
+                    Toast.makeText(context, "PDF сформовано", Toast.LENGTH_SHORT).show()
+                },
+                onFailure = {
+                    Toast.makeText(context, "Не вдалося сформувати PDF", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
+    }
+    var archiveIncidentTarget by remember { mutableStateOf<IncidentItem?>(null) }
+    var copyIncidentTarget by remember { mutableStateOf<IncidentItem?>(null) }
+    var photoViewerUrl by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(Unit) { viewModel.refresh() }
+
+    LaunchedEffect(state.feedbackMessage) {
+        if (state.feedbackMessage != null) {
+            delay(2800)
+            viewModel.consumeFeedback()
+        }
+    }
+
+    archiveIncidentTarget?.let { target ->
+        ArchiveReasonDialog(
+            title = "Архівувати інцидент?",
+            confirmLabel = "Архівувати",
+            onDismiss = { archiveIncidentTarget = null },
+            onConfirm = { code, note ->
+                viewModel.archiveIncident(target.id, code, note)
+                archiveIncidentTarget = null
+            }
+        )
+    }
+
+    photoViewerUrl?.let { url ->
+        Dialog(onDismissRequest = { photoViewerUrl = null }) {
+            Surface(shape = RoundedCornerShape(12.dp)) {
+                IncidentRemoteImage(
+                    url = url,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 120.dp, max = 480.dp),
+                    contentScale = ContentScale.Fit
+                )
+            }
+        }
+    }
+
+    copyIncidentTarget?.let { inc ->
+        AlertDialog(
+            onDismissRequest = { copyIncidentTarget = null },
+            title = { Text("Копіювати запис?") },
+            text = { Text("Текст інциденту буде в буфері обміну.") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        clipboard.setText(AnnotatedString(formatIncidentForCopy(inc)))
+                        Toast.makeText(context, "Скопійовано", Toast.LENGTH_SHORT).show()
+                        copyIncidentTarget = null
+                    }
+                ) {
+                    Text("Копіювати")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { copyIncidentTarget = null }) {
+                    Text("Скасувати")
+                }
+            }
+        )
+    }
+
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
+        topBar = {
+            TopAppBar(
+                title = { Text("Журнал інцидентів") },
+                navigationIcon = {
+                    TextButton(onClick = onBack) { Text("Назад") }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                )
+            )
+        },
+        bottomBar = {
+            OutlinedButton(
+                onClick = onNavigateHome,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                    .height(54.dp),
+                shape = AppButtonShape,
+                border = BorderStroke(
+                    1.dp,
+                    MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
+                )
+            ) {
+                Text("На головне меню")
+            }
+        }
+    ) { innerPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            item {
+                Text(
+                    text = "Лише ваші записи.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                )
+            }
+
+            state.feedbackMessage?.let { msg ->
+                item {
+                    Card(
+                        shape = AppCardShape,
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer
+                        ),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(msg, Modifier.padding(12.dp))
+                    }
+                }
+            }
+
+            if (state.error != null) {
+                item { Text(state.error!!, color = MaterialTheme.colorScheme.error) }
+            }
+
+            item {
+                Text("Активні", style = MaterialTheme.typography.titleMedium)
+            }
+
+            items(state.incidents, key = { it.id }) { incident ->
+                IncidentCard(
+                    incident = incident,
+                    isArchived = false,
+                    onArchivedClick = null,
+                    onRequestArchive = { archiveIncidentTarget = incident },
+                    onEdit = { onEditIncident(incident.id) },
+                    onPhotoClick = { photoViewerUrl = it },
+                    onExportPdf = { exportIncidentPdf(incident) }
+                )
+            }
+
+            item {
+                Spacer(Modifier.height(8.dp))
+                Text("Неактивні (архів)", style = MaterialTheme.typography.titleMedium)
+                Text(
+                    "Натисніть картку, щоб скопіювати дані.",
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
+                )
+            }
+
+            if (state.archivedIncidents.isEmpty()) {
+                item {
+                    Text(
+                        "Архів порожній",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            } else {
+                items(state.archivedIncidents, key = { "arch_${it.id}" }) { incident ->
+                    IncidentCard(
+                        incident = incident,
+                        isArchived = true,
+                        onArchivedClick = { copyIncidentTarget = incident },
+                        onRequestArchive = null,
+                        onEdit = null,
+                        onPhotoClick = { photoViewerUrl = it },
+                        onExportPdf = { exportIncidentPdf(incident) }
+                    )
+                }
+            }
+
+            item { Spacer(Modifier.height(24.dp)) }
+        }
+    }
+}
+
+@Composable
+private fun IncidentCard(
+    incident: IncidentItem,
+    isArchived: Boolean,
+    onArchivedClick: (() -> Unit)?,
+    onRequestArchive: (() -> Unit)?,
+    onEdit: (() -> Unit)?,
+    onPhotoClick: ((String) -> Unit)? = null,
+    onExportPdf: () -> Unit
+) {
+    val mutedColors = CardDefaults.cardColors(
+        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.82f),
+        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+    )
+    val normalColors = CardDefaults.cardColors()
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(
+                if (isArchived && onArchivedClick != null) {
+                    Modifier.clickable(onClick = onArchivedClick)
+                } else {
+                    Modifier
+                }
+            ),
+        shape = AppCardShape,
+        elevation = CardDefaults.cardElevation(defaultElevation = if (isArchived) 2.dp else 5.dp),
+        colors = if (isArchived) mutedColors else normalColors
+    ) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(
+                "${incidentTypeUa(incident.type)} · ${incidentStatusUa(incident.status)}",
+                style = MaterialTheme.typography.titleMedium
+            )
+            if (incident.isModified) {
+                Text(
+                    "Змінений",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+            incident.reportedAt?.let {
+                Text("Час: $it", style = MaterialTheme.typography.bodySmall)
+            }
+            incident.deletedAt?.let {
+                Text("Архівовано: $it", style = MaterialTheme.typography.bodySmall)
+            }
+            incident.deletionReasonCode?.let { code ->
+                val label = ArchiveReasonOption.entries.find { it.code == code }?.labelUa ?: code
+                Text("Причина архіву: $label", style = MaterialTheme.typography.bodySmall)
+            }
+            incident.deletionReasonNote?.takeIf { it.isNotBlank() }?.let {
+                Text("Примітка: $it", style = MaterialTheme.typography.bodySmall)
+            }
+            Text("Дорожній лист: ${incident.waybillId}", style = MaterialTheme.typography.bodySmall)
+            if (incident.stopLabel.isNotBlank()) {
+                Text("Зупинка: ${incident.stopLabel}", style = MaterialTheme.typography.bodySmall)
+            }
+            Text(
+                "Самостійний рух: ${if (incident.canMoveIndependently) "так" else "ні"}",
+                style = MaterialTheme.typography.bodySmall
+            )
+            Text(incident.description.ifBlank { "— немає опису —" })
+            Text(
+                "Координати: ${"%.5f".format(incident.lat)}, ${"%.5f".format(incident.lng)}",
+                style = MaterialTheme.typography.bodySmall
+            )
+            val coordsOk = incident.lat != 0.0 || incident.lng != 0.0
+            if (coordsOk) {
+                val mapUrl = remember(incident.lat, incident.lng) {
+                    osmTilePreviewUrl(incident.lat, incident.lng)
+                }
+                IncidentRemoteImage(
+                    url = mapUrl,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(140.dp)
+                        .padding(top = 6.dp)
+                        .clip(RoundedCornerShape(18.dp)),
+                    contentScale = ContentScale.Crop
+                )
+                Text(
+                    "© OpenStreetMap contributors",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+            }
+            incident.photoUrl?.let { url ->
+                IncidentRemoteImage(
+                    url = url,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(140.dp)
+                        .then(
+                            if (onPhotoClick != null) {
+                                Modifier.clickable { onPhotoClick(url) }
+                            } else {
+                                Modifier
+                            }
+                        ),
+                    contentScale = ContentScale.Fit
+                )
+                if (onPhotoClick != null) {
+                    Text(
+                        text = if (isArchived) {
+                            "Торкніться фото для збільшення. Натисніть картку для копіювання."
+                        } else {
+                            "Торкніться фото для збільшення"
+                        },
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+            TextButton(onClick = onExportPdf, modifier = Modifier.fillMaxWidth()) {
+                Text("Експорт PDF")
+            }
+            if (!isArchived && onEdit != null) {
+                TextButton(onClick = onEdit, modifier = Modifier.fillMaxWidth()) {
+                    Text("Редагувати")
+                }
+            }
+            if (!isArchived && onRequestArchive != null) {
+                TextButton(onClick = onRequestArchive, modifier = Modifier.fillMaxWidth()) {
+                    Text("В архів…", color = MaterialTheme.colorScheme.error)
+                }
+            }
+            if (isArchived) {
+                Text(
+                    "Торкніться фото для збільшення. Натисніть картку для копіювання.",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    }
+}

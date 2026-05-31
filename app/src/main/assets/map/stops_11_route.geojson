@@ -1,0 +1,365 @@
+{
+  "type": "FeatureCollection",
+  "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+  "copyright": "Data © OpenStreetMap contributors, ODbL",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Лісництво",
+        "name:uk": "Лісництво",
+        "osm_id": 7663701905,
+        "order_hint": 1,
+        "planned_time": "05:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6570164,
+          50.470431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "просп. Броварський (ст. м. Лісова)",
+        "name:uk": "просп. Броварський (ст. м. Лісова)",
+        "osm_id": 7663696681,
+        "order_hint": 2,
+        "planned_time": "05:49"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6481364,
+          50.4663948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Гіпермаркет",
+        "name:uk": "Гіпермаркет",
+        "osm_id": 4779742631,
+        "order_hint": 3,
+        "planned_time": "05:52"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6556181,
+          50.4680082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ШЕУ Дніпровського району",
+        "name:uk": "ШЕУ Дніпровського району",
+        "osm_id": 4779742638,
+        "order_hint": 4,
+        "planned_time": "05:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6605355,
+          50.4693703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ШЕУ Дніпровського району",
+        "name:uk": "ШЕУ Дніпровського району",
+        "osm_id": 4779742639,
+        "order_hint": 5,
+        "planned_time": "05:57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.66126,
+          50.4711214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Лісництво",
+        "name:uk": "Лісництво",
+        "osm_id": 4307537847,
+        "order_hint": 6,
+        "planned_time": "05:59"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6649368,
+          50.4705404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Хвилинка",
+        "name:uk": "Хвилинка",
+        "osm_id": 4779742637,
+        "order_hint": 7,
+        "planned_time": "06:01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6648744,
+          50.4721466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Бикiвня",
+        "name:uk": "Бикiвня",
+        "osm_id": 4307537853,
+        "order_hint": 8,
+        "planned_time": "06:04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6714747,
+          50.472367
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Бикiвня-1",
+        "name:uk": "Бикiвня-1",
+        "osm_id": 4779742630,
+        "order_hint": 9,
+        "planned_time": "06:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6713325,
+          50.4737338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Школа",
+        "name:uk": "Школа",
+        "osm_id": 4779742640,
+        "order_hint": 10,
+        "planned_time": "06:08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6695803,
+          50.4734733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "пров. Кадіївський",
+        "name:uk": "пров. Кадіївський",
+        "osm_id": 4779742645,
+        "order_hint": 11,
+        "planned_time": "06:11"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6759368,
+          50.4755076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дачне містечко \"Сосновий бір\"",
+        "name:uk": "Дачне містечко \"Сосновий бір\"",
+        "osm_id": 7663696682,
+        "order_hint": 12,
+        "planned_time": "06:17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6797674,
+          50.4864834
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Радіоцентр",
+        "name:uk": "Радіоцентр",
+        "osm_id": 4779742634,
+        "order_hint": 13,
+        "planned_time": "06:21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6691914,
+          50.4853842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дитячий садок",
+        "name:uk": "Дитячий садок",
+        "osm_id": 4779742632,
+        "order_hint": 14,
+        "planned_time": "06:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6693335,
+          50.4839813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Дитячий садок",
+        "name:uk": "Дитячий садок",
+        "osm_id": 4779742633,
+        "order_hint": 15,
+        "planned_time": "06:25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.669123,
+          50.483983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Радистів",
+        "name:uk": "Вул. Радистів",
+        "osm_id": 4779742642,
+        "order_hint": 16,
+        "planned_time": "06:27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6691538,
+          50.4817728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Радистів",
+        "name:uk": "Вул. Радистів",
+        "osm_id": 4779742641,
+        "order_hint": 17,
+        "planned_time": "06:29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6693362,
+          50.4815168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Рембудзв'язок",
+        "name:uk": "Рембудзв'язок",
+        "osm_id": 4779742636,
+        "order_hint": 18,
+        "planned_time": "06:31"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6693349,
+          50.4800746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Рембудзв'язок",
+        "name:uk": "Рембудзв'язок",
+        "osm_id": 4779742635,
+        "order_hint": 19,
+        "planned_time": "06:33"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6691766,
+          50.4799943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "пров. Биківнянський",
+        "name:uk": "пров. Биківнянський",
+        "osm_id": 4779742644,
+        "order_hint": 20,
+        "planned_time": "06:36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6697412,
+          50.4763262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "пров. Биківнянський",
+        "name:uk": "пров. Биківнянський",
+        "osm_id": 4779742643,
+        "order_hint": 21,
+        "planned_time": "06:38"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6698418,
+          50.4759234
+        ]
+      }
+    }
+  ],
+  "schedule_note": "planned_time: illustrative cumulative schedule from distances · not official Kyivpastrans timetable"
+}

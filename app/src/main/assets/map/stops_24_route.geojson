@@ -1,0 +1,654 @@
+{
+  "type": "FeatureCollection",
+  "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+  "copyright": "Data © OpenStreetMap contributors, ODbL",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Музей історії України в Другій світовій війні",
+        "name:uk": "Музей історії України в Другій світовій війні",
+        "osm_id": 2933863541,
+        "order_hint": 1,
+        "planned_time": "06:10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5562198,
+          50.4326057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Музей історії України в Другій світовій війні",
+        "name:uk": "Музей історії України в Другій світовій війні",
+        "osm_id": 2933850381,
+        "order_hint": 2,
+        "planned_time": "06:12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5562829,
+          50.4326431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Києво-Печерська лавра",
+        "name:uk": "Києво-Печерська лавра",
+        "osm_id": 26051699,
+        "order_hint": 3,
+        "planned_time": "06:14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5543427,
+          50.4349626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Києво-Печерська лавра",
+        "name:uk": "Києво-Печерська лавра",
+        "osm_id": 6625248185,
+        "order_hint": 4,
+        "planned_time": "06:16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.554451,
+          50.4349969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Церква Спаса на Берестові, Меморіал жертв Голодомору",
+        "name:uk": "Церква Спаса на Берестові, Меморіал жертв Голодомору",
+        "osm_id": 12092320851,
+        "order_hint": 5,
+        "planned_time": "06:18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5530862,
+          50.4366954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Церква Спаса на Берестові, Меморіал жертв Голодомору",
+        "name:uk": "Церква Спаса на Берестові, Меморіал жертв Голодомору",
+        "osm_id": 6875613984,
+        "order_hint": 6,
+        "planned_time": "06:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5531732,
+          50.4367567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Парк вічної Слави",
+        "name:uk": "Парк вічної Слави",
+        "osm_id": 12092320852,
+        "order_hint": 7,
+        "planned_time": "06:22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5508865,
+          50.4396115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Парк вічної Слави",
+        "name:uk": "Парк вічної Слави",
+        "osm_id": 7141724957,
+        "order_hint": 8,
+        "planned_time": "06:24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5510097,
+          50.4396349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Площа Слави",
+        "name:uk": "Площа Слави",
+        "osm_id": 12092320853,
+        "order_hint": 9,
+        "planned_time": "06:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5495775,
+          50.4410342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Площа Слави",
+        "name:uk": "Площа Слави",
+        "osm_id": 3759083646,
+        "order_hint": 10,
+        "planned_time": "06:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5496857,
+          50.441104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Арсенальна площа",
+        "name:uk": "Арсенальна площа",
+        "osm_id": 12092320854,
+        "order_hint": 11,
+        "planned_time": "06:31"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5461131,
+          50.4434133
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Арсенальна площа",
+        "name:uk": "Арсенальна площа",
+        "osm_id": 3759083647,
+        "order_hint": 12,
+        "planned_time": "06:33"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.546205,
+          50.443471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Станція метро «Арсенальна»",
+        "name:uk": "Станція метро «Арсенальна»",
+        "osm_id": 3346880470,
+        "order_hint": 13,
+        "planned_time": "06:35"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5428067,
+          50.4440032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Станція метро «Арсенальна»",
+        "name:uk": "Станція метро «Арсенальна»",
+        "osm_id": 3346880469,
+        "order_hint": 14,
+        "planned_time": "06:37"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.542823,
+          50.4440514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кріпосний провулок",
+        "name:uk": "Кріпосний провулок",
+        "osm_id": 3534376707,
+        "order_hint": 15,
+        "planned_time": "06:39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5390837,
+          50.4447553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кріпосний провулок",
+        "name:uk": "Кріпосний провулок",
+        "osm_id": 4191917278,
+        "order_hint": 16,
+        "planned_time": "06:41"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5390114,
+          50.4447796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Юний технік",
+        "name:uk": "Юний технік",
+        "osm_id": 12090408507,
+        "order_hint": 17,
+        "planned_time": "06:44"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5383325,
+          50.4406334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Юний технік",
+        "name:uk": "Юний технік",
+        "osm_id": 384741945,
+        "order_hint": 18,
+        "planned_time": "06:46"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5382016,
+          50.4406248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кловський узвіз",
+        "name:uk": "Кловський узвіз",
+        "osm_id": 12090377078,
+        "order_hint": 19,
+        "planned_time": "06:48"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.537205,
+          50.4384387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Кловський узвіз",
+        "name:uk": "Кловський узвіз",
+        "osm_id": 6464395960,
+        "order_hint": 20,
+        "planned_time": "06:50"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.537157,
+          50.4384706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. Кловська",
+        "name:uk": "ст. м. Кловська",
+        "osm_id": 12090408509,
+        "order_hint": 21,
+        "planned_time": "06:53"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5310411,
+          50.4371198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. Кловська",
+        "name:uk": "ст. м. Кловська",
+        "osm_id": 6464395959,
+        "order_hint": 22,
+        "planned_time": "06:55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5310606,
+          50.4372016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Мечникова",
+        "name:uk": "Вул. Мечникова",
+        "osm_id": 12090377075,
+        "order_hint": 23,
+        "planned_time": "06:58"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5262083,
+          50.4384661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Мечникова",
+        "name:uk": "Вул. Мечникова",
+        "osm_id": 6464230411,
+        "order_hint": 24,
+        "planned_time": "07:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.526286,
+          50.4385082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Бессарабська площа",
+        "name:uk": "Бессарабська площа",
+        "osm_id": 12090445258,
+        "order_hint": 25,
+        "planned_time": "07:03"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5214824,
+          50.4427756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Бессарабська площа",
+        "name:uk": "Бессарабська площа",
+        "osm_id": 4702133441,
+        "order_hint": 26,
+        "planned_time": "07:05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5214878,
+          50.44281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Бул. Тараса Шевченка",
+        "name:uk": "Бул. Тараса Шевченка",
+        "osm_id": 11023215968,
+        "order_hint": 27,
+        "planned_time": "07:08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5156068,
+          50.443198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Бул. Тараса Шевченка",
+        "name:uk": "Бул. Тараса Шевченка",
+        "osm_id": 7056366387,
+        "order_hint": 28,
+        "planned_time": "07:10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5156204,
+          50.4432561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Володимирська",
+        "name:uk": "вул. Володимирська",
+        "osm_id": 11023278270,
+        "order_hint": 29,
+        "planned_time": "07:12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5132171,
+          50.4435841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Володимирська",
+        "name:uk": "вул. Володимирська",
+        "osm_id": 9895992498,
+        "order_hint": 30,
+        "planned_time": "07:14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5132656,
+          50.4436646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Івана Франка",
+        "name:uk": "вул. Івана Франка",
+        "osm_id": 1544709229,
+        "order_hint": 31,
+        "planned_time": "07:17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5080477,
+          50.4444248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Івана Франка",
+        "name:uk": "вул. Івана Франка",
+        "osm_id": 1544709230,
+        "order_hint": 32,
+        "planned_time": "07:19"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5080817,
+          50.444505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Симона Петлюри",
+        "name:uk": "Вул. Симона Петлюри",
+        "osm_id": 6517089998,
+        "order_hint": 33,
+        "planned_time": "07:22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.50011,
+          50.4450689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Симона Петлюри",
+        "name:uk": "Вул. Симона Петлюри",
+        "osm_id": 6517028251,
+        "order_hint": 34,
+        "planned_time": "07:24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5000654,
+          50.4451231
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Жилянська",
+        "name:uk": "Вул. Жилянська",
+        "osm_id": 10128642055,
+        "order_hint": 35,
+        "planned_time": "07:27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4955183,
+          50.4430741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вулиця Жилянська",
+        "name:uk": "Вул. Жилянська",
+        "osm_id": 6273823217,
+        "order_hint": 36,
+        "planned_time": "07:29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4954053,
+          50.4431701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Залізничний вокзал \"Центральний\"",
+        "name:uk": "Залізничний вокзал Центральний",
+        "osm_id": 12269729023,
+        "order_hint": 37,
+        "planned_time": "07:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4902399,
+          50.4406772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Залізничний вокзал \"Центральний\"",
+        "name:uk": "Залізничний вокзал Центральний",
+        "osm_id": 12269729022,
+        "order_hint": 38,
+        "planned_time": "07:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4901907,
+          50.4406238
+        ]
+      }
+    }
+  ],
+  "schedule_note": "planned_time: illustrative cumulative schedule from distances · not official Kyivpastrans timetable"
+}

@@ -1,0 +1,144 @@
+{
+  "type": "FeatureCollection",
+  "generator": "CityApp tools/fetch_kyiv_bus_routes.py + Overpass API",
+  "copyright": "Data © OpenStreetMap contributors, ODbL",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ст. м. «Харківська»",
+        "name:uk": "ст. м. «Харківська»",
+        "osm_id": 539170387,
+        "order_hint": 1,
+        "planned_time": "06:05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6513919,
+          50.4008047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ринок",
+        "name:uk": "Ринок",
+        "osm_id": 4279844296,
+        "order_hint": 2,
+        "planned_time": "06:07"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6518135,
+          50.4022926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Кошиця",
+        "name:uk": "Вул. Кошиця",
+        "osm_id": 4279889289,
+        "order_hint": 3,
+        "planned_time": "06:10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6498308,
+          50.4064958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Степана Олійника",
+        "name:uk": "Вул. Степана Олійника",
+        "osm_id": 1444744266,
+        "order_hint": 4,
+        "planned_time": "06:13"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6473832,
+          50.4107109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Магазин",
+        "name:uk": "Магазин",
+        "osm_id": 2039931237,
+        "order_hint": 5,
+        "planned_time": "06:17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6439444,
+          50.416453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Вул. Юрія Литвинського",
+        "name:uk": "Вул. Юрія Литвинського",
+        "osm_id": 4100630891,
+        "order_hint": 6,
+        "planned_time": "06:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6418795,
+          50.4197157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "вул. Новодарницька",
+        "name:uk": "вул. Новодарницька",
+        "osm_id": 929936162,
+        "order_hint": 7,
+        "planned_time": "06:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6442989,
+          50.4243252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Харківське шосе",
+        "name:uk": "Харківське шосе",
+        "osm_id": 4100505590,
+        "order_hint": 8,
+        "planned_time": "06:25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6441433,
+          50.4230136
+        ]
+      }
+    }
+  ],
+  "schedule_note": "planned_time: illustrative cumulative schedule from distances · not official Kyivpastrans timetable"
+}

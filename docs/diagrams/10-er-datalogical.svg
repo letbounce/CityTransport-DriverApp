@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1020" viewBox="0 0 1280 1020"
+     font-family="Segoe UI, Calibri, Arial, sans-serif">
+  <defs>
+    <marker id="ref-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M0,1 L10,6 L0,11" fill="none" stroke="#7a3a3a" stroke-width="1.4"/>
+    </marker>
+  </defs>
+
+  <text x="640" y="24" text-anchor="middle" font-size="14" font-style="italic" fill="#5a6b8a">Рис. 3.2. Даталогічна модель бази даних (фізична схема колекцій MongoDB)</text>
+
+  <!-- ================== ROW 1 ================== -->
+
+  <!-- drivers collection -->
+  <g transform="translate(120,70)">
+    <rect x="0" y="0" width="260" height="230" fill="#eef3f9" stroke="#5a6b8a" stroke-width="1.4"/>
+    <rect x="1" y="1" width="258" height="26" fill="#dfeaf7" stroke="none"/>
+    <line x1="0" y1="26" x2="260" y2="26" stroke="#5a6b8a" stroke-width="1.4"/>
+    <text x="130" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">drivers</text>
+    <text x="10" y="46" font-size="11" font-weight="bold" fill="#2c3958">[PK] _id : ObjectId</text>
+    <text x="10" y="64" font-size="11" font-weight="bold" fill="#2c3958">[UQ,IX] driver_id : String</text>
+    <text x="10" y="82" font-size="11" fill="#2c3958">full_name : String</text>
+    <text x="10" y="100" font-size="11" fill="#2c3958">phone : String</text>
+    <text x="10" y="118" font-size="11" fill="#2c3958">password_hash : String</text>
+    <text x="10" y="136" font-size="11" fill="#2c3958">role : String  (def. "driver")</text>
+    <text x="10" y="154" font-size="11" fill="#2c3958">is_active : Boolean</text>
+    <text x="10" y="172" font-size="11" fill="#2c3958">created_at : Date</text>
+    <line x1="0" y1="185" x2="260" y2="185" stroke="#5a6b8a" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="10" y="202" font-size="10" font-style="italic" fill="#5a4a2a">Індекси: { driver_id: 1 } unique</text>
+    <text x="10" y="218" font-size="10" font-style="italic" fill="#5a4a2a">Bcrypt-хеш паролю (cost 10)</text>
+  </g>
+
+  <!-- vehicles collection -->
+  <g transform="translate(510,70)">
+    <rect x="0" y="0" width="260" height="180" fill="#eef3f9" stroke="#5a6b8a" stroke-width="1.4"/>
+    <rect x="1" y="1" width="258" height="26" fill="#dfeaf7" stroke="none"/>
+    <line x1="0" y1="26" x2="260" y2="26" stroke="#5a6b8a" stroke-width="1.4"/>
+    <text x="130" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">vehicles</text>
+    <text x="10" y="46" font-size="11" font-weight="bold" fill="#2c3958">[PK] _id : ObjectId</text>
+    <text x="10" y="64" font-size="11" font-weight="bold" fill="#2c3958">[UQ,IX] vehicle_id : String</text>
+    <text x="10" y="82" font-size="11" fill="#2c3958">label : String</text>
+    <text x="10" y="100" font-size="11" fill="#2c3958">plate_number : String</text>
+    <text x="10" y="118" font-size="11" fill="#2c3958">is_active : Boolean</text>
+    <text x="10" y="136" font-size="11" fill="#2c3958">created_at : Date</text>
+    <line x1="0" y1="148" x2="260" y2="148" stroke="#5a6b8a" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="10" y="166" font-size="10" font-style="italic" fill="#5a4a2a">Індекси: { vehicle_id: 1 } unique</text>
+  </g>
+
+  <!-- routes collection with embedded stops -->
+  <g transform="translate(900,70)">
+    <rect x="0" y="0" width="260" height="270" fill="#eef3f9" stroke="#5a6b8a" stroke-width="1.4"/>
+    <rect x="1" y="1" width="258" height="26" fill="#dfeaf7" stroke="none"/>
+    <line x1="0" y1="26" x2="260" y2="26" stroke="#5a6b8a" stroke-width="1.4"/>
+    <text x="130" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">routes</text>
+    <text x="10" y="46" font-size="11" font-weight="bold" fill="#2c3958">[PK] _id : ObjectId</text>
+    <text x="10" y="64" font-size="11" fill="#2c3958">route_number : String</text>
+    <text x="10" y="82" font-size="11" fill="#2c3958">route_name : String</text>
+    <text x="10" y="100" font-size="11" fill="#2c3958">vehicle_type : String</text>
+    <text x="10" y="118" font-size="11" fill="#2c3958">is_active : Boolean</text>
+    <!-- embedded stops -->
+    <rect x="8" y="130" width="244" height="130" fill="#f0f6ec" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="14" y="146" font-size="11" font-style="italic" fill="#3a6a3a">stops [ ] (embedded array)</text>
+    <text x="14" y="164" font-size="10" fill="#2c3958">  stop_number : Number</text>
+    <text x="14" y="180" font-size="10" fill="#2c3958">  name : String</text>
+    <text x="14" y="196" font-size="10" fill="#2c3958">  planned_time : String</text>
+    <text x="14" y="212" font-size="10" fill="#2c3958">  lat : Number</text>
+    <text x="14" y="228" font-size="10" fill="#2c3958">  lng : Number</text>
+    <text x="14" y="251" font-size="10" font-style="italic" fill="#7a4a3a">(_id: false — без власного ObjectId)</text>
+  </g>
+
+  <!-- ================== ROW 2 ================== -->
+
+  <!-- waybills collection -->
+  <g transform="translate(120,400)">
+    <rect x="0" y="0" width="260" height="330" fill="#eef3f9" stroke="#5a6b8a" stroke-width="1.4"/>
+    <rect x="1" y="1" width="258" height="26" fill="#dfeaf7" stroke="none"/>
+    <line x1="0" y1="26" x2="260" y2="26" stroke="#5a6b8a" stroke-width="1.4"/>
+    <text x="130" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">waybills</text>
+    <text x="10" y="46" font-size="11" font-weight="bold" fill="#2c3958">[PK] _id : ObjectId</text>
+    <text x="10" y="64" font-size="11" font-weight="bold" fill="#2c3958">[IX] driver_id : String</text>
+    <text x="10" y="82" font-size="11" font-style="italic" fill="#7a3a3a">[ref→routes] route_id : ObjectId</text>
+    <text x="10" y="100" font-size="11" fill="#2c3958">route_number : String</text>
+    <text x="10" y="118" font-size="11" fill="#2c3958">vehicle_id : String</text>
+    <text x="10" y="136" font-size="11" fill="#2c3958">status : enum {assigned,</text>
+    <text x="10" y="151" font-size="11" fill="#2c3958">          in_progress, completed,</text>
+    <text x="10" y="166" font-size="11" fill="#2c3958">          cancelled}</text>
+    <text x="10" y="184" font-size="11" fill="#2c3958">started_at : Date</text>
+    <text x="10" y="202" font-size="11" fill="#2c3958">completed_at : Date</text>
+    <text x="10" y="220" font-size="11" fill="#2c3958">notes : String</text>
+    <text x="10" y="238" font-size="11" fill="#2c3958">deleted_at : Date</text>
+    <text x="10" y="256" font-size="11" fill="#2c3958">deletion_reason_code : String</text>
+    <text x="10" y="274" font-size="11" fill="#2c3958">deletion_reason_note : String</text>
+    <text x="10" y="292" font-size="11" fill="#2c3958">created_at : Date</text>
+    <line x1="0" y1="302" x2="260" y2="302" stroke="#5a6b8a" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="10" y="319" font-size="10" font-style="italic" fill="#5a4a2a">Індекси: { driver_id: 1 }</text>
+  </g>
+
+  <!-- incidents collection -->
+  <g transform="translate(510,400)">
+    <rect x="0" y="0" width="260" height="500" fill="#eef3f9" stroke="#5a6b8a" stroke-width="1.4"/>
+    <rect x="1" y="1" width="258" height="26" fill="#dfeaf7" stroke="none"/>
+    <line x1="0" y1="26" x2="260" y2="26" stroke="#5a6b8a" stroke-width="1.4"/>
+    <text x="130" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">incidents</text>
+    <text x="10" y="46" font-size="11" font-weight="bold" fill="#2c3958">[PK] _id : ObjectId</text>
+    <text x="10" y="64" font-size="11" font-style="italic" fill="#7a3a3a">[ref→waybills] waybill_id : ObjectId</text>
+    <text x="10" y="82" font-size="11" font-weight="bold" fill="#2c3958">[IX] driver_id : String</text>
+    <text x="10" y="100" font-size="11" fill="#2c3958">type : enum {accident, breakdown,</text>
+    <text x="10" y="115" font-size="11" fill="#2c3958">         traffic_jam, other}</text>
+    <text x="10" y="133" font-size="11" fill="#2c3958">description : String</text>
+    <!-- embedded location -->
+    <rect x="8" y="142" width="244" height="50" fill="#f0f6ec" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="14" y="158" font-size="11" font-style="italic" fill="#3a6a3a">location (embedded)</text>
+    <text x="14" y="176" font-size="10" fill="#2c3958">  lat : Number, lng : Number</text>
+
+    <text x="10" y="208" font-size="11" fill="#2c3958">photo_url : String</text>
+    <text x="10" y="226" font-size="11" fill="#2c3958">reported_at : Date</text>
+    <text x="10" y="244" font-size="11" fill="#2c3958">stop_label : String</text>
+    <text x="10" y="262" font-size="11" fill="#2c3958">can_move_independently : Boolean</text>
+    <text x="10" y="280" font-size="11" fill="#2c3958">status : enum {open, resolved,</text>
+    <text x="10" y="295" font-size="11" fill="#2c3958">         completed}</text>
+    <text x="10" y="313" font-size="11" fill="#2c3958">deleted_at : Date</text>
+    <text x="10" y="331" font-size="11" fill="#2c3958">deletion_reason_code : String</text>
+    <text x="10" y="349" font-size="11" fill="#2c3958">is_modified : Boolean</text>
+    <text x="10" y="367" font-size="11" fill="#2c3958">last_edited_at : Date</text>
+
+    <!-- embedded version_history -->
+    <rect x="8" y="378" width="244" height="100" fill="#f0f6ec" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="14" y="394" font-size="11" font-style="italic" fill="#3a6a3a">version_history [ ] (embedded)</text>
+    <text x="14" y="412" font-size="10" fill="#2c3958">  saved_at : Date</text>
+    <text x="14" y="427" font-size="10" fill="#2c3958">  driver_id : String</text>
+    <text x="14" y="442" font-size="10" fill="#2c3958">  snapshot : {type, description,</text>
+    <text x="14" y="457" font-size="10" fill="#2c3958">         location, reported_at,</text>
+    <text x="14" y="472" font-size="10" fill="#2c3958">         stop_label, photo_url, ...}</text>
+  </g>
+
+  <!-- telemetry collection -->
+  <g transform="translate(900,400)">
+    <rect x="0" y="0" width="260" height="340" fill="#eef3f9" stroke="#5a6b8a" stroke-width="1.4"/>
+    <rect x="1" y="1" width="258" height="26" fill="#dfeaf7" stroke="none"/>
+    <line x1="0" y1="26" x2="260" y2="26" stroke="#5a6b8a" stroke-width="1.4"/>
+    <text x="130" y="19" text-anchor="middle" font-size="13" font-weight="bold" fill="#2c3958">telemetry</text>
+    <text x="10" y="46" font-size="11" font-weight="bold" fill="#2c3958">[PK] _id : ObjectId</text>
+    <text x="10" y="64" font-size="11" font-style="italic" fill="#7a3a3a">[ref→waybills, IX] waybill_id : ObjectId</text>
+    <text x="10" y="82" font-size="11" font-weight="bold" fill="#2c3958">[IX] driver_id : String</text>
+    <text x="10" y="100" font-size="11" fill="#2c3958">bucket_start : Date</text>
+    <text x="10" y="118" font-size="11" fill="#2c3958">count : Number</text>
+
+    <!-- embedded locations -->
+    <rect x="8" y="130" width="244" height="170" fill="#f0f6ec" stroke="#7a9a7a" stroke-width="1.2"/>
+    <text x="14" y="146" font-size="11" font-style="italic" fill="#3a6a3a">locations [ ] (embedded array)</text>
+    <text x="14" y="166" font-size="10" fill="#2c3958">  lat : Number</text>
+    <text x="14" y="182" font-size="10" fill="#2c3958">  lng : Number</text>
+    <text x="14" y="198" font-size="10" fill="#2c3958">  speed_kmh : Number  (def. 0)</text>
+    <text x="14" y="214" font-size="10" fill="#2c3958">  timestamp : Date</text>
+    <text x="14" y="240" font-size="10" font-style="italic" fill="#7a4a3a">бакетна агрегація: один документ</text>
+    <text x="14" y="255" font-size="10" font-style="italic" fill="#7a4a3a">= один батч (~100 точок) синхронізації</text>
+    <text x="14" y="270" font-size="10" font-style="italic" fill="#7a4a3a">з пристрою водія</text>
+
+    <line x1="0" y1="310" x2="260" y2="310" stroke="#5a6b8a" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="10" y="327" font-size="10" font-style="italic" fill="#5a4a2a">Індекси: { waybill_id:1 }, { driver_id:1 }</text>
+  </g>
+
+  <!-- ================== References (dashed arrows) ================== -->
+
+  <!-- waybills.driver_id → drivers.driver_id -->
+  <line x1="250" y1="400" x2="250" y2="300" stroke="#7a3a3a" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#ref-arrow)"/>
+  <text x="258" y="345" font-size="10" font-style="italic" fill="#7a3a3a">ref: driver_id</text>
+
+  <!-- waybills.route_id → routes._id -->
+  <line x1="380" y1="478" x2="900" y2="200" stroke="#7a3a3a" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#ref-arrow)"/>
+  <text x="600" y="345" font-size="10" font-style="italic" fill="#7a3a3a">ref: route_id → routes._id</text>
+
+  <!-- incidents.waybill_id → waybills._id -->
+  <line x1="510" y1="430" x2="380" y2="430" stroke="#7a3a3a" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#ref-arrow)"/>
+  <text x="388" y="423" font-size="10" font-style="italic" fill="#7a3a3a">ref: waybill_id</text>
+
+  <!-- telemetry.waybill_id → waybills._id -->
+  <line x1="900" y1="445" x2="380" y2="445" stroke="#7a3a3a" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#ref-arrow)"/>
+  <text x="755" y="438" font-size="10" font-style="italic" fill="#7a3a3a">ref: waybill_id</text>
+
+  <!-- waybills.vehicle_id (string) — vehicles.vehicle_id -->
+  <line x1="380" y1="520" x2="510" y2="250" stroke="#7a3a3a" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#ref-arrow)"/>
+  <text x="390" y="280" font-size="10" font-style="italic" fill="#7a3a3a">ref: vehicle_id</text>
+
+  <!-- ================== Legend ================== -->
+  <rect x="120" y="930" width="1040" height="80" fill="#fffce8" stroke="#b89a5c" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="130" y="950" font-size="11" font-weight="bold" font-style="italic" fill="#5a4a2a">Позначення:</text>
+  <text x="130" y="970" font-size="11" fill="#5a4a2a">[PK] — первинний ключ;  [FK] — зовнішнє посилання;  [UQ] — унікальний індекс;  [IX] — індекс (звичайний);</text>
+  <text x="130" y="988" font-size="11" fill="#5a4a2a">[ref→colл] — Mongoose ObjectId-посилання;  блок зеленим — embedded sub-document / array (без власного _id);</text>
+  <text x="130" y="1006" font-size="11" fill="#5a4a2a">enum {...} — обмежений набір значень (mongoose validator);  Date — BSON Date;  String/Number/Boolean — BSON-типи.</text>
+</svg>

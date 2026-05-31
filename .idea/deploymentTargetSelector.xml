@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="app">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="Wireframe_IncidentReport - Preview_Wireframe_IncidentReport">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -16,6 +13,20 @@
       </SelectionState>
       <SelectionState runConfigName="Wireframe_ActiveTripScreen - Preview_Wireframe_ActiveTripScreen">
         <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="cityapp">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="app">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2026-05-16T17:59:48.494718600Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=LCL7N18613001036" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>
