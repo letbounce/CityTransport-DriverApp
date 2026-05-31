@@ -30,8 +30,33 @@ npm run dev
 npm run seed
 ```
 
-## Smoke test
+## Smoke test (табл. 3.7 диплома — TC-01…TC-06, DRV-1042, маршрут №114)
+
+**Підготовка (один раз):**
+
+```bash
+cp .env.example .env
+# Запустіть MongoDB локально, потім:
+npm run seed
+```
+
+**Варіант A — сервер уже запущений (`npm start` в іншому терміналі):**
 
 ```bash
 npm run smoke
 ```
+
+**Варіант B — автозапуск сервера + тести:**
+
+```bash
+npm run smoke:all
+```
+
+**Варіант C — пересід БД + сервер + тести:**
+
+```bash
+npm run smoke:seed
+```
+
+Очікуваний вивід: таблиця зі статусом «Пройдено» для TC-01…TC-06.  
+Помилка `ECONNREFUSED` означає, що сервер не слухає порт 3000 — використайте `npm run smoke:all` або `npm start`.

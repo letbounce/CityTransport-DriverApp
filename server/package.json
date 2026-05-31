@@ -7,7 +7,9 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "seed": "node scripts/seed.js",
-    "smoke": "node scripts/smoke.js"
+    "smoke": "node scripts/smoke.js",
+    "smoke:all": "node scripts/smoke-with-server.js",
+    "smoke:seed": "node scripts/smoke-with-server.js --seed"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
