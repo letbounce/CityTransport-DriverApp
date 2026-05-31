@@ -9,7 +9,8 @@
         "name": "масив Райдужний",
         "name:uk": "масив Райдужний",
         "osm_id": 419826895,
-        "planned_time": "06:00"
+        "planned_time": "06:00",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -25,7 +26,8 @@
         "name": "Парк Муромець",
         "name:uk": "Парк Муромець",
         "osm_id": 431331643,
-        "planned_time": "06:12"
+        "planned_time": "06:42",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -41,7 +43,8 @@
         "name": "Парк Муромець",
         "name:uk": "Парк Муромець",
         "osm_id": 431331644,
-        "planned_time": "06:14"
+        "planned_time": "06:01",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -57,7 +60,8 @@
         "name": "Вулиця Йорданська",
         "name:uk": "Вулиця Йорданська",
         "osm_id": 431333747,
-        "planned_time": "06:26"
+        "planned_time": "06:41",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -73,7 +77,8 @@
         "name": "Вулиця Йорданська",
         "name:uk": "Вулиця Йорданська",
         "osm_id": 431333748,
-        "planned_time": "06:28"
+        "planned_time": "06:02",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -89,7 +94,8 @@
         "name": "вул. Миколи Закревського",
         "name:uk": "вул. Миколи Закревського",
         "osm_id": 442483786,
-        "planned_time": "06:42"
+        "planned_time": "06:40",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -105,7 +111,8 @@
         "name": "Станція метро «Почайна»",
         "name:uk": "Станція метро «Почайна»",
         "osm_id": 749139303,
-        "planned_time": "06:56"
+        "planned_time": "06:03",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -121,7 +128,8 @@
         "name": "проспект Володимира Івасюка",
         "name:uk": "проспект Володимира Івасюка",
         "osm_id": 750591487,
-        "planned_time": "07:04"
+        "planned_time": "06:39",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -137,7 +145,8 @@
         "name": "просп. Володимира Івасюка",
         "name:uk": "просп. Володимира Івасюка",
         "osm_id": 750592068,
-        "planned_time": "07:07"
+        "planned_time": "06:04",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -153,7 +162,8 @@
         "name": "вул. Олександри Екстер",
         "name:uk": "вул. Олександри Екстер",
         "osm_id": 824428742,
-        "planned_time": "07:21"
+        "planned_time": "06:38",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -169,7 +179,8 @@
         "name": "СоцЗабез",
         "name:uk": "СоцЗабез",
         "osm_id": 1151031850,
-        "planned_time": "07:23"
+        "planned_time": "06:05",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -185,7 +196,8 @@
         "name": "вул. Миколи Закревського",
         "name:uk": "вул. Миколи Закревського",
         "osm_id": 1151031852,
-        "planned_time": "07:25"
+        "planned_time": "06:37",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -201,7 +213,8 @@
         "name": "Торговий комплекс",
         "name:uk": "Торговий комплекс",
         "osm_id": 1502808738,
-        "planned_time": "07:39"
+        "planned_time": "06:06",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -217,7 +230,8 @@
         "name": "вул. Рональда Рейгана",
         "name:uk": "вул. Рональда Рейгана",
         "osm_id": 1804121120,
-        "planned_time": "07:42"
+        "planned_time": "06:36",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -233,7 +247,8 @@
         "name": "Торгово-розважальний комплекс",
         "name:uk": "Торгово-розважальний комплекс",
         "osm_id": 1866166172,
-        "planned_time": "07:56"
+        "planned_time": "06:07",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -249,7 +264,8 @@
         "name": "Мікрорайон №20",
         "name:uk": "Мікрорайон №20",
         "osm_id": 2454354748,
-        "planned_time": "08:10"
+        "planned_time": "06:35",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -265,7 +281,8 @@
         "name": "бул. Леоніда Бикова",
         "name:uk": "бул. Леоніда Бикова",
         "osm_id": 2475064313,
-        "planned_time": "08:17"
+        "planned_time": "06:08",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -281,7 +298,8 @@
         "name": "бул. Леоніда Бикова",
         "name:uk": "бул. Леоніда Бикова",
         "osm_id": 2475064316,
-        "planned_time": "08:19"
+        "planned_time": "06:33",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -297,7 +315,8 @@
         "name": "Поліклініка",
         "name:uk": "Поліклініка",
         "osm_id": 2475064318,
-        "planned_time": "08:22"
+        "planned_time": "06:10",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -313,7 +332,8 @@
         "name": "Універсам Виґурівщина",
         "name:uk": "Універсам Виґурівщина",
         "osm_id": 2475064324,
-        "planned_time": "08:26"
+        "planned_time": "06:31",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -329,7 +349,8 @@
         "name": "бул. Володимира Висоцького",
         "name:uk": "бул. Володимира Висоцького",
         "osm_id": 2475064329,
-        "planned_time": "08:28"
+        "planned_time": "06:12",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -345,7 +366,8 @@
         "name": "Поліклініка",
         "name:uk": "Поліклініка",
         "osm_id": 2475064333,
-        "planned_time": "08:33"
+        "planned_time": "06:29",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -361,7 +383,8 @@
         "name": "вул. Костянтина Данькевича",
         "name:uk": "вул. Костянтина Данькевича",
         "osm_id": 2475064336,
-        "planned_time": "08:35"
+        "planned_time": "06:14",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -377,7 +400,8 @@
         "name": "вул. Сержа Лифаря",
         "name:uk": "вул. Сержа Лифаря",
         "osm_id": 2475106369,
-        "planned_time": "08:41"
+        "planned_time": "06:27",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -393,7 +417,8 @@
         "name": "станція швидкісного трамваю «Романа Шухевича»",
         "name:uk": "станція швидкісного трамваю «Романа Шухевича»",
         "osm_id": 2475106370,
-        "planned_time": "08:55"
+        "planned_time": "06:16",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -409,7 +434,8 @@
         "name": "Школа мистецтв ім. Леонтовича",
         "name:uk": "Школа мистецтв ім. Леонтовича",
         "osm_id": 2475106371,
-        "planned_time": "09:09"
+        "planned_time": "06:25",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -425,7 +451,8 @@
         "name": "Школа мистецтв ім. Леонтовича",
         "name:uk": "Школа мистецтв ім. Леонтовича",
         "osm_id": 2475106372,
-        "planned_time": "09:11"
+        "planned_time": "06:18",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -441,7 +468,8 @@
         "name": "Школа",
         "name:uk": "Школа",
         "osm_id": 2475106373,
-        "planned_time": "09:20"
+        "planned_time": "06:23",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -457,7 +485,8 @@
         "name": "Торгово-розважальний комплекс",
         "name:uk": "Торгово-розважальний комплекс",
         "osm_id": 2475106374,
-        "planned_time": "09:32"
+        "planned_time": "06:20",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -473,7 +502,8 @@
         "name": "Житлове управління",
         "name:uk": "Житлове управління",
         "osm_id": 2475106375,
-        "planned_time": "09:45"
+        "planned_time": "06:21",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -489,7 +519,8 @@
         "name": "Житлове управління",
         "name:uk": "Житлове управління",
         "osm_id": 2475106378,
-        "planned_time": "09:47"
+        "planned_time": "06:22",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -505,7 +536,8 @@
         "name": "Кіностудія \"Фільм Ю ЕЙ\"",
         "name:uk": "Кіностудія \"Фільм Ю ЕЙ\"",
         "osm_id": 2475106379,
-        "planned_time": "09:54"
+        "planned_time": "06:19",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -521,7 +553,8 @@
         "name": "Кіностудія \"Фільм Ю ЕЙ\"",
         "name:uk": "Кіностудія \"Фільм Ю ЕЙ\"",
         "osm_id": 2475106380,
-        "planned_time": "09:56"
+        "planned_time": "06:24",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -537,7 +570,8 @@
         "name": "Вулиця Сержа Лифаря",
         "name:uk": "Вулиця Сержа Лифаря",
         "osm_id": 2475106382,
-        "planned_time": "10:00"
+        "planned_time": "06:17",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -553,7 +587,8 @@
         "name": "Торговий комплекс",
         "name:uk": "Торговий комплекс",
         "osm_id": 2475106384,
-        "planned_time": "10:06"
+        "planned_time": "06:26",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -569,7 +604,8 @@
         "name": "Супермаркет",
         "name:uk": "Торгово-розважальний центр",
         "osm_id": 2475106387,
-        "planned_time": "10:20"
+        "planned_time": "06:15",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -585,7 +621,8 @@
         "name": "вул. Рональда Рейгана",
         "name:uk": "вул. Рональда Рейгана",
         "osm_id": 2475106390,
-        "planned_time": "10:34"
+        "planned_time": "06:28",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -601,7 +638,8 @@
         "name": "Школа",
         "name:uk": "Школа",
         "osm_id": 2475106395,
-        "planned_time": "10:39"
+        "planned_time": "06:13",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -617,7 +655,8 @@
         "name": "бул. Володимира Висоцького",
         "name:uk": "бул. Володимира Висоцького",
         "osm_id": 2475106399,
-        "planned_time": "10:52"
+        "planned_time": "06:30",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -633,7 +672,8 @@
         "name": "пр. Червоної Калини",
         "name:uk": "пр. Червоної Калини",
         "osm_id": 2475106405,
-        "planned_time": "11:06"
+        "planned_time": "06:11",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -649,7 +689,8 @@
         "name": "СоцЗабез",
         "name:uk": "СоцЗабез",
         "osm_id": 2477214515,
-        "planned_time": "11:20"
+        "planned_time": "06:32",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -665,7 +706,8 @@
         "name": "масив Райдужний",
         "name:uk": "масив Райдужний",
         "osm_id": 3901062719,
-        "planned_time": "11:34"
+        "planned_time": "06:09",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -681,7 +723,8 @@
         "name": "Ліцей №293",
         "name:uk": "Ліцей №293",
         "osm_id": 3954179666,
-        "planned_time": "11:48"
+        "planned_time": "06:34",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -697,7 +740,8 @@
         "name": "Мікрорайон №25",
         "name:uk": "Мікрорайон №25",
         "osm_id": 4372082915,
-        "planned_time": "11:55"
+        "planned_time": "06:07",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -713,7 +757,8 @@
         "name": "Мікрорайон №23",
         "name:uk": "Мікрорайон №23",
         "osm_id": 4372082916,
-        "planned_time": "11:57"
+        "planned_time": "06:36",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -729,7 +774,8 @@
         "name": "вул. Оноре де Бальзака",
         "name:uk": "вул. Оноре де Бальзака",
         "osm_id": 4372082917,
-        "planned_time": "12:00"
+        "planned_time": "06:05",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -745,7 +791,8 @@
         "name": "вул. Оноре де Бальзака",
         "name:uk": "вул. Оноре де Бальзака",
         "osm_id": 4372082918,
-        "planned_time": "12:02"
+        "planned_time": "06:38",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -761,7 +808,8 @@
         "name": "Мікрорайон №13",
         "name:uk": "Мікрорайон №13",
         "osm_id": 4372091321,
-        "planned_time": "12:04"
+        "planned_time": "06:03",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -777,7 +825,8 @@
         "name": "Мікрорайон №13",
         "name:uk": "Мікрорайон №13",
         "osm_id": 4372091322,
-        "planned_time": "12:06"
+        "planned_time": "06:40",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -793,7 +842,8 @@
         "name": "станція швидкісного трамваю «Романа Шухевича»",
         "name:uk": "станція швидкісного трамваю «Романа Шухевича»",
         "osm_id": 4437803215,
-        "planned_time": "12:20"
+        "planned_time": "06:01",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -809,7 +859,8 @@
         "name": "Вулиця Ореста Субтельного",
         "name:uk": "Вулиця Ореста Субтельного",
         "osm_id": 4871394821,
-        "planned_time": "12:34"
+        "planned_time": "06:42",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -825,7 +876,8 @@
         "name": "Храм на честь Ікони Божої Матері «Всецариця»",
         "name:uk": "Храм на честь Ікони Божої Матері «Всецариця»",
         "osm_id": 4928418121,
-        "planned_time": "12:48"
+        "planned_time": "05:59",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -841,7 +893,8 @@
         "name": "Ліцей №293",
         "name:uk": "Ліцей №293",
         "osm_id": 4993578724,
-        "planned_time": "12:50"
+        "planned_time": "06:44",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -857,7 +910,8 @@
         "name": "вул. Милославська",
         "name:uk": "вул. Милославська",
         "osm_id": 9040085419,
-        "planned_time": "12:52"
+        "planned_time": "05:57",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -873,7 +927,8 @@
         "name": "Бювет",
         "name:uk": "Бювет",
         "osm_id": 10032365686,
-        "planned_time": "13:06"
+        "planned_time": "06:46",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -889,7 +944,8 @@
         "name": "вул. Олександри Екстер",
         "name:uk": "вул. Олександри Екстер",
         "osm_id": 10032408426,
-        "planned_time": "13:20"
+        "planned_time": "05:55",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -905,7 +961,8 @@
         "name": "вул. Костянтина Данькевича",
         "name:uk": "вул. Костянтина Данькевича",
         "osm_id": 10032408431,
-        "planned_time": "13:23"
+        "planned_time": "06:48",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",

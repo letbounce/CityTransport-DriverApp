@@ -13,6 +13,8 @@ import com.example.cityapp.domain.usecase.ReportIncidentUseCase
 import com.example.cityapp.domain.usecase.GetActiveRouteUseCase
 import com.example.cityapp.presentation.map.BusRouteGeoJsonParser
 import com.example.cityapp.presentation.map.TripMapCatalog
+import com.example.cityapp.presentation.route.filterStopsForDirection
+import com.example.cityapp.presentation.route.parseTripDirectionFromNotes
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -59,6 +61,7 @@ class IncidentReportViewModel(application: Application) : AndroidViewModel(appli
             }
             val routes = getRoutesUseCase().getOrDefault(emptyList())
             val route = routes.find { it.id == wb.routeId }
+            val tripDirection = parseTripDirectionFromNotes(wb.notes)
             var stops = route?.stops.orEmpty().sortedBy { it.stopNumber }
 
             if (stops.isEmpty()) {
@@ -68,6 +71,7 @@ class IncidentReportViewModel(application: Application) : AndroidViewModel(appli
                     stops = BusRouteGeoJsonParser.loadStopsOrderedWithSchedule(getApplication(), path)
                 }
             }
+            stops = filterStopsForDirection(stops, tripDirection)
 
             val loadErr = when {
                 stops.isEmpty() && route == null ->

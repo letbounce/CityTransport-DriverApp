@@ -10,7 +10,8 @@
         "name:uk": "Контрактова площа",
         "osm_id": 7401026219,
         "order_hint": 1,
-        "planned_time": "06:15"
+        "planned_time": "06:15",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -27,7 +28,8 @@
         "name:uk": "Контрактова площа",
         "osm_id": 1182815437,
         "order_hint": 2,
-        "planned_time": "06:17"
+        "planned_time": "06:58",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -44,7 +46,8 @@
         "name:uk": "ст. м. «Контрактова площа»",
         "osm_id": 12090355830,
         "order_hint": 3,
-        "planned_time": "06:19"
+        "planned_time": "06:17",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -61,7 +64,8 @@
         "name:uk": "Ст.метро \"Контрактова площа\"",
         "osm_id": 11813830019,
         "order_hint": 4,
-        "planned_time": "06:21"
+        "planned_time": "06:56",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -78,7 +82,8 @@
         "name:uk": "вул. Покровська",
         "osm_id": 12090366900,
         "order_hint": 5,
-        "planned_time": "06:24"
+        "planned_time": "06:24",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -95,7 +100,8 @@
         "name:uk": "вул. Покровська",
         "osm_id": 11813830002,
         "order_hint": 6,
-        "planned_time": "06:26"
+        "planned_time": "06:49",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -112,7 +118,8 @@
         "name:uk": "вул. Петра Сагайдачного",
         "osm_id": 12090366901,
         "order_hint": 7,
-        "planned_time": "06:28"
+        "planned_time": "06:26",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -129,7 +136,8 @@
         "name:uk": "вул. Петра Сагайдачного",
         "osm_id": 11813815410,
         "order_hint": 8,
-        "planned_time": "06:30"
+        "planned_time": "06:47",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -146,7 +154,8 @@
         "name:uk": "ст. м. Поштова площа",
         "osm_id": 12090366902,
         "order_hint": 9,
-        "planned_time": "06:32"
+        "planned_time": "06:29",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -163,7 +172,8 @@
         "name:uk": "ст. м. Поштова площа",
         "osm_id": 10271019612,
         "order_hint": 10,
-        "planned_time": "06:34"
+        "planned_time": "06:44",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -180,7 +190,8 @@
         "name:uk": "Готель \"Хрещатик\"",
         "osm_id": 12090370000,
         "order_hint": 11,
-        "planned_time": "06:39"
+        "planned_time": "06:31",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -197,7 +208,8 @@
         "name:uk": "Готель \"Хрещатик\"",
         "osm_id": 12090369999,
         "order_hint": 12,
-        "planned_time": "06:41"
+        "planned_time": "06:42",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -214,7 +226,8 @@
         "name:uk": "Майдан Незалежності",
         "osm_id": 10294245835,
         "order_hint": 13,
-        "planned_time": "06:43"
+        "planned_time": "06:33",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -231,7 +244,8 @@
         "name:uk": "Майдан Незалежності",
         "osm_id": 7130395892,
         "order_hint": 14,
-        "planned_time": "06:45"
+        "planned_time": "06:40",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -248,7 +262,8 @@
         "name:uk": "Станція метро “Хрещатик”",
         "osm_id": 6017989721,
         "order_hint": 15,
-        "planned_time": "06:47"
+        "planned_time": "06:34",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -265,7 +280,8 @@
         "name:uk": "Станція метро “Хрещатик”",
         "osm_id": 6017989732,
         "order_hint": 16,
-        "planned_time": "06:49"
+        "planned_time": "06:39",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -282,7 +298,8 @@
         "name:uk": "Центральний універмаг",
         "osm_id": 6017989728,
         "order_hint": 17,
-        "planned_time": "06:52"
+        "planned_time": "06:35",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -299,7 +316,8 @@
         "name:uk": "Центральний універмаг",
         "osm_id": 1813825078,
         "order_hint": 18,
-        "planned_time": "06:54"
+        "planned_time": "06:38",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -316,7 +334,8 @@
         "name:uk": "Бессарабська площа",
         "osm_id": 6486596207,
         "order_hint": 19,
-        "planned_time": "06:56"
+        "planned_time": "06:37",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -333,7 +352,8 @@
         "name:uk": "Бессарабська площа",
         "osm_id": 4419254890,
         "order_hint": 20,
-        "planned_time": "06:58"
+        "planned_time": "06:36",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -350,7 +370,8 @@
         "name:uk": "вул. Павла Скоропадського",
         "osm_id": 11020856074,
         "order_hint": 21,
-        "planned_time": "07:00"
+        "planned_time": "06:38",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -367,7 +388,8 @@
         "name:uk": "вул. Павла Скоропадського",
         "osm_id": 10996246798,
         "order_hint": 22,
-        "planned_time": "07:02"
+        "planned_time": "06:35",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -384,7 +406,8 @@
         "name:uk": "Вул. Мечникова",
         "osm_id": 12090377075,
         "order_hint": 23,
-        "planned_time": "07:05"
+        "planned_time": "06:39",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -401,7 +424,8 @@
         "name:uk": "Вул. Мечникова",
         "osm_id": 2957522631,
         "order_hint": 24,
-        "planned_time": "07:07"
+        "planned_time": "06:34",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -418,7 +442,8 @@
         "name:uk": "ст. м. Кловська",
         "osm_id": 12090377076,
         "order_hint": 25,
-        "planned_time": "07:10"
+        "planned_time": "06:41",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -435,7 +460,8 @@
         "name:uk": "ст. м. Кловська",
         "osm_id": 9150370542,
         "order_hint": 26,
-        "planned_time": "07:12"
+        "planned_time": "06:32",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -452,7 +478,8 @@
         "name:uk": "Кловський узвіз",
         "osm_id": 12090377078,
         "order_hint": 27,
-        "planned_time": "07:15"
+        "planned_time": "06:42",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -469,7 +496,8 @@
         "name:uk": "Кловський узвіз",
         "osm_id": 12090377077,
         "order_hint": 28,
-        "planned_time": "07:17"
+        "planned_time": "06:31",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -486,7 +514,8 @@
         "name:uk": "Юний технік",
         "osm_id": 12090396070,
         "order_hint": 29,
-        "planned_time": "07:19"
+        "planned_time": "06:43",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -503,7 +532,8 @@
         "name:uk": "Юний технік",
         "osm_id": 11010059005,
         "order_hint": 30,
-        "planned_time": "07:21"
+        "planned_time": "06:30",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -520,7 +550,8 @@
         "name:uk": "Кріпосний провулок",
         "osm_id": 3534376707,
         "order_hint": 31,
-        "planned_time": "07:24"
+        "planned_time": "06:45",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -537,7 +568,8 @@
         "name:uk": "Кріпосний провулок",
         "osm_id": 1456227566,
         "order_hint": 32,
-        "planned_time": "07:26"
+        "planned_time": "06:28",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -554,7 +586,8 @@
         "name:uk": "Стадіон \"Арсенал\"",
         "osm_id": 500876935,
         "order_hint": 33,
-        "planned_time": "07:28"
+        "planned_time": "06:47",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -571,7 +604,8 @@
         "name:uk": "Стадіон \"Арсенал\"",
         "osm_id": 7141724964,
         "order_hint": 34,
-        "planned_time": "07:30"
+        "planned_time": "06:26",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -588,7 +622,8 @@
         "name:uk": "Станція метро «Арсенальна»",
         "osm_id": 4762836852,
         "order_hint": 35,
-        "planned_time": "07:32"
+        "planned_time": "06:49",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -605,7 +640,8 @@
         "name:uk": "Станція метро «Арсенальна»",
         "osm_id": 566565415,
         "order_hint": 36,
-        "planned_time": "07:34"
+        "planned_time": "06:24",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -622,7 +658,8 @@
         "name:uk": "Завод \"Арсенал\"",
         "osm_id": 12090396075,
         "order_hint": 37,
-        "planned_time": "07:37"
+        "planned_time": "06:50",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -639,7 +676,8 @@
         "name:uk": "Завод \"Арсенал\"",
         "osm_id": 12090396076,
         "order_hint": 38,
-        "planned_time": "07:39"
+        "planned_time": "06:23",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -656,7 +694,8 @@
         "name:uk": "Центр надання адміністративних послуг Печерського району",
         "osm_id": 12090396077,
         "order_hint": 39,
-        "planned_time": "07:41"
+        "planned_time": "06:52",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -673,7 +712,8 @@
         "name:uk": "Центр надання адміністративних послуг Печерського району",
         "osm_id": 567340568,
         "order_hint": 40,
-        "planned_time": "07:43"
+        "planned_time": "06:21",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -690,7 +730,8 @@
         "name:uk": "Вулиця Олександра Копиленка",
         "osm_id": 12090396078,
         "order_hint": 41,
-        "planned_time": "07:46"
+        "planned_time": "06:53",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -707,7 +748,8 @@
         "name:uk": "Вулиця Олександра Копиленка",
         "osm_id": 3815906892,
         "order_hint": 42,
-        "planned_time": "07:48"
+        "planned_time": "06:20",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -724,7 +766,8 @@
         "name:uk": "Вулиця Генерала Алмазова",
         "osm_id": 12090396079,
         "order_hint": 43,
-        "planned_time": "07:50"
+        "planned_time": "06:55",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -741,7 +784,8 @@
         "name:uk": "Вулиця Генерала Алмазова",
         "osm_id": 538249458,
         "order_hint": 44,
-        "planned_time": "07:52"
+        "planned_time": "06:18",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -758,7 +802,8 @@
         "name:uk": "Арсенальна вулиця",
         "osm_id": 12090396080,
         "order_hint": 45,
-        "planned_time": "07:54"
+        "planned_time": "06:56",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -775,7 +820,8 @@
         "name:uk": "Арсенальна вулиця",
         "osm_id": 538249461,
         "order_hint": 46,
-        "planned_time": "07:56"
+        "planned_time": "06:17",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -792,7 +838,8 @@
         "name:uk": "площа Лесі Українки",
         "osm_id": 9251535203,
         "order_hint": 47,
-        "planned_time": "07:58"
+        "planned_time": "06:57",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -809,7 +856,8 @@
         "name:uk": "площа Лесі Українки",
         "osm_id": 444344241,
         "order_hint": 48,
-        "planned_time": "08:00"
+        "planned_time": "06:16",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -826,7 +874,8 @@
         "name:uk": "Кругла Башта",
         "osm_id": 4762240175,
         "order_hint": 49,
-        "planned_time": "08:02"
+        "planned_time": "06:58",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -843,7 +892,8 @@
         "name:uk": "Кругла Башта",
         "osm_id": 5487222324,
         "order_hint": 50,
-        "planned_time": "08:04"
+        "planned_time": "06:15",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -860,7 +910,8 @@
         "name:uk": "Вул. Джона Маккейна",
         "osm_id": 9251535204,
         "order_hint": 51,
-        "planned_time": "08:07"
+        "planned_time": "06:59",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -877,7 +928,8 @@
         "name:uk": "Вул. Джона Маккейна",
         "osm_id": 5487222323,
         "order_hint": 52,
-        "planned_time": "08:09"
+        "planned_time": "06:14",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -894,7 +946,8 @@
         "name:uk": "Вул. Бастіонна",
         "osm_id": 12090399586,
         "order_hint": 53,
-        "planned_time": "08:12"
+        "planned_time": "07:01",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -911,7 +964,8 @@
         "name:uk": "Вул. Бастіонна",
         "osm_id": 7666743899,
         "order_hint": 54,
-        "planned_time": "08:14"
+        "planned_time": "06:12",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -928,7 +982,8 @@
         "name:uk": "Вул. Болсуновська",
         "osm_id": 6017989739,
         "order_hint": 55,
-        "planned_time": "08:16"
+        "planned_time": "07:02",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -945,7 +1000,8 @@
         "name:uk": "Вул. Болсуновська",
         "osm_id": 571490308,
         "order_hint": 56,
-        "planned_time": "08:18"
+        "planned_time": "06:11",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -962,7 +1018,8 @@
         "name:uk": "Ботанічний сад",
         "osm_id": 12090350907,
         "order_hint": 57,
-        "planned_time": "08:20"
+        "planned_time": "07:03",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -979,7 +1036,8 @@
         "name:uk": "Ботанічний сад",
         "osm_id": 2238774667,
         "order_hint": 58,
-        "planned_time": "08:22"
+        "planned_time": "06:10",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",

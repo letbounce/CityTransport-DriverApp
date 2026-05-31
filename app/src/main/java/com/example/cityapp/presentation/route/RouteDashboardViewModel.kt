@@ -35,6 +35,7 @@ data class RouteDashboardUiState(
     val routes: List<Route> = emptyList(),
     val vehicles: List<Vehicle> = emptyList(),
     val selectedRouteId: String = "",
+    val tripDirection: RouteTripDirection = RouteTripDirection.OUTBOUND,
     val selectedVehicleId: String = "",
     val waybills: List<Waybill> = emptyList(),
     val archivedWaybills: List<Waybill> = emptyList(),
@@ -112,7 +113,11 @@ class RouteDashboardViewModel : ViewModel() {
     }
 
     fun onRouteSelected(routeId: String) {
-        _uiState.update { it.copy(selectedRouteId = routeId) }
+        _uiState.update { it.copy(selectedRouteId = routeId, tripDirection = RouteTripDirection.OUTBOUND) }
+    }
+
+    fun onTripDirectionSelected(direction: RouteTripDirection) {
+        _uiState.update { it.copy(tripDirection = direction) }
     }
 
     fun onVehicleSelected(vehicleId: String) {
@@ -132,7 +137,10 @@ class RouteDashboardViewModel : ViewModel() {
                 return@launch
             }
             val vehicleId = _uiState.value.selectedVehicleId.ifBlank { "KP-3204" }
-            val notes = _uiState.value.newTripNotes.trim().ifBlank { null }
+            val notes = appendDirectionToTripNotes(
+                _uiState.value.newTripNotes,
+                _uiState.value.tripDirection
+            ).ifBlank { null }
             val result = startTripUseCase(routeId, vehicleId, notes)
             val code = (result.exceptionOrNull() as? HttpException)?.code()
             _uiState.update {

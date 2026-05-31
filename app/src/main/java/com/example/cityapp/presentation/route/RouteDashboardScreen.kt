@@ -28,6 +28,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -193,6 +194,9 @@ fun RouteDashboardScreen(
     }
 
     val selectedRoute = state.routes.find { it.id == state.selectedRouteId }
+    val displayStops = remember(selectedRoute, state.tripDirection) {
+        filterStopsForDirection(selectedRoute?.stops.orEmpty(), state.tripDirection)
+    }
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
@@ -327,7 +331,15 @@ fun RouteDashboardScreen(
                                 vehiclesLoaded = state.vehiclesLoaded
                             )
 
-                            RouteStopTimeline(stops = selectedRoute?.stops.orEmpty())
+                            TripDirectionSelector(
+                                selected = state.tripDirection,
+                                onSelected = viewModel::onTripDirectionSelected
+                            )
+
+                            RouteStopTimeline(
+                                stops = displayStops,
+                                direction = state.tripDirection
+                            )
 
                             OutlinedTextField(
                                 value = state.newTripNotes,
@@ -403,13 +415,49 @@ fun RouteDashboardScreen(
 }
 
 @Composable
-private fun RouteStopTimeline(stops: List<Stop>) {
+private fun TripDirectionSelector(
+    selected: RouteTripDirection,
+    onSelected: (RouteTripDirection) -> Unit
+) {
     Text(
-        text = "Зупинки обраного маршруту",
+        text = "Напрямок рейсу",
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant
+    )
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        RouteTripDirection.entries.forEach { direction ->
+            FilterChip(
+                selected = selected == direction,
+                onClick = { onSelected(direction) },
+                label = { Text(direction.labelUa) },
+                modifier = Modifier.weight(1f)
+            )
+        }
+    }
+}
+
+@Composable
+private fun RouteStopTimeline(
+    stops: List<Stop>,
+    direction: RouteTripDirection
+) {
+    Text(
+        text = "Зупинки (${direction.labelUa.lowercase()})",
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(top = 4.dp, bottom = 6.dp)
+        modifier = Modifier.padding(top = 4.dp, bottom = 2.dp)
     )
+    if (stops.isNotEmpty()) {
+        Text(
+            text = "${stops.size} зупинок · розклад за EasyWay/OSM (≈1–3 хв у місті)",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+    }
     if (stops.isEmpty()) {
         Text(
             "Оберіть маршрут — тут з’явиться список зупинок.",
@@ -449,7 +497,7 @@ private fun RouteStopTimeline(stops: List<Stop>) {
                         Box(
                             Modifier
                                 .width(3.dp)
-                                .height(36.dp)
+                                .height(52.dp)
                                 .background(
                                     Brush.verticalGradient(
                                         colors = listOf(

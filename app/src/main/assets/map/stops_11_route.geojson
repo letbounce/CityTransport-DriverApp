@@ -10,7 +10,8 @@
         "name:uk": "Лісництво",
         "osm_id": 7663701905,
         "order_hint": 1,
-        "planned_time": "05:45"
+        "planned_time": "05:45",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -27,7 +28,8 @@
         "name:uk": "просп. Броварський (ст. м. Лісова)",
         "osm_id": 7663696681,
         "order_hint": 2,
-        "planned_time": "05:49"
+        "planned_time": "05:57",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -44,7 +46,8 @@
         "name:uk": "Гіпермаркет",
         "osm_id": 4779742631,
         "order_hint": 3,
-        "planned_time": "05:52"
+        "planned_time": "05:46",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -61,7 +64,8 @@
         "name:uk": "ШЕУ Дніпровського району",
         "osm_id": 4779742638,
         "order_hint": 4,
-        "planned_time": "05:55"
+        "planned_time": "05:56",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -78,7 +82,8 @@
         "name:uk": "ШЕУ Дніпровського району",
         "osm_id": 4779742639,
         "order_hint": 5,
-        "planned_time": "05:57"
+        "planned_time": "05:47",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -95,7 +100,8 @@
         "name:uk": "Лісництво",
         "osm_id": 4307537847,
         "order_hint": 6,
-        "planned_time": "05:59"
+        "planned_time": "05:54",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -112,7 +118,8 @@
         "name:uk": "Хвилинка",
         "osm_id": 4779742637,
         "order_hint": 7,
-        "planned_time": "06:01"
+        "planned_time": "05:49",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -129,7 +136,8 @@
         "name:uk": "Бикiвня",
         "osm_id": 4307537853,
         "order_hint": 8,
-        "planned_time": "06:04"
+        "planned_time": "05:52",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -146,7 +154,8 @@
         "name:uk": "Бикiвня-1",
         "osm_id": 4779742630,
         "order_hint": 9,
-        "planned_time": "06:06"
+        "planned_time": "05:51",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -163,7 +172,8 @@
         "name:uk": "Школа",
         "osm_id": 4779742640,
         "order_hint": 10,
-        "planned_time": "06:08"
+        "planned_time": "05:50",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -180,7 +190,8 @@
         "name:uk": "пров. Кадіївський",
         "osm_id": 4779742645,
         "order_hint": 11,
-        "planned_time": "06:11"
+        "planned_time": "05:53",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -197,7 +208,8 @@
         "name:uk": "Дачне містечко \"Сосновий бір\"",
         "osm_id": 7663696682,
         "order_hint": 12,
-        "planned_time": "06:17"
+        "planned_time": "05:48",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -214,7 +226,8 @@
         "name:uk": "Радіоцентр",
         "osm_id": 4779742634,
         "order_hint": 13,
-        "planned_time": "06:21"
+        "planned_time": "05:55",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -231,7 +244,8 @@
         "name:uk": "Дитячий садок",
         "osm_id": 4779742632,
         "order_hint": 14,
-        "planned_time": "06:23"
+        "planned_time": "05:46",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -248,7 +262,8 @@
         "name:uk": "Дитячий садок",
         "osm_id": 4779742633,
         "order_hint": 15,
-        "planned_time": "06:25"
+        "planned_time": "05:57",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -265,7 +280,8 @@
         "name:uk": "Вул. Радистів",
         "osm_id": 4779742642,
         "order_hint": 16,
-        "planned_time": "06:27"
+        "planned_time": "05:44",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -282,7 +298,8 @@
         "name:uk": "Вул. Радистів",
         "osm_id": 4779742641,
         "order_hint": 17,
-        "planned_time": "06:29"
+        "planned_time": "05:59",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -299,7 +316,8 @@
         "name:uk": "Рембудзв'язок",
         "osm_id": 4779742636,
         "order_hint": 18,
-        "planned_time": "06:31"
+        "planned_time": "05:42",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -316,7 +334,8 @@
         "name:uk": "Рембудзв'язок",
         "osm_id": 4779742635,
         "order_hint": 19,
-        "planned_time": "06:33"
+        "planned_time": "06:01",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -333,7 +352,8 @@
         "name:uk": "пров. Биківнянський",
         "osm_id": 4779742644,
         "order_hint": 20,
-        "planned_time": "06:36"
+        "planned_time": "05:40",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -350,7 +370,8 @@
         "name:uk": "пров. Биківнянський",
         "osm_id": 4779742643,
         "order_hint": 21,
-        "planned_time": "06:38"
+        "planned_time": "06:03",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",

@@ -10,7 +10,8 @@
         "name:uk": "Залізничний вокзал \"Центральний\"",
         "osm_id": 13241245756,
         "order_hint": 1,
-        "planned_time": "06:20"
+        "planned_time": "06:20",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -27,7 +28,8 @@
         "name:uk": "Залізничний вокзал Центральний",
         "osm_id": 12269729019,
         "order_hint": 2,
-        "planned_time": "06:22"
+        "planned_time": "06:33",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -44,7 +46,8 @@
         "name:uk": "вул. Саксаганського",
         "osm_id": 10650336598,
         "order_hint": 3,
-        "planned_time": "06:26"
+        "planned_time": "06:28",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -61,7 +64,8 @@
         "name:uk": "вул. Саксаганського",
         "osm_id": 3471561293,
         "order_hint": 4,
-        "planned_time": "06:28"
+        "planned_time": "06:25",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -78,7 +82,8 @@
         "name:uk": "Галицька площа",
         "osm_id": 2935306876,
         "order_hint": 5,
-        "planned_time": "06:30"
+        "planned_time": "06:31",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -95,7 +100,8 @@
         "name:uk": "Галицька площа",
         "osm_id": 324629313,
         "order_hint": 6,
-        "planned_time": "06:32"
+        "planned_time": "06:22",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -112,7 +118,8 @@
         "name:uk": "Цирк",
         "osm_id": 10650327932,
         "order_hint": 7,
-        "planned_time": "06:34"
+        "planned_time": "06:32",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -129,7 +136,8 @@
         "name:uk": "Цирк",
         "osm_id": 4931245318,
         "order_hint": 8,
-        "planned_time": "06:36"
+        "planned_time": "06:21",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -146,7 +154,8 @@
         "name:uk": "Ортопедичний інститут",
         "osm_id": 3522738433,
         "order_hint": 9,
-        "planned_time": "06:40"
+        "planned_time": "06:35",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -163,7 +172,8 @@
         "name:uk": "Ортопедичний інститут",
         "osm_id": 7666743913,
         "order_hint": 10,
-        "planned_time": "06:42"
+        "planned_time": "06:18",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -180,7 +190,8 @@
         "name:uk": "вул. Обсерваторна",
         "osm_id": 9985970477,
         "order_hint": 11,
-        "planned_time": "06:45"
+        "planned_time": "06:36",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -197,7 +208,8 @@
         "name:uk": "вул. Обсерваторна",
         "osm_id": 665746073,
         "order_hint": 12,
-        "planned_time": "06:47"
+        "planned_time": "06:17",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -214,7 +226,8 @@
         "name:uk": "Львівська площа",
         "osm_id": 9985970475,
         "order_hint": 13,
-        "planned_time": "06:49"
+        "planned_time": "06:37",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -231,7 +244,8 @@
         "name:uk": "Львівська площа",
         "osm_id": 4566820589,
         "order_hint": 14,
-        "planned_time": "06:51"
+        "planned_time": "06:16",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -248,7 +262,8 @@
         "name:uk": "вул. Бульварно-Кудрявська",
         "osm_id": 13241285587,
         "order_hint": 15,
-        "planned_time": "06:53"
+        "planned_time": "06:38",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -265,7 +280,8 @@
         "name:uk": "вул. Бульварно-Кудрявська",
         "osm_id": 4278059804,
         "order_hint": 16,
-        "planned_time": "06:55"
+        "planned_time": "06:15",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
