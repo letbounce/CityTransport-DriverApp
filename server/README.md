@@ -30,7 +30,7 @@ npm run dev
 npm run seed
 ```
 
-## Smoke test (табл. 3.7 диплома — TC-01…TC-06, DRV-1042, маршрут №114)
+## Smoke test (TC-01…TC-06, DRV-1042, маршрут №114)
 
 **Підготовка (один раз):**
 
