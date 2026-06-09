@@ -30,7 +30,17 @@ npm run dev
 npm run seed
 ```
 
-## Smoke test (табл. 3.7 диплома — TC-01…TC-06, DRV-1042, маршрут №114)
+Розклад зупинок (усі маршрути з OSM / EasyWay-логіка для пар 1–2 хв):
+
+```bash
+npm run schedule:generate
+npm run schedule:apply
+npm run seed
+```
+
+Один маршрут: `node scripts/apply-easyway-schedule.js 114`
+
+## Smoke test (TC-01…TC-06, DRV-1042, маршрут №114)
 
 **Підготовка (один раз):**
 

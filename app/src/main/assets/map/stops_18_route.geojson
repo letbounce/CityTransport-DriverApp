@@ -10,7 +10,8 @@
         "name:uk": "ст. м. «Харківська»",
         "osm_id": 539170387,
         "order_hint": 1,
-        "planned_time": "06:05"
+        "planned_time": "06:05",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -27,7 +28,8 @@
         "name:uk": "Ринок",
         "osm_id": 4279844296,
         "order_hint": 2,
-        "planned_time": "06:07"
+        "planned_time": "06:18",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -44,7 +46,8 @@
         "name:uk": "Вул. Кошиця",
         "osm_id": 4279889289,
         "order_hint": 3,
-        "planned_time": "06:10"
+        "planned_time": "06:11",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -61,7 +64,8 @@
         "name:uk": "Вул. Степана Олійника",
         "osm_id": 1444744266,
         "order_hint": 4,
-        "planned_time": "06:13"
+        "planned_time": "06:12",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -78,7 +82,8 @@
         "name:uk": "Магазин",
         "osm_id": 2039931237,
         "order_hint": 5,
-        "planned_time": "06:17"
+        "planned_time": "06:17",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -95,7 +100,8 @@
         "name:uk": "Вул. Юрія Литвинського",
         "osm_id": 4100630891,
         "order_hint": 6,
-        "planned_time": "06:20"
+        "planned_time": "06:06",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",
@@ -112,7 +118,8 @@
         "name:uk": "вул. Новодарницька",
         "osm_id": 929936162,
         "order_hint": 7,
-        "planned_time": "06:23"
+        "planned_time": "06:23",
+        "trip_direction": "outbound"
       },
       "geometry": {
         "type": "Point",
@@ -129,7 +136,8 @@
         "name:uk": "Харківське шосе",
         "osm_id": 4100505590,
         "order_hint": 8,
-        "planned_time": "06:25"
+        "planned_time": "06:00",
+        "trip_direction": "inbound"
       },
       "geometry": {
         "type": "Point",

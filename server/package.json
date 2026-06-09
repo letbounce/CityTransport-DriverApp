@@ -7,6 +7,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "seed": "node scripts/seed.js",
+    "schedule:generate": "node scripts/generate-all-schedules.js",
+    "schedule:apply": "node scripts/apply-easyway-schedule.js --all",
     "smoke": "node scripts/smoke.js",
     "smoke:all": "node scripts/smoke-with-server.js",
     "smoke:seed": "node scripts/smoke-with-server.js --seed"
