@@ -1,5 +1,5 @@
 # RoutePulse
-
+© КОКСЮК ОЛЕГ ВІТАЛІЙОВИЧ 
 Android-додаток **RoutePulse** (раніше прототип CityTransport-DriverApp). Клієнт-серверний прототип робочих процесів для водіїв:
 
 - Android app (`/app`) on Kotlin + Jetpack Compose
